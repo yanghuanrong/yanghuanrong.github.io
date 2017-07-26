@@ -1,61 +1,97 @@
 <template>
 	<div class="login-body">
 		<div class="login-wrap">
-			<div class="login-row">
-				<label for="username">Username</label>
-				<input type="text" ref="username" id="username"/>
+			<div class="login-anime">
+				<div class="login-row">
+					<i class="icon-user"></i>
+					<input type="text" ref="username" v-model="username" placeholder="Username"/>
+				</div>
+				<div class="login-row">
+					<i class="icon-password"></i>
+					<input type="password" ref="password" v-model="password" placeholder="Password" />
+				</div>
+				<button type="button" @click="login" class="login-btn">
+					<span v-if="!islogin">Sign In</span>
+					<loading v-if="islogin"></loading>
+				</button>
 			</div>
-			<div class="login-row">
-				<label for="password">Password</label>
-				<input type="password" ref="password" id="password"/>
-			</div>
-			<button type="button" @click="login" class="login-btn">Sign In</button>
 		</div>
 	</div>
 </template>
 
 <script>
 	import anime from 'animejs';
+	import loading from '@/components/login/loading'
 	export default {
+		data(){
+			return {
+				islogin:false,
+				username:"",
+				password:""
+			}
+		},
 		methods:{
+			error(){
+				this.islogin = false;
+				anime({
+				  targets: '.login-anime',
+				  translateX: [
+				    { value: 20, duration: 100 , easing: 'easeInOutSine'},
+				    { value: 0, duration: 100 , easing: 'easeInOutSine'},
+				    { value: 20, duration: 100 , easing: 'easeInOutSine'},
+				    { value: 0, duration: 100 , easing: 'easeInOutSine'},
+				    { value: 20, duration: 100 , easing: 'easeInOutSine'},
+				    { value: 0, duration: 100 , easing: 'easeInOutSine'}
+				  ]
+				});
+			},
 			login(){
+				this.islogin = true;
 				let username= this.$refs.username.value;
 				let password = this.$refs.password.value;
 				
+				if(username == ""){
+					this.error()
+					return false;
+				}
+				if(password == ""){
+					this.error()
+					return false;
+				}
+				
 				Bmob.User.logIn(username, password, {
 				  success: (user)=>{
-				  	if(username){
+				  	if(user.attributes.code == undefined){
 				  		anime({
 						  targets: '.login-btn',
 						  width: {
 						  	value:44,
-						  	duration: 800,
+						  	duration: 300,
 						    easing: 'easeInOutQuart'
 						  },
 						  scale: {
-						    value: 100,
-						    duration: 1600,
-						    delay: 800,
+						    value: 120,
+						    duration: 400,
+						    delay: 300,
 						    easing: 'easeInOutQuart'
-						  },
-						  background:{
-						  	value:"#FFF",
-						  	duration: 300,
-						    delay: 1600,
 						  },
 						  complete: (anim)=>{
 							this.$router.push('/admin');
 						  }
 						});
 				  	}else{
-						alert("用户名密码错误");
+						this.error()
 				  	}
 				  },
 				  error: (user, error)=>{
+					this.error()
 				  	console.log("error")
 				  }
 				});
 			}
+		},
+		components:{
+			loading
 		}
 	}
 </script>

@@ -63,11 +63,60 @@ input:focus,button:focus{ outline: none;}
     }
 }
 
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?k0jdef');
+  src:  url('../fonts/icomoon.eot?k0jdef#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?k0jdef') format('truetype'),
+    url('../fonts/icomoon.woff?k0jdef') format('woff'),
+    url('../fonts/icomoon.svg?k0jdef#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-back:before {
+  content: "\e900";
+}
+.icon-password:before {
+  content: "\e901";
+}
+.icon-user:before {
+  content: "\e902";
+}
+
+
 //登录界面
 .login-body{ background: #dfdbe0; position: fixed; top: 0; right: 0; bottom: 0; left: 0;}
 .login-wrap{ position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 260px;}
-.login-row{ position: relative; height: 35px; border-bottom: 1px solid #F00; box-sizing: content-box; margin-bottom: 10px;
-    label{ position: absolute;}
-    input{ height: 100%; width: 100%; background: transparent; }
+.login-row{ position: relative; height: 35px; box-sizing: content-box; margin-bottom: 10px;  font-size: 12px;color: rgba(255,255,255,.9); 
+    i{ position: absolute; left: 0; top: 50%; transform: translateY(-50%);}
+    input{ height: 100%; width: 100%; background: transparent; border-bottom: 1px solid rgba(255,255,255,.4); text-indent: 30px; color: #FFF;}
+    ::-webkit-input-placeholder{
+        color: rgba(255,255,255,.9);
+    }
 }
-.login-btn{ height: 44px; width: 100%; border-radius: 44px; background: #f73668; border: 0; color: #FFF; cursor: pointer; margin: 0 auto; display: block;}
+.login-btn{ height: 44px; width: 100%; border-radius: 44px; background: #f73668; border: 0; color: #FFF; cursor: pointer; margin: 30px auto; display: block; text-align: center;
+}
+
+//fade动画
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+  opacity: 0
+}
