@@ -39,9 +39,10 @@
 				opacity: 1,
 				translateX: -50,
 				duration: 800,
+				delay: 400,
 				easing: 'easeInOutSine'
 			});
-			
+			//登录框动画
 			this.$anime({
 				targets:'.login-anime',
 				opacity: 1,

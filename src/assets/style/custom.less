@@ -100,24 +100,75 @@ input:focus,button:focus{ outline: none;}
 }
 
 
+body{ overflow: hidden;}
+@black:#2b2e2f;
+@red:#f73668;
+@white:#FFFFFF;
+
 //登录界面
-.login-body{ background: #46d1e1; position: fixed; top: 0; right: 0; bottom: 0; left: 0;}
+.login-body{ background: @black url(../images/noise.png); position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-repeat: repeat;  background-attachment: fixed;}
 .login-wrap{ position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 260px;}
-.login-row{ position: relative; height: 35px; box-sizing: content-box; margin-bottom: 10px;  font-size: 12px;color: rgba(255,255,255,.9); 
+.login-row{ position: relative; height: 35px; box-sizing: content-box; margin-bottom: 10px;  font-size: 12px; color: fade(@white,90%); 
     i{ position: absolute; left: 0; top: 50%; transform: translateY(-50%);}
-    input{ height: 100%; width: 100%; background: transparent; border-bottom: 1px solid rgba(255,255,255,.4); text-indent: 30px; color: #FFF;}
+    input{ height: 100%; width: 100%; background: transparent; border-bottom: 1px solid rgba(255,255,255,.4); text-indent: 30px; color: @white;}
     ::-webkit-input-placeholder{
-        color: rgba(255,255,255,.9);
+        color:fade(@white,90%);
     }
 }
-.login-btn{ height: 44px; width: 100%; border-radius: 44px; background: #f73668; border: 0; color: #FFF; cursor: pointer; margin: 30px auto; display: block; text-align: center;
+.login-btn{ height: 44px; width: 100%; border-radius: 44px; background: @red; border: 0; color: @white; cursor: pointer; margin: 30px auto; display: block; text-align: center; transition:all .3s ease-in;
+    &:hover{ box-shadow: 0 5px 5px rgba(0,0,0,.3); transform: translateY(-5px);}
+    &:active{ background:fade(@red , 80%);}
 }
 .login-anime{ opacity: 0;}
-.back{ position: absolute; top: 30px; left: 100px; color: #FFF; cursor: pointer; font-size: 24px; opacity: 0;}
+.back{ position: absolute; top: 30px; left: 100px; color: @white; cursor: pointer; font-size: 24px; opacity: 0;}
+
+//首页界面
+.index-body{ width: 100%; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    .left-bar,.right-bar{background-image:url(../images/noise.png); background-repeat: repeat;  background-attachment: fixed; position: absolute; top: 0;  bottom: 0; transition: all .4s ease-in-out;
+    }
+    .left-bar{left: 0; width: 100%; background-color: @white;
+        .meun-button{ width: 40px; height: 40px; right: 30px; top: 20px; position: absolute; padding-top: 8px; overflow: hidden; cursor: pointer;
+            i{ width: 20px; height: 2px; background: @black; display: block; margin: 5px auto; transition: all .4s ease-in-out;}
+        }
+    }
+    .right-bar{right: 0; width: 0%; background-color: @black;}
+    &.active{
+        .left-bar{ left: -75px; z-index: 1; box-shadow:20px 0 50px rgba(0,0,0,.7);
+            .meun-button{
+                i:nth-of-type(1){ transform-origin: left center; transform: rotate(45deg);}
+                i:nth-of-type(2){ transform: translateX(100%); opacity: 0;}
+                i:nth-of-type(3){ transform-origin: left center; transform: rotate(-45deg);}
+            }
+        }
+        .right-bar{ width: 75px;}
+    }
+}
+
+
 //fade动画
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+.fade-enter, .fade-leave-to{
   opacity: 0
+}
+//left动画
+.left-enter{
+    transform: translateX(100%);
+}
+.left-enter-active,.left-leave-active{
+    transition: .5s;
+}
+.left-leave-to{
+    transform: translateX(-100%);
+}
+//right动画
+.right-enter{
+    transform: translateX(-100%);
+}
+.right-enter-active,.right-leave-active{
+    transition: .5s;
+}
+.right-leave-to{
+    transform: translateX(100%);
 }
