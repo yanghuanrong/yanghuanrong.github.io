@@ -1,15 +1,6 @@
 <template>
-  <div class="index-body" :class="{ active:isNav }">
-  	<div class="left-bar">
-  		<div class="meun-button" @click="NavEvent">
-  			<i></i>
-  			<i></i>
-  			<i></i>
-  		</div>
-  	</div>
-  	<div class="right-bar">
-  		<router-link to="/admin">登录</router-link>
-  	</div>
+  <div class="index-body">
+  	<div class="index-wrap"></div>
   </div>
 </template>
 

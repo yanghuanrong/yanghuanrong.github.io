@@ -104,9 +104,14 @@ body{ overflow: hidden;}
 @black:#2b2e2f;
 @red:#f73668;
 @white:#FFFFFF;
+.lineBG(@val){
+    background: linear-gradient(@val);
+}
 
 //登录界面
-.login-body{ background: @black url(../images/noise.png); position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-repeat: repeat;  background-attachment: fixed;}
+.login-body{ 
+    background: @black url(../images/noise.png); position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-repeat: repeat;  background-attachment: fixed;
+    }
 .login-wrap{ position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 260px;}
 .login-row{ position: relative; height: 35px; box-sizing: content-box; margin-bottom: 10px;  font-size: 12px; color: fade(@white,90%); 
     i{ position: absolute; left: 0; top: 50%; transform: translateY(-50%);}
@@ -123,24 +128,12 @@ body{ overflow: hidden;}
 .back{ position: absolute; top: 30px; left: 100px; color: @white; cursor: pointer; font-size: 24px; opacity: 0;}
 
 //首页界面
-.index-body{ width: 100%; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    .left-bar,.right-bar{background-image:url(../images/noise.png); background-repeat: repeat;  background-attachment: fixed; position: absolute; top: 0;  bottom: 0; transition: all .4s ease-in-out;
-    }
-    .left-bar{left: 0; width: 100%; background-color: @white;
-        .meun-button{ width: 40px; height: 40px; right: 30px; top: 20px; position: absolute; padding-top: 8px; overflow: hidden; cursor: pointer;
-            i{ width: 20px; height: 2px; background: @black; display: block; margin: 5px auto; transition: all .4s ease-in-out;}
-        }
-    }
-    .right-bar{right: 0; width: 0%; background-color: @black;}
-    &.active{
-        .left-bar{ left: -75px; z-index: 1; box-shadow:20px 0 50px rgba(0,0,0,.7);
-            .meun-button{
-                i:nth-of-type(1){ transform-origin: left center; transform: rotate(45deg);}
-                i:nth-of-type(2){ transform: translateX(100%); opacity: 0;}
-                i:nth-of-type(3){ transform-origin: left center; transform: rotate(-45deg);}
-            }
-        }
-        .right-bar{ width: 75px;}
+.index-body{ 
+    @val:180deg,#3d464b,#697a81;
+    .lineBG(@val);
+    width: 100%; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+    .index-wrap{
+        width: 960px; height: 300px; background: #000; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
     }
 }
 
