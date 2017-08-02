@@ -65,11 +65,11 @@ input:focus,button:focus{ outline: none;}
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?k0jdef');
-  src:  url('../fonts/icomoon.eot?k0jdef#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?k0jdef') format('truetype'),
-    url('../fonts/icomoon.woff?k0jdef') format('woff'),
-    url('../fonts/icomoon.svg?k0jdef#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?esmrbv');
+  src:  url('../fonts/icomoon.eot?esmrbv#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?esmrbv') format('truetype'),
+    url('../fonts/icomoon.woff?esmrbv') format('woff'),
+    url('../fonts/icomoon.svg?esmrbv#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -92,11 +92,23 @@ input:focus,button:focus{ outline: none;}
 .icon-back:before {
   content: "\e900";
 }
-.icon-password:before {
+.icon-github:before {
   content: "\e901";
 }
-.icon-user:before {
+.icon-password:before {
   content: "\e902";
+}
+.icon-user:before {
+  content: "\e903";
+}
+.icon-weibo:before {
+  content: "\e904";
+}
+.icon-weix:before {
+  content: "\e905";
+}
+.icon-email:before {
+  content: "\e906";
 }
 
 
@@ -131,6 +143,9 @@ body{ overflow: hidden;}
 .login-anime{ opacity: 0;}
 .back{ position: absolute; top: 30px; left: 100px; color: @white; cursor: pointer; font-size: 24px; opacity: 0;}
 
+
+
+@green:#00f281;
 //首页界面
 .index-body{ 
     @val:180deg,#3d464b,#697a81;
@@ -138,6 +153,19 @@ body{ overflow: hidden;}
     width: 100%; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
     .index-wrap{
         width: 960px; height: 300px; background: #ccc; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+        .index-menu{
+            position: absolute; top: -100px; right: 0; width: 100%; height: 50px; text-align: right; font-size: 28px;
+            a{
+                position: relative; margin-left:30px ;
+                i:nth-of-type(1){ color: @green;}
+                i:nth-last-of-type(1){
+                    position: absolute; z-index: -1; left: 10px; top: 5px;
+                    color: transparent;
+                    text-shadow: 0 0 5px #39444a;
+                    transition: text-shadow 2s cubic-bezier(0, 1, 0, 1);
+                }
+            }
+        }
         .shadow{
             @val:#3d464b,#697a81;
             .radialBG(@val);
