@@ -107,6 +107,10 @@ body{ overflow: hidden;}
 .lineBG(@val){
     background: linear-gradient(@val);
 }
+.radialBG(@val){
+    background: radial-gradient(@val);
+}
+
 
 //登录界面
 .login-body{ 
@@ -133,7 +137,25 @@ body{ overflow: hidden;}
     .lineBG(@val);
     width: 100%; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
     .index-wrap{
-        width: 960px; height: 300px; background: #000; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+        width: 960px; height: 300px; background: #ccc; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+        .shadow{
+            @val:#3d464b,#697a81;
+            .radialBG(@val);
+            position: absolute; bottom: -100px; left: 0; width: 100%; height: 50px; border-radius: 50%; opacity: .7;
+        }
+        .index-content{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            height: 300px;
+            .banner{ width: 500px; height: 300px; background: #999;}
+            .Photo{ width: 185px; height: 185px; background: #777;}
+            .blog{ width: 185px; height: 115px; background: #666;}
+            .music{ width: 275px; height: 100px; background: #1a2224;}
+            .msg{ width: 275px; height: 200px; background: #444;}
+        }
     }
 }
 
