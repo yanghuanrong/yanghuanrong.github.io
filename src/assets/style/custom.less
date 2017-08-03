@@ -65,11 +65,11 @@ input:focus,button:focus{ outline: none;}
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?esmrbv');
-  src:  url('../fonts/icomoon.eot?esmrbv#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?esmrbv') format('truetype'),
-    url('../fonts/icomoon.woff?esmrbv') format('woff'),
-    url('../fonts/icomoon.svg?esmrbv#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?omyyb6');
+  src:  url('../fonts/icomoon.eot?omyyb6#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?omyyb6') format('truetype'),
+    url('../fonts/icomoon.woff?omyyb6') format('woff'),
+    url('../fonts/icomoon.svg?omyyb6#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -89,6 +89,12 @@ input:focus,button:focus{ outline: none;}
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-audio:before {
+  content: "\e907";
+}
+.icon-blog:before {
+  content: "\e908";
+}
 .icon-back:before {
   content: "\e900";
 }
@@ -110,6 +116,7 @@ input:focus,button:focus{ outline: none;}
 .icon-email:before {
   content: "\e906";
 }
+
 
 
 body{ overflow: hidden;}
@@ -152,7 +159,14 @@ body{ overflow: hidden;}
     .lineBG(@val);
     width: 100%; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
     .index-wrap{
-        width: 960px; height: 300px; background: #ccc; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+        width: 960px; height: 300px; background: #ccc; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); transition: all .4s ease-in;
+        &.active{
+            top: 0;
+            transform: translate(-50%,-100%);
+            .shadow{
+                opacity: 0;
+            }
+        }
         .index-menu{
             position: absolute; top: -100px; right: 0; width: 100%; height: 50px; text-align: right; font-size: 28px;
             a{
@@ -180,9 +194,14 @@ body{ overflow: hidden;}
             height: 300px;
             .banner{ width: 500px; height: 300px; background: #999;}
             .Photo{ width: 185px; height: 185px; background: #777;}
-            .blog{ width: 185px; height: 115px; background: #666;}
+            .blog{ width: 185px; height: 115px; background: @green; font-size: 72px; color: #FFF; display: flex; justify-content: center; align-items: center; cursor: pointer;}
             .music{ width: 275px; height: 100px; background: #1a2224;}
             .msg{ width: 275px; height: 200px; background: #444;}
+        }
+    }
+    .page{ width: 960px; position: absolute; top: 100px; bottom: 100px; background: #FFF; left: 50%; margin-left: -480px; transform: translateY(-200%); transition: all .8s ease-in-out;
+        &.active{
+            transform: translateY(0);
         }
     }
 }
