@@ -1,60 +1,63 @@
 <template>
-  <div class="index-body">
-  	<div class="index-wrap" :class="{active:isRouter}">
-  		<div class="index-menu">
-  			<a href="https://github.com/yanghuanrong" target="_blank">
-  				<i class="icon-github"></i>
-  				<i class="icon-github"></i>
-  			</a>
-  			<a href="http://weibo.com/yanghuanrong" target="_blank">
-  				<i class="icon-weibo"></i>
-  				<i class="icon-weibo"></i>
-  			</a>
-  			<a href="#">
-  				<i class="icon-weix"></i>
-  				<i class="icon-weix"></i>
-  			</a>
-  			<a href="#">
-  				<i class="icon-email"></i>
-  				<i class="icon-email"></i>
-  			</a>
-  		</div>
-  		<div class="index-content">
-				<banner></banner>
-  			<div class="Photo"></div>
-				<div class="blog" @click="blog">
-					<i class="icon-blog"></i>
+	<div class="index" :class="{about:isAbout}">
+		<header class="header">
+			<div class="wrap flex">
+				<h1 class="logo">
+					<router-link to="/home" tag="a" class="icon-blog"></router-link>
+				</h1>
+				<nav>
+					<ul class="nav flex">
+						<li><router-link to="/home" tag="a">首页</router-link></li>
+						<li><router-link to="/photo" tag="a">摄影</router-link></li>
+						<li><router-link to="/draw" tag="a">绘画</router-link></li>
+						<li><router-link to="/about" tag="a">关于</router-link></li>
+						<li><router-link to="/msg" tag="a">留言</router-link></li>
+					</ul>
+				</nav>
+				<div class="app">
+					<a href="http://github.com/yanghuanrong" target="_blank">
+						<i class="icon-github"></i>
+					</a>
+					<a href="http://weibo.com/yanghuanrong" target="_blank">
+						<i class="icon-weibo"></i>
+					</a>
 				</div>
-				<music></music>
-  			<div class="msg"></div>
-  		</div>
-  		<div class="shadow"></div>
-  	</div>
-  	
-  	<div class="page" :class="{active:isRouter}">
-    	<router-view></router-view>
-    </div>
-  </div>
+			</div>
+		</header>
+		<div class="wrap">
+			<div class="page-body">
+   				<transition name="fade" mode="out-in">
+    				<router-view></router-view>
+    			</transition>
+    		</div>
+    		<div class="music"></div>
+		</div>
+	</div>
 </template>
 
 <script type="text/javascript">
-	import music from './music'
-	import banner from './banner'
 	export default {
 		data(){
 			return {
-				isRouter:false
+				isAbout:false
 			}
+		},
+		mounted(){
+			this.isAboutPage(this.$route.name)
 		},
 		methods:{
-			blog(){
-				this.isRouter=true
-				this.$router.push('/blog');
+			isAboutPage(page){
+				if(page == "about"){
+					this.isAbout = true;
+				}else{
+					this.isAbout = false;
+				}
 			}
 		},
-		components:{
-			music,
-			banner
-		}
+		watch: {
+		    $route(to,from){
+			this.isAboutPage(to.name)
+			}
+		},
 	}
 </script>

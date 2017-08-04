@@ -1,7 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/home/index'
-import blog from '@/components/home/blog'
+import home from '@/components/home/home'
+import photo from '@/components/home/photo'
+import draw from '@/components/home/draw'
+import about from '@/components/home/about'
+import msg from '@/components/home/msg'
 
 import admin from '@/components/admin/index'
 import login from '@/components/login/index'
@@ -10,6 +14,7 @@ import login from '@/components/login/index'
 Vue.use(Router)
 
 export default new Router({
+	mode:'history',
 	routes: [{
 			path: '/',
 			name: 'index',
@@ -17,9 +22,24 @@ export default new Router({
 			meta: {
 				index: 0,
 			},
+			redirect:'/home',
 			children: [{
-				path: 'blog',
-				component: blog
+				path: '/home',
+				component: home
+			},{
+				path: '/photo',
+				component: photo
+			},{
+				path: '/draw',
+				component: draw
+			},{
+				path: '/about',
+				name: 'about',
+				component: about
+			},{
+				path: '/msg',
+				name: 'msg',
+				component: msg
 			}]
 		},
 		{

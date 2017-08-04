@@ -17,20 +17,18 @@
 			}
 		},
 		mounted() {
-			this.$nextTick(() => {
-				new Swiper('#banner', {
-					effect : 'fade',
-					autoplay: 4000,
-					speed:1000,
-					autoplayDisableOnInteraction: false,
-					pagination: '.swiper-pagination',
-					bulletClass : 'my-bullet',
-					bulletActiveClass : 'active',
-					paginationClickable: true,
-					preloadImages: false,
-					lazyLoading: true
-				});
-			})
+			new Swiper('#banner', {
+				effect : 'fade',
+				autoplay: 4000,
+				speed:1000,
+				autoplayDisableOnInteraction: false,
+				pagination: '.swiper-pagination',
+				bulletClass : 'my-bullet',
+				bulletActiveClass : 'active',
+				paginationClickable: true,
+				preloadImages: false,
+				lazyLoading: true
+			});
 		},
 	}
 </script>
