@@ -1,5 +1,5 @@
 <template>
-	<div class="index" :class="{about:isAbout}">
+	<div class="index">
 		<header class="header">
 			<div class="wrap flex">
 				<h1 class="logo">
@@ -36,28 +36,4 @@
 </template>
 
 <script type="text/javascript">
-	export default {
-		data(){
-			return {
-				isAbout:false
-			}
-		},
-		mounted(){
-			this.isAboutPage(this.$route.name)
-		},
-		methods:{
-			isAboutPage(page){
-				if(page == "about"){
-					this.isAbout = true;
-				}else{
-					this.isAbout = false;
-				}
-			}
-		},
-		watch: {
-		    $route(to,from){
-			this.isAboutPage(to.name)
-			}
-		},
-	}
 </script>
