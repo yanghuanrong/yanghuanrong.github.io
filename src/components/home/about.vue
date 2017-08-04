@@ -1,7 +1,7 @@
 <template>
 	<div class="about-page">
 		<div class="column-about">
-			<div class="author-photo" style="background-image:url(http://img5.imgtn.bdimg.com/it/u=110516353,1722426112&fm=26&gp=0.jpg);"></div>
+			<div class="author-photo" style="background-image:url(https://avatars3.githubusercontent.com/u/18067120?v=4&s=460);"></div>
 			<div class="author-name">yanghuanrong</div>
 			<div class="author-app">
 				<span>

@@ -6,6 +6,7 @@ import photo from '@/components/home/photo'
 import draw from '@/components/home/draw'
 import about from '@/components/home/about'
 import msg from '@/components/home/msg'
+import detail from '@/components/home/detail'
 
 import admin from '@/components/admin/index'
 import login from '@/components/login/index'
@@ -14,6 +15,7 @@ import login from '@/components/login/index'
 Vue.use(Router)
 
 export default new Router({
+	mode:'history',
 	routes: [{
 			path: '/',
 			name: 'index',
@@ -24,7 +26,12 @@ export default new Router({
 			redirect:'/home',
 			children: [{
 				path: '/home',
-				component: home
+				component: home,
+				children:[{
+					path: '/detail/:id?',
+					name:'detail',
+					component: detail,
+				}]
 			},{
 				path: '/photo',
 				component: photo

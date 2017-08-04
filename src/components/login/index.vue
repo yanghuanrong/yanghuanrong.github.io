@@ -5,18 +5,21 @@
 		</div>
 		<div class="login-wrap">
 			<div class="login-anime">
-				<div class="login-row">
-					<i class="icon-user"></i>
-					<input type="text" ref="username" v-model="username" placeholder="Username" />
+				<div class="login-logo"><i class="icon-blog"></i></div>
+				<div class="login-from">
+					<div class="login-row">
+						<i class="icon-user"></i>
+						<input type="text" ref="username" v-model="username" placeholder="Username" />
+					</div>
+					<div class="login-row">
+						<i class="icon-password"></i>
+						<input type="password" ref="password" v-model="password" placeholder="Password" />
+					</div>
+					<button type="button" @click="login" class="login-btn">
+						<span v-if="!islogin">Sign In</span>
+						<loading v-if="islogin"></loading>
+					</button>
 				</div>
-				<div class="login-row">
-					<i class="icon-password"></i>
-					<input type="password" ref="password" v-model="password" placeholder="Password" />
-				</div>
-				<button type="button" @click="login" class="login-btn">
-					<span v-if="!islogin">Sign In</span>
-					<loading v-if="islogin"></loading>
-				</button>
 			</div>
 		</div>
 	</div>
@@ -55,7 +58,7 @@
 			error() {
 				this.islogin = false;
 				this.$anime({
-					targets: '.login-anime',
+					targets: '.login-from',
 					translateX: [{
 							value: 10,
 							duration: 100,

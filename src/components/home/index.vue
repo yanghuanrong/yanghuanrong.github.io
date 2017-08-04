@@ -30,10 +30,6 @@
     				<router-view></router-view>
     			</transition>
     		</div>
-    		<div class="music"></div>
 		</div>
 	</div>
 </template>
-
-<script type="text/javascript">
-</script>
