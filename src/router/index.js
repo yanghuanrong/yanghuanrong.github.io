@@ -11,11 +11,10 @@ import detail from '@/components/home/detail'
 import admin from '@/components/admin/index'
 import login from '@/components/login/index'
 
-
 Vue.use(Router)
 
 export default new Router({
-	mode:'history',
+	mode: 'history',
 	routes: [{
 			path: '/',
 			name: 'index',
@@ -23,26 +22,26 @@ export default new Router({
 			meta: {
 				index: 0,
 			},
-			redirect:'/home',
+			redirect: '/home',
 			children: [{
 				path: '/home',
 				component: home,
-				children:[{
+				children: [{
 					path: '/detail/:id?',
-					name:'detail',
+					name: 'detail',
 					component: detail,
 				}]
-			},{
+			}, {
 				path: '/photo',
 				component: photo
-			},{
+			}, {
 				path: '/draw',
 				component: draw
-			},{
+			}, {
 				path: '/about',
 				name: 'about',
 				component: about
-			},{
+			}, {
 				path: '/msg',
 				name: 'msg',
 				component: msg

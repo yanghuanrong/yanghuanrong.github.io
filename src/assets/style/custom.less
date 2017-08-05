@@ -56,13 +56,14 @@ input:focus,button:focus{ outline: none;}
 .clearfix{display: inline-block;}
 .clearfix::after{content: ".";  display: block;  height: 0;  line-height: 0;  visibility: hidden;  clear: both;}
 
+
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?5afant');
-  src:  url('../fonts/icomoon.eot?5afant#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?5afant') format('truetype'),
-    url('../fonts/icomoon.woff?5afant') format('woff'),
-    url('../fonts/icomoon.svg?5afant#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?l6lliq');
+  src:  url('../fonts/icomoon.eot?l6lliq#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?l6lliq') format('truetype'),
+    url('../fonts/icomoon.woff?l6lliq') format('woff'),
+    url('../fonts/icomoon.svg?l6lliq#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -82,38 +83,41 @@ input:focus,button:focus{ outline: none;}
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-look:before {
-  content: "\e909";
-}
-.icon-msg:before {
-  content: "\e90a";
-}
-.icon-audio:before {
-  content: "\e907";
-}
-.icon-blog:before {
-  content: "\e908";
-}
-.icon-back:before {
-  content: "\e900";
-}
-.icon-github:before {
-  content: "\e901";
-}
-.icon-password:before {
-  content: "\e902";
-}
-.icon-user:before {
+.icon-close:before {
   content: "\e903";
 }
-.icon-weibo:before {
+.icon-audio:before {
   content: "\e904";
 }
-.icon-weix:before {
+.icon-blog:before {
   content: "\e905";
 }
 .icon-email:before {
   content: "\e906";
+}
+.icon-github:before {
+  content: "\e907";
+}
+.icon-look:before {
+  content: "\e908";
+}
+.icon-msg:before {
+  content: "\e909";
+}
+.icon-weibo:before {
+  content: "\e90a";
+}
+.icon-weix:before {
+  content: "\e90b";
+}
+.icon-back:before {
+  content: "\e900";
+}
+.icon-password:before {
+  content: "\e901";
+}
+.icon-user:before {
+  content: "\e902";
 }
 
 
@@ -136,8 +140,7 @@ input:focus,button:focus{ outline: none;}
 
 //登录界面
 .login-body{ 
-    background:#FFF; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-repeat: repeat;  background-attachment: fixed;
-    }
+    background:#FFF; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-repeat: repeat;  background-attachment: fixed;}
 .login-wrap{ position: absolute; top: 50%; left: 50%; transform: translate(-50%,-80%); width: 260px;}
 .login-logo{ text-align: center; font-size: 100px; color: @minColor;}
 .login-row{ position: relative; height: 35px; box-sizing: content-box; margin-bottom: 10px;  font-size: 12px; color: fade(@black,90%); 
@@ -162,7 +165,7 @@ input:focus,button:focus{ outline: none;}
 .index{ background: #FFF; min-height: 100vh; padding-bottom: 40px; padding-top: 53px;}
 .index a:hover{ color: @minColor;}
 .flex{ display: flex;}
-.header{ height: 53px; border-bottom: 1px solid #ddd; box-shadow: 0 1px 3px 0 rgba(0,34,77,.05); overflow: hidden;  line-height: 53px; background: #FFF; position: fixed; top: 0; left: 0; width: 100%;
+.header{ height: 53px; border-bottom: 1px solid #ddd; box-shadow: 0 1px 3px 0 rgba(0,34,77,.05); overflow: hidden;  line-height: 53px; background: #FFF; position: fixed; top: 0; left: 0; width: 100%; z-index: 2;
     .logo{ font-size: 60px;
         a{color: @minColor;}
     }
@@ -199,6 +202,18 @@ input:focus,button:focus{ outline: none;}
         }
     }
 }
+//博客详情
+.detail-wrap{ position: fixed; top:0; left: 0; bottom: 0; right: 0; background: #FFF; z-index: 2; overflow: auto;}
+.detail-body{ width: 660px; margin: 0 auto; padding-top: 80px; position: relative;
+    .close{ position: absolute; top: 20px; font-size: 40px; right: 0; color: #999; cursor: pointer;}
+}
+.detail-img{ width: 660px; height: 330px; background-size:cover; margin-bottom: 22px;}
+.detail-title{ font-size: 32px; line-height: 1.3;  font-weight: 700; color: #1E1E1E;}
+.detail-author{
+    display: flex; align-items: center; color:#808080; font-size: 12px; margin-top:22px;
+    img{ width: 36px; height: 36px; margin-right: 12px; border-radius: 100%;}
+}
+.detail-article{ margin: 30px 0;  word-break: break-word;  white-space: normal; line-height: 1.7; white-space:pre-wrap}
 
 //关于页面
 .about-page{ width: 660px; margin: 0 auto;}

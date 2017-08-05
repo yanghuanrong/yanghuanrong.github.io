@@ -7,11 +7,21 @@
 				</h1>
 				<nav>
 					<ul class="nav flex">
-						<li><router-link to="/home" tag="a">首页</router-link></li>
-						<li><router-link to="/photo" tag="a">摄影</router-link></li>
-						<li><router-link to="/draw" tag="a">绘画</router-link></li>
-						<li><router-link to="/about" tag="a">关于</router-link></li>
-						<li><router-link to="/msg" tag="a">留言</router-link></li>
+						<li>
+							<router-link to="/home" tag="a">首页</router-link>
+						</li>
+						<li>
+							<router-link to="/photo" tag="a">摄影</router-link>
+						</li>
+						<li>
+							<router-link to="/draw" tag="a">绘画</router-link>
+						</li>
+						<li>
+							<router-link to="/about" tag="a">关于</router-link>
+						</li>
+						<li>
+							<router-link to="/msg" tag="a">留言</router-link>
+						</li>
 					</ul>
 				</nav>
 				<div class="app">
@@ -26,10 +36,13 @@
 		</header>
 		<div class="wrap">
 			<div class="page-body">
-   				<transition name="fade" mode="out-in">
-    				<router-view></router-view>
-    			</transition>
-    		</div>
+				<transition name="fade" mode="out-in">
+					<keep-alive>
+						<router-view></router-view>
+					</keep-alive>
+				</transition>
+			</div>
 		</div>
 	</div>
 </template>
+

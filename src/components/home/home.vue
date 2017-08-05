@@ -1,24 +1,25 @@
 <template>
 	<div class="blog-list">
-		<router-view></router-view>
+		<transition name="fade">
+			<router-view></router-view>
+		</transition>
 		<div>
-			<div class="blog-item">
-				<p class="source">该话题来自:HTML</p>
+			<div class="blog-item" v-for="item in detail">
+				<p class="source">该话题来自:{{item.type}}</p>
 				<div class="blog-title">
-					<router-link to="/detail/1">在日常生活中，做手机评测的大牛都是用什么手机，苹果吗，为什么？</router-link>
+					<router-link :to="'/detail/'+item.id">{{item.title}}</router-link>
 				</div>
 				<div class="blog-description">
-					<router-link to="/detail/1" class="blog-img" tag="div" style="background-image:url(http://f11.baidu.com/it/u=1920635231,2173067209&fm=72);">
-					</router-link>	
-					<router-link to="/detail/1" class="blog-text" tag="div">
-					作为前手机测评人过来说两句。 “测评大牛”主力机用iPhone的居多，没99%也有89%。请不要把他们微博小尾巴作为判断依据，大牛们也经常靠小尾巴蹭热度，不足以作为判断依据。 在现在这个时间点仍然可以说i
+					<router-link :to="'/detail/'+item.id" class="blog-img" tag="div" v-if="item.pic" :style="item.pic"></router-link>
+					<router-link :to="'/detail/'+item.id" class="blog-text" tag="div">
+						{{item.detail}}
 					</router-link>
 				</div>
 				<div class="blog-handle">
-					<div class="blog-date">2017-06-07</div>
+					<div class="blog-date">{{item.createdAt}}</div>
 					<div class="blog-icon">
 						<span>
-							<i class="icon-look"></i> 598
+							<i class="icon-look"></i> {{item.look}}
 						</span>
 						<span>
 							<i class="icon-msg"></i> 添加评论
@@ -31,10 +32,66 @@
 </template>
 
 <script type="text/javascript">
-	export default{
-		created(){
-			console.log(this.$router)
+	let detail = Bmob.Object.extend('detail');
+	let query = new Bmob.Query(detail);
+	export default {
+		data() {
+			return {
+				detail: [],
+				iNow:0,
+				scroll:0,
+			}
+		},
+		activated(){
+			window.scrollTo(0,this.scroll)
+		},
+		deactivated(){
+			this.scroll=document.body.scrollTop;
+			window.scrollTo(0,0)
+		},
+		created() {
+			this.getList();
+		},
+		mounted(){
+			let sw = true;
+			window.addEventListener('scroll',()=>{
+                if(document.body.scrollTop + window.innerHeight >= document.body.offsetHeight) {
+                    if(sw){
+                        sw = false;
+                        this.iNow++;
+                        this.getList();
+                    }  
+                }  
+            });  
+		},
+		methods: {
+			getList() {
+				query.skip(this.iNow * 4);
+    			query.limit(4);
+				query.find({
+					success: (results) => {
+						for(let i = 0; i < results.length; i++) {
+							let object = results[i];
+							let pic = object.get('pic') ? {
+								"background-image": `url(${object.get('pic')})`
+							} : false
+							this.detail.push({
+								'id': object.id,
+								'title': object.get('title'),
+								'type': object.get('type'),
+								'pic': pic,
+								'look': object.get('look'),
+								'detail': object.get('detail').length > 200 ? object.get('detail').substring(0, 200) + "..." : object.get('detail'),
+								'createdAt': object.createdAt
+							})
+						}
+					},
+					error: function(error) {
+						alert("查询失败: " + error.code + " " + error.message);
+					}
+				});
+
+			}
 		}
 	}
 </script>
-
