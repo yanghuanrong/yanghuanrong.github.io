@@ -28,18 +28,23 @@
 				</div>
 			</div>
 		</div>
+		<div class="loading" v-if="loading">
+			<load></load>
+		</div>
 	</div>
 </template>
 
 <script type="text/javascript">
 	let detail = Bmob.Object.extend('detail');
 	let query = new Bmob.Query(detail);
+	import load from './loading'
 	export default {
 		data() {
 			return {
 				detail: [],
 				iNow:0,
 				scroll:0,
+				loading:false,
 			}
 		},
 		activated(){
@@ -47,7 +52,9 @@
 		},
 		deactivated(){
 			this.scroll=document.body.scrollTop;
-			window.scrollTo(0,0)
+			setTimeout(function(){
+				window.scrollTo(0,0)
+			},1000)
 		},
 		created() {
 			this.getList();
@@ -66,10 +73,12 @@
 		},
 		methods: {
 			getList() {
+				this.loading=true;
 				query.skip(this.iNow * 4);
     			query.limit(4);
 				query.find({
 					success: (results) => {
+						this.loading=false;
 						for(let i = 0; i < results.length; i++) {
 							let object = results[i];
 							let pic = object.get('pic') ? {
@@ -92,6 +101,9 @@
 				});
 
 			}
+		},
+		components:{
+			load
 		}
 	}
 </script>

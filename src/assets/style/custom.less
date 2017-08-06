@@ -180,7 +180,9 @@ input:focus,button:focus{ outline: none;}
 }
 
 //博客页面
-//.blog-list{ width: 695px;}
+.blog-list{
+    .loading{ display: flex; justify-content: center;}
+}
 .blog-item{
     padding: 16px 20px; margin-top: 10px; background: #fff; overflow: hidden; box-sizing: border-box; max-height: 400px;
     .source{ color: #8590a6; display: block;}
@@ -214,6 +216,17 @@ input:focus,button:focus{ outline: none;}
     img{ width: 36px; height: 36px; margin-right: 12px; border-radius: 100%;}
 }
 .detail-article{ margin: 30px 0;  word-break: break-word;  white-space: normal; line-height: 1.7; white-space:pre-wrap}
+.detail-msg{
+    display: flex; margin-top: 40px;
+    dt{ width: 36px; height: 36px; flex-basis: 36px; margin-right: 12px;
+        img{ width: 100%;  border-radius: 100%;}
+    }
+    dd{
+        flex: 1;
+        input,textarea{ width: 100%; border: 1px solid #f0f0f0; padding: 5px 10px; margin-bottom: 10px;}
+    }
+}
+
 
 //关于页面
 .about-page{ width: 660px; margin: 0 auto;}

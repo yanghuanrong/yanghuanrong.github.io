@@ -13,10 +13,21 @@
 			<div class="detail-img" v-if="detail.pic" :style="detail.pic"></div>
 			<h1 class="detail-title">{{detail.title}}</h1>
 			<div class="detail-author" v-if="detail.author">
-				<img :src="detail.author.photo"/> {{detail.author.name}} - {{detail.createdAt}}
+				<img :src="detail.author.photo" /> {{detail.author.name}} - {{detail.createdAt}}
 			</div>
 			<div class="detail-article">{{detail.detail}}</div>
-			<p></p>
+			<div> 被浏览 {{detail.look}} 次</div>
+			<div class="column-title">
+				<span>0条评论</span>
+				<i></i>
+			</div>
+			<dl class="detail-msg">
+				<dt><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2401881700,2342273471&fm=58"/></dt>
+				<dd>
+					<input type="text" placeholder="填写姓名" />
+					<textarea rows="3"></textarea>
+				</dd>
+			</dl>
 		</div>
 	</div>
 
@@ -29,7 +40,7 @@
 				loading: false,
 				post: null,
 				error: null,
-				detail:{}
+				detail: {}
 			}
 		},
 		created() {
@@ -40,19 +51,19 @@
 		},
 		methods: {
 			fetchData() {
-//				this.error = this.post = null;
-//				this.loading = true;
-				if(this.$route.params.id){
-					document.body.style="overflow:hidden"
+				if(this.$route.params.id) {
+					document.body.style = "overflow:hidden"
 				}
 				var detail = Bmob.Object.extend("detail");
 				var query = new Bmob.Query(detail);
 				query.include("user");
 				query.get(this.$route.params.id, {
-				  success: (object)=>{
-						let pic = object.get('pic') ? {"background-image":`url(${object.get('pic')})`} : false
-				  	
-				    	this.detail={
+					success: (object) => {
+						let pic = object.get('pic') ? {
+							"background-image": `url(${object.get('pic')})`
+						} : false
+
+						this.detail = {
 							'id': object.id,
 							'title': object.get('title'),
 							'type': object.get('type'),
@@ -60,20 +71,20 @@
 							'look': object.get('look'),
 							'detail': object.get('detail'),
 							'createdAt': object.createdAt,
-							'author':{
-								'photo':object.get('user').attributes.photo,
-								'name':object.get('user').attributes.name,
+							'author': {
+								'photo': object.get('user').attributes.photo,
+								'name': object.get('user').attributes.name,
 							}
 						}
-				  },
-				  error: function(object, error) {
-				    // 查询失败
-				  }
+					},
+					error: function(object, error) {
+						// 查询失败
+					}
 				});
 			},
-			close(){
+			close() {
 				this.$router.push('/home');
-				document.body.style=""
+				document.body.style = ""
 			}
 		}
 	}
