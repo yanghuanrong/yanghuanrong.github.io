@@ -29,7 +29,7 @@
 			</div>
 		</div>
 		<div class="loading" v-if="loading">
-			<load></load>
+			<loading></loading>
 		</div>
 	</div>
 </template>
@@ -37,7 +37,7 @@
 <script type="text/javascript">
 	let detail = Bmob.Object.extend('detail');
 	let query = new Bmob.Query(detail);
-	import load from './loading'
+	import loading from '@/components/public/loading'
 	export default {
 		data() {
 			return {
@@ -103,7 +103,7 @@
 			}
 		},
 		components:{
-			load
+			loading
 		}
 	}
 </script>

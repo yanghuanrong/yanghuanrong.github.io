@@ -26,7 +26,7 @@
 </template>
 
 <script>
-	import loading from '@/components/login/loading'
+	import loading from '@/components/public/loading'
 	export default {
 		data() {
 			return {

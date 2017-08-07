@@ -7,8 +7,11 @@
 		<!--<div v-if="error" class="error">
 			{{ error }}
 		</div>-->
-
-		<div class="detail-body">
+		<div class="loading-wrap">
+			<loading v-if="loading"></loading>
+			<div v-if="error">{{error}}<span @click="close">[返回]</span></div>
+		</div>
+		<div class="detail-body" v-if="!loading">
 			<div class="close" @click="close"><i class="icon-close"></i></div>
 			<div class="detail-img" v-if="detail.pic" :style="detail.pic"></div>
 			<h1 class="detail-title">{{detail.title}}</h1>
@@ -26,6 +29,10 @@
 				<dd>
 					<input type="text" placeholder="填写姓名" />
 					<textarea rows="3"></textarea>
+					<div class="detail-btn">
+						<button class="cancel">取消</button>
+						<button class="submit">评论</button>
+					</div>
 				</dd>
 			</dl>
 		</div>
@@ -34,10 +41,11 @@
 </template>
 
 <script type="text/javascript">
+	import loading from '@/components/public/loading'
 	export default {
 		data() {
 			return {
-				loading: false,
+				loading: true,
 				post: null,
 				error: null,
 				detail: {}
@@ -76,9 +84,13 @@
 								'name': object.get('user').attributes.name,
 							}
 						}
+						
+						this.loading = false
 					},
-					error: function(object, error) {
+					error:(object, error)=>{
 						// 查询失败
+						this.loading = false
+						this.error=`${error},TMD,数据居然请求失败`
 					}
 				});
 			},
@@ -86,6 +98,10 @@
 				this.$router.push('/home');
 				document.body.style = ""
 			}
+		},
+		components:{
+			loading
 		}
+		
 	}
 </script>
