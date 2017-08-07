@@ -95,7 +95,7 @@
 							})
 						}
 					},
-					error: function(error) {
+					error:(error)=>{
 						alert("查询失败: " + error.code + " " + error.message);
 					}
 				});
