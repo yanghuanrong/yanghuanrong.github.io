@@ -227,17 +227,31 @@ input:focus,button:focus,textarea:focus{ outline: none;}
     }
     dd{
         flex: 1;
-        input,textarea{ width: 100%; border: 1px solid #f0f0f0; padding: 8px 10px; margin-bottom: 10px;}
+        input,textarea{ width: 100%; border: 1px solid #f0f0f0; padding: 8px 10px; margin-bottom: 10px; border-radius: 3px;
+            &:focus{ border-color: @minColor;}
+        }
         textarea{resize: none;}
         .detail-btn{
             text-align: right;
-            .cancel{
-                border: 0; cursor: pointer; background: transparent; margin-right: 20px; padding: 6px 12px;
-            }
             .submit{
                 border: 1px solid #eee; background: transparent; padding: 6px 12px; border-radius: 3px; color: #eee;
+                &.active{ border-color: @minColor; color: @minColor; cursor: pointer;}
             }
         }
+    }
+}
+.detail-msg-list{
+    dl{
+        display: flex; margin-top: 40px;
+        dt{ width: 36px; height: 36px; flex-basis: 36px; margin-right: 12px;
+            img{ width: 100%;  border-radius: 100%;}
+        }
+        dd{
+           flex: 1;
+           b{ font-weight: 700; font-size: 14px;} 
+           p{ font-size: 14px;}
+           span{ color: #999; font-size: 12px; font-family: arial; float: right;}
+        }    
     }
 }
 

@@ -1,8 +1,5 @@
 <template>
 	<div class="blog-list">
-		<transition name="fade">
-			<router-view></router-view>
-		</transition>
 		<div>
 			<div class="blog-item" v-for="item in detail">
 				<p class="source">该话题来自:{{item.type}}</p>

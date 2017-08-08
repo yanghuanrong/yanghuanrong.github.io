@@ -25,11 +25,10 @@ export default new Router({
 			children: [{
 				path: '/home',
 				component: home,
-				children: [{
-					path: '/detail/:id?',
-					name: 'detail',
-					component: detail,
-				}]
+			}, {
+				path: '/detail/:id?',
+				name: 'detail',
+				component: detail,
 			}, {
 				path: '/photo',
 				component: photo

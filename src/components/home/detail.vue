@@ -1,15 +1,7 @@
 <template>
 	<div class="detail-wrap">
-		<!--<div class="loading" v-if="loading">
-			Loading...
-		</div>-->
-
-		<!--<div v-if="error" class="error">
-			{{ error }}
-		</div>-->
 		<div class="loading-wrap">
 			<loading v-if="loading"></loading>
-			<div v-if="error">{{error}}<span @click="close">[返回]</span></div>
 		</div>
 		<div class="detail-body" v-if="!loading">
 			<div class="close" @click="close"><i class="icon-close"></i></div>
@@ -21,20 +13,29 @@
 			<div class="detail-article">{{detail.detail}}</div>
 			<div> 被浏览 {{detail.look}} 次</div>
 			<div class="column-title">
-				<span>0条评论</span>
+				<span>{{message.length}}条评论</span>
 				<i></i>
 			</div>
 			<dl class="detail-msg">
 				<dt><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2401881700,2342273471&fm=58"/></dt>
 				<dd>
-					<input type="text" placeholder="填写姓名" />
-					<textarea rows="3"></textarea>
+					<input type="text" placeholder="填写姓名" v-model="name" @keyup="input" />
+					<textarea rows="3" id="msg" v-model="contont" @keyup="input"></textarea>
 					<div class="detail-btn">
-						<button class="cancel">取消</button>
-						<button class="submit">评论</button>
+						<button class="submit" :disabled="!commit" :class="{active:commit}" @click="push">评论</button>
 					</div>
 				</dd>
 			</dl>
+			<div class="detail-msg-list">
+				<dl v-for="item in message">
+					<dt><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2401881700,2342273471&fm=58"/></dt>
+					<dd>
+						<span>{{item.createdAt}}</span>
+						<b>{{item.name}}</b>
+						<p>{{item.contont}}</p>
+					</dd>
+				</dl>
+			</div>
 		</div>
 	</div>
 
@@ -47,8 +48,11 @@
 			return {
 				loading: true,
 				post: null,
-				error: null,
-				detail: {}
+				detail: {},
+				name: "",
+				contont: "",
+				commit: false,
+				message: [],
 			}
 		},
 		created() {
@@ -59,11 +63,10 @@
 		},
 		methods: {
 			fetchData() {
-				if(this.$route.params.id) {
-					document.body.style = "overflow:hidden"
-				}
-				var detail = Bmob.Object.extend("detail");
-				var query = new Bmob.Query(detail);
+				
+				//查询文章
+				let detail = Bmob.Object.extend("detail");
+				let query = new Bmob.Query(detail);
 				query.include("user");
 				query.get(this.$route.params.id, {
 					success: (object) => {
@@ -84,24 +87,72 @@
 								'name': object.get('user').attributes.name,
 							}
 						}
-						
+
 						this.loading = false
 					},
-					error:(object, error)=>{
-						// 查询失败
-						this.loading = false
-						this.error=`${error},TMD,数据居然请求失败`
+					error: (object, error) => {}
+				});
+
+				//查询评论
+				this.message=[];
+				this.name="";
+				this.contont="";
+				let message = Bmob.Object.extend("message");
+				let diary = new Bmob.Query(message);
+				diary.equalTo("detail", this.$route.params.id);
+				diary.find({
+					success: (results) => {
+						for(let i = 0; i < results.length; i++) {
+							let res = results[i];
+							this.message.push({
+								'createdAt': res.createdAt,
+								'name': res.get('name'),
+								'contont': res.get('contont')
+							})
+						}
+					},
+					error: (error) => {
+						alert("查询失败: " + error.code + " " + error.message);
 					}
 				});
+
 			},
 			close() {
 				this.$router.push('/home');
-				document.body.style = ""
+
+			},
+			input() {
+				if(this.name != "" && this.contont != "") {
+					this.commit = true
+				} else {
+					this.commit = false
+				}
+			},
+			push() {
+				let msg = Bmob.Object.extend('message');
+				let diary = new msg();
+				diary.set('name', this.name);
+				diary.set('contont', this.contont);
+				let post = Bmob.Object.createWithoutData('detail', this.$route.params.id);
+				diary.set('detail', post);
+				//添加数据，第一个入口参数是null
+				diary.save(null, {
+					success: (res) => {
+						this.message.push({
+							'createdAt': res.createdAt,
+							'name': res.get('name'),
+							'contont': res.get('contont')
+						})
+						this.contont="";
+						this.commit=false;
+					},
+					error: (gameScore, error) => {}
+				});
 			}
 		},
-		components:{
+		components: {
 			loading
 		}
-		
+
 	}
 </script>
