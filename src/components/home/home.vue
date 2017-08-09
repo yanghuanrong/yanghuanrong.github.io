@@ -1,5 +1,6 @@
 <template>
   <div class="blog-list">
+    <div class="back-top" @click="backTop" v-if="isBack">Top</div>
     <div>
       <div class="blog-item" v-for="item in detail">
         <p class="source">该话题来自:{{item.type}}</p>
@@ -36,6 +37,7 @@
         iNow: 0,
         scroll: 0,
         loading: false,
+        isBack:false,
       }
     },
     //组件进入的时候设置滚动条
@@ -64,6 +66,7 @@
             this.getList();
           }
         }
+        this.isBack = document.body.scrollTop > 300 ? true : false;
       });
     },
     methods: {
@@ -94,7 +97,10 @@
             alert("查询失败: " + error.code + " " + error.message);
           }
         });
-
+      },
+      backTop(){
+        window.scrollTo(0,0);
+        this.isBack = false;
       }
     },
     components: {

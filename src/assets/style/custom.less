@@ -181,7 +181,10 @@ input:focus,button:focus,textarea:focus{ outline: none;}
 
 //博客页面
 .blog-list{
+    position: relative;
     .loading{ display: flex; justify-content: center;}
+    .back-top{ position: fixed; right:50%; margin-right:-500px; bottom:40px; width: 40px; height: 40px; border:1px solid #eee; cursor: pointer; color: #999; text-align: center;
+      line-height: 40px; font-size:12px;}
 }
 .blog-item{
     padding: 16px 20px; margin-top: 10px; background: #fff; overflow: hidden; box-sizing: border-box; max-height: 400px;
