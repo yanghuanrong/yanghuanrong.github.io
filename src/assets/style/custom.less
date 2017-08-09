@@ -139,11 +139,11 @@ input:focus,button:focus,textarea:focus{ outline: none;}
 
 
 //登录界面
-.login-body{ 
+.login-body{
     background:#FFF; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-repeat: repeat;  background-attachment: fixed;}
 .login-wrap{ position: absolute; top: 50%; left: 50%; transform: translate(-50%,-80%); width: 260px;}
 .login-logo{ text-align: center; font-size: 100px; color: @minColor;}
-.login-row{ position: relative; height: 35px; box-sizing: content-box; margin-bottom: 10px;  font-size: 12px; color: fade(@black,90%); 
+.login-row{ position: relative; height: 35px; box-sizing: content-box; margin-bottom: 10px;  font-size: 12px; color: fade(@black,90%);
     i{ position: absolute; left: 0; top: 50%; transform: translateY(-50%);}
     input{ height: 100%; width: 100%; background: transparent; border-bottom: 1px solid rgba(0,0,0,.1); text-indent: 30px; color: @black;}
     ::-webkit-input-placeholder{
@@ -186,7 +186,7 @@ input:focus,button:focus,textarea:focus{ outline: none;}
 .blog-item{
     padding: 16px 20px; margin-top: 10px; background: #fff; overflow: hidden; box-sizing: border-box; max-height: 400px;
     .source{ color: #8590a6; display: block;}
-    .blog-title{ 
+    .blog-title{
          margin: 14px 0;
         a{font-size: 18px; font-weight: 700; color: #1e1e1e;}
     }
@@ -198,14 +198,10 @@ input:focus,button:focus,textarea:focus{ outline: none;}
     }
     .blog-handle{ display: flex; margin-top: 15px; justify-content: space-between;
         .blog-date{ font-size: 12px; color: #999;}
-        .blog-icon{ 
-            color: #8590a6; line-height: 25px; font-size: 14px;
-            span{ margin-left: 15px;}
-        }
     }
 }
 //博客详情
-.detail-wrap{ position: fixed; top:0; left: 0; bottom: 0; right: 0; background: #FFF; z-index: 2; overflow: auto; 
+.detail-wrap{ position: fixed; top:0; left: 0; bottom: 0; right: 0; background: #FFF; z-index: 2; overflow: auto;
     .loading-wrap{
         position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
     }
@@ -240,6 +236,11 @@ input:focus,button:focus,textarea:focus{ outline: none;}
         }
     }
 }
+.detail-look{
+  width: 60px; height: 60px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-direction: column;
+  p{ font-size: 12px}
+  span{ font-size: 32px}
+}
 .detail-msg-list{
     dl{
         display: flex; margin-top: 40px;
@@ -248,10 +249,10 @@ input:focus,button:focus,textarea:focus{ outline: none;}
         }
         dd{
            flex: 1;
-           b{ font-weight: 700; font-size: 14px;} 
+           b{ font-weight: 700; font-size: 14px;}
            p{ font-size: 14px;}
            span{ color: #999; font-size: 12px; font-family: arial; float: right;}
-        }    
+        }
     }
 }
 

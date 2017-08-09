@@ -52,7 +52,7 @@
 				duration: 800,
 				easing: 'easeInOutSine'
 			})
-			
+
 		},
 		methods: {
 			error() {
@@ -69,7 +69,7 @@
 							duration: 100,
 							easing: 'easeInOutSine'
 						},
-						
+
 					],
 					loop:3
 				});
@@ -91,15 +91,14 @@
 				let username = this.$refs.username.value;
 				let password = this.$refs.password.value;
 
-				if(username == "") {
-					this.error()
+				if(username === "") {
+					this.error();
 					return false;
 				}
 				if(password == "") {
-					this.error()
+					this.error();
 					return false;
 				}
-
 				Bmob.User.logIn(username, password, {
 					success: (user) => {
 						if(user.attributes.code == undefined) {
@@ -125,7 +124,7 @@
 						}
 					},
 					error: (user, error) => {
-						this.error()
+						this.error();
 						console.log("error")
 					}
 				});
