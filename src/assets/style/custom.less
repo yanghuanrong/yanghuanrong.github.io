@@ -149,6 +149,9 @@ input:focus,button:focus,textarea:focus{ outline: none;}
     ::-webkit-input-placeholder{
         color:fade(@black,90%);
     }
+    input:-webkit-autofill {
+      -webkit-box-shadow : 0 0 0 1000px white inset;
+    }
 }
 .login-btn{ height: 44px; width: 100%; border-radius: 44px; background: @minColor; border: 0; color: @white; cursor: pointer; margin: 30px auto; display: block; text-align: center; transition:all .3s ease-in;
     &:active{ background:fade(@minColor , 80%);}

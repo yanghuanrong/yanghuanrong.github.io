@@ -70,6 +70,7 @@
       });
     },
     methods: {
+      //查询数据
       getList() {
         this.loading = true;
         query.skip(this.iNow * 4);

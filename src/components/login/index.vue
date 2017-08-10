@@ -13,11 +13,13 @@
 					</div>
 					<div class="login-row">
 						<i class="icon-password"></i>
-						<input type="password" ref="password" v-model="password" placeholder="Password" />
+						<input type="password" ref="password" v-model="password" placeholder="Password"/>
 					</div>
 					<button type="button" @click="login" class="login-btn">
 						<span v-if="!islogin">Sign In</span>
-						<loading v-if="islogin"></loading>
+            <div style="width: 20px; margin: 0 auto;"  v-if="islogin">
+						  <loading></loading>
+            </div>
 					</button>
 				</div>
 			</div>
@@ -36,7 +38,8 @@
 			}
 		},
 		mounted() {
-			//back箭头动画
+
+      //back箭头动画
 			this.$anime({
 				targets: '.back',
 				opacity: 1,
@@ -55,8 +58,11 @@
 
 		},
 		methods: {
+		  //登录失败
 			error() {
-				this.islogin = false;
+        this.$layer.msg("密码错误");
+
+        this.islogin = false;
 				this.$anime({
 					targets: '.login-from',
 					translateX: [{
@@ -68,13 +74,13 @@
 							value: -10,
 							duration: 100,
 							easing: 'easeInOutSine'
-						},
-
+						}
 					],
 					loop:3
 				});
 			},
-			back(){
+      //返回首页
+      back(){
 				this.$anime({
 					targets: '.back',
 					opacity: 1,
@@ -86,19 +92,17 @@
 					}
 				});
 			},
-			login() {
+      login() {
 				this.islogin = true;
 				let username = this.$refs.username.value;
 				let password = this.$refs.password.value;
 
-				if(username === "") {
+				if(username == "" || password == "") {
 					this.error();
 					return false;
 				}
-				if(password == "") {
-					this.error();
-					return false;
-				}
+
+        //登录
 				Bmob.User.logIn(username, password, {
 					success: (user) => {
 						if(user.attributes.code == undefined) {
@@ -125,7 +129,6 @@
 					},
 					error: (user, error) => {
 						this.error();
-						console.log("error")
 					}
 				});
 			}
