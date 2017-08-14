@@ -53,17 +53,16 @@ li {
 }
 input:focus,button:focus,textarea:focus{ outline: none;}
 
+
 .clearfix{display: inline-block;}
 .clearfix::after{content: ".";  display: block;  height: 0;  line-height: 0;  visibility: hidden;  clear: both;}
-
-
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?l6lliq');
-  src:  url('../fonts/icomoon.eot?l6lliq#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?l6lliq') format('truetype'),
-    url('../fonts/icomoon.woff?l6lliq') format('woff'),
-    url('../fonts/icomoon.svg?l6lliq#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?bwcujb');
+  src:  url('../fonts/icomoon.eot?bwcujb#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.ttf?bwcujb') format('truetype'),
+  url('../fonts/icomoon.woff?bwcujb') format('woff'),
+  url('../fonts/icomoon.svg?bwcujb#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -83,42 +82,50 @@ input:focus,button:focus,textarea:focus{ outline: none;}
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-cover:before {
+  content: "\e90d";
+}
+.icon-audio:before {
+  content: "\e900";
+}
+.icon-back:before {
+  content: "\e901";
+}
+.icon-blog:before {
+  content: "\e902";
+}
 .icon-close:before {
   content: "\e903";
 }
-.icon-audio:before {
+.icon-email:before {
   content: "\e904";
 }
-.icon-blog:before {
+.icon-github:before {
   content: "\e905";
 }
-.icon-email:before {
+.icon-look:before {
   content: "\e906";
 }
-.icon-github:before {
+.icon-more:before {
   content: "\e907";
 }
-.icon-look:before {
+.icon-msg:before {
   content: "\e908";
 }
-.icon-msg:before {
+.icon-password:before {
   content: "\e909";
 }
-.icon-weibo:before {
+.icon-user:before {
   content: "\e90a";
 }
-.icon-weix:before {
+.icon-weibo:before {
   content: "\e90b";
 }
-.icon-back:before {
-  content: "\e900";
+.icon-weix:before {
+  content: "\e90c";
 }
-.icon-password:before {
-  content: "\e901";
-}
-.icon-user:before {
-  content: "\e902";
-}
+
+
 
 
 
@@ -135,6 +142,15 @@ input:focus,button:focus,textarea:focus{ outline: none;}
     &::after{
         content: ""; position: absolute; width: 100%; border-top: 1px solid @color; left: 0; right: 0; bottom: 0;
     }
+}
+
+/**
+* public
+**/
+.flex{ display: flex;}
+.submit{
+  border: 1px solid #eee; background: transparent; padding: 6px 12px; border-radius: 3px; color: #eee;
+  &.active{ border-color: @minColor; color: @minColor; cursor: pointer;}
 }
 
 
@@ -167,7 +183,6 @@ input:focus,button:focus,textarea:focus{ outline: none;}
 //头部
 .index{ background: #FFF; min-height: 100vh; padding-bottom: 40px; padding-top: 53px;}
 .index a:hover{ color: @minColor;}
-.flex{ display: flex;}
 .header{ height: 53px; border-bottom: 1px solid #ddd; box-shadow: 0 1px 3px 0 rgba(0,34,77,.05); overflow: hidden;  line-height: 53px; background: #FFF; position: fixed; top: 0; left: 0; width: 100%; z-index: 2;
     .logo{ font-size: 60px;
         a{color: @minColor;}
@@ -235,10 +250,7 @@ input:focus,button:focus,textarea:focus{ outline: none;}
         textarea{resize: none;}
         .detail-btn{
             text-align: right;
-            .submit{
-                border: 1px solid #eee; background: transparent; padding: 6px 12px; border-radius: 3px; color: #eee;
-                &.active{ border-color: @minColor; color: @minColor; cursor: pointer;}
-            }
+
         }
     }
 }
@@ -325,4 +337,46 @@ padding: 0 15px; border-radius: 15px;  border: 1px solid rgba(0,0,0,.1); color: 
 }
 .right-leave-to{
     transform: translateX(100%);
+}
+
+
+
+
+/**
+* admin
+**/
+.admin{
+  .header{ height:59px; border-bottom: 1px solid rgba(0,0,0,.08); position: relative;
+    &>div{ justify-content: space-between}
+    h3{
+      small{ color: #999; margin-left: 10px;}
+    }
+    .bar{ position: absolute; right:0; top:0; display:flex; padding-right: 20px;
+      .more{
+        margin-left: 20px;
+        i{ font-size: 14px; color: #666}
+      }
+    }
+  }
+  .wrap{ width: 660px;}
+  .edit-detail{
+    .detail-title{ font-size: 36px;
+      &::-webkit-input-placeholder{
+        color: #999;opacity:1;
+      }
+    }
+  }
+  .cover-wrap{
+    background: #f7f8f9;  line-height: 192px; color: #808080;  min-height: 192px; text-align: center; position: relative; margin: 30px 0;
+    &:before{ content: "添加照片"; color: #b3b3b3;  position: absolute; width: 100%; text-align: center; left: 0; bottom: 65px; line-height: 1; opacity: 0; z-index: 0; transform: translateY(12px); transition: all .2s;
+    }
+    &:hover:before{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    i{ font-size: 36px; opacity: .3}
+    .cover-upload { position: absolute; display: block; top: 0;  left: 0;  height: 100%;  width: 100%;  opacity: 0; cursor: pointer; z-index: 2;}
+  }
+
+
 }

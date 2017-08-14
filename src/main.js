@@ -6,10 +6,13 @@ import App from './App'
 import router from './router'
 import layer from '@/assets/js/layer'
 import anime from 'animejs'
+import VueQuillEditor from 'vue-quill-editor'
 
-Vue.config.productionTip = false
-Vue.use(layer)
-Vue.prototype.$anime = anime
+
+Vue.config.productionTip = false;
+Vue.use(layer);
+Vue.use(VueQuillEditor);
+Vue.prototype.$anime = anime;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

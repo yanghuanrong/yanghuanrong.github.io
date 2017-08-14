@@ -1,14 +1,55 @@
 <template>
-	<div id="">
-		管理系统
-		<div @click="loginOut">
-			退出
-		</div>
+	<div class="admin">
+    <div class="header">
+      <div class="wrap flex">
+        <h3>写文章 <small>好记性，不如烂笔头</small></h3>
+      </div>
+      <div class="bar">
+        <div>
+          <button class="submit">发布</button>
+        </div>
+        <div class="more">
+          <span class="menu"><i class="icon-more"></i></span>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap edit-detail">
+      <div class="photo">
+        <div class="cover-wrap">
+          <i class="icon-cover"></i>
+          <input type="file" class="cover-upload" name="upload_file" accept=".jpeg, .jpg, .png">
+        </div>
+      </div>
+
+      <input type="text" class="detail-title" placeholder="请输入标题">
+
+      <quill-editor v-model="content"
+                    ref="myQuillEditor"
+                    :options="editorOption"
+                    @blur="onEditorBlur($event)"
+                    @focus="onEditorFocus($event)"
+                    @ready="onEditorReady($event)">
+      </quill-editor>
+
+    </div>
+
 	</div>
 </template>
 
 <script>
+
+
 	export default {
+    data () {
+      return {
+        content: '<h2>I am Example</h2>',
+        editorOption: {
+          // some quill options
+        }
+      }
+    },
 		created() {
 			var currentUser = Bmob.User.current();
 			if(!currentUser) {
@@ -16,11 +57,33 @@
 				return;
 			}
 		},
+    computed: {
+      editor() {
+        return this.$refs.myQuillEditor.quill
+      }
+    },
+    mounted() {
+      // you can use current editor object to do something(quill methods)
+      console.log('this is current quill instance object', this.editor)
+    },
 		methods: {
 			loginOut() {
 				Bmob.User.logOut();
 				this.$router.push('/');
-			}
+			},
+      onEditorBlur(editor) {
+        console.log('editor blur!', editor)
+      },
+      onEditorFocus(editor) {
+        console.log('editor focus!', editor)
+      },
+      onEditorReady(editor) {
+        console.log('editor ready!', editor)
+      },
+      onEditorChange({ editor, html, text }) {
+        console.log('editor change!', editor, html, text)
+        this.content = html
+      }
 		}
 	}
 </script>
