@@ -6,7 +6,7 @@
       </div>
       <div class="bar">
         <div>
-          <button class="submit">发布</button>
+          <button class="submit" :disabled="!commit" :class="{active:commit}" @click="push">发布</button>
         </div>
         <div class="more">
           <span class="menu"><i class="icon-more"></i></span>
@@ -23,11 +23,13 @@
         </div>
       </div>
 
-      <input type="text" class="detail-title" placeholder="请输入标题">
+      <input type="text" class="detail-title" placeholder="请输入标题" v-model="title" >
 
-      <quill-editor v-model="content"
+      <quill-editor class="editor-container"
+                    v-model="content"
                     ref="myQuillEditor"
                     :options="editorOption"
+                    @change="onEditorChange($event)"
                     @blur="onEditorBlur($event)"
                     @focus="onEditorFocus($event)"
                     @ready="onEditorReady($event)">
@@ -39,14 +41,14 @@
 </template>
 
 <script>
-
-
 	export default {
     data () {
       return {
-        content: '<h2>I am Example</h2>',
+        title:'',
+        content: '',
+        commit:false,
         editorOption: {
-          // some quill options
+          placeholder: '请输入正文',
         }
       }
     },
@@ -71,6 +73,9 @@
 				Bmob.User.logOut();
 				this.$router.push('/');
 			},
+      input() {
+        this.commit = this.title && this.content ? true : false ;
+      },
       onEditorBlur(editor) {
         console.log('editor blur!', editor)
       },
@@ -81,8 +86,11 @@
         console.log('editor ready!', editor)
       },
       onEditorChange({ editor, html, text }) {
-        console.log('editor change!', editor, html, text)
+        this.input()
         this.content = html
+      },
+      push(){
+			  console.log(this.title,this.content)
       }
 		}
 	}
