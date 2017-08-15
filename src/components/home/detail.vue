@@ -10,7 +10,7 @@
       <div class="detail-author" v-if="detail.author">
         <img :src="detail.author.photo"/> {{detail.author.name}} - {{detail.createdAt}}
       </div>
-      <div class="detail-article">{{detail.detail}}</div>
+      <div class="detail-article" v-html="detail.detail"></div>
       <div class="detail-look">
         <span>{{detail.look}}</span>
         <p>人气</p>

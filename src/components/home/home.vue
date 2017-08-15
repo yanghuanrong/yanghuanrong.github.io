@@ -37,7 +37,7 @@
         iNow: 0,
         scroll: 0,
         loading: false,
-        isBack:false,
+        isBack: false,
       }
     },
     //组件进入的时候设置滚动条
@@ -70,11 +70,15 @@
       });
     },
     methods: {
+      delHtmlTag(str) {
+        return str.replace(/<[^>]+>/g, "");//去掉所有的html标记
+      },
       //查询数据
       getList() {
         this.loading = true;
-        query.skip(this.iNow * 4);
-        query.limit(4);
+        query.descending("createdAt");
+        query.limit(10);
+        query.skip(this.iNow * 10);
         query.find({
           success: (results) => {
             this.loading = false;
@@ -83,15 +87,19 @@
               let pic = object.get('pic') ? {
                 "background-image": `url(${object.get('pic')})`
               } : false;
+
+              let detail = this.delHtmlTag(object.get('detail'));
               this.detail.push({
-                'id': object.id,
-                'title': object.get('title'),
-                'type': object.get('type'),
-                'pic': pic,
-                'look': object.get('look'),
-                'detail': object.get('detail').length > 200 ? object.get('detail').substring(0, 200) + "..." : object.get('detail'),
-                'createdAt': object.createdAt
-              })
+                  'id': object.id,
+                  'title': object.get('title'),
+                  'type': object.get('type'),
+                  'pic': pic,
+                  'look': object.get('look'),
+                  'detail':detail.length > 200 ? detail.substring(0, 200) + "..." : detail,
+                'createdAt'
+            :
+              object.createdAt
+            })
             }
           },
           error: (error) => {
@@ -99,8 +107,8 @@
           }
         });
       },
-      backTop(){
-        window.scrollTo(0,0);
+      backTop() {
+        window.scrollTo(0, 0);
         this.isBack = false;
       }
     },

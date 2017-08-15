@@ -1,13 +1,15 @@
 <template>
-	<div class="admin">
+  <div class="admin">
     <div class="header">
       <div class="wrap flex">
-        <h3>写文章 <small>好记性，不如烂笔头</small></h3>
-      </div>
-      <div class="bar">
+        <h4>写文章
+          <small>好记性，不如烂笔头</small>
+        </h4>
         <div>
           <button class="submit" :disabled="!commit" :class="{active:commit}" @click="push">发布</button>
         </div>
+      </div>
+      <div class="bar">
         <div class="more">
           <span class="menu"><i class="icon-more"></i></span>
 
@@ -23,77 +25,94 @@
         </div>
       </div>
 
-      <input type="text" class="detail-title" placeholder="请输入标题" v-model="title" >
+      <div class="edit-title-wrap">
+        <div class="input-title">
+          <input type="text" class="detail-title" placeholder="请输入标题" v-model="title" @keyup="input">
+        </div>
 
+        <div class="select-type">
+          <select v-model="select" @change="input">
+            <option value="" disabled>请选择</option>
+            <option v-for="item in type" :value="item">{{item}}</option>
+          </select>
+        </div>
+
+      </div>
       <quill-editor class="editor-container"
                     v-model="content"
                     ref="myQuillEditor"
                     :options="editorOption"
-                    @change="onEditorChange($event)"
-                    @blur="onEditorBlur($event)"
-                    @focus="onEditorFocus($event)"
-                    @ready="onEditorReady($event)">
+                    @change="onEditorChange($event)">
       </quill-editor>
 
     </div>
-
-	</div>
+  </div>
 </template>
 
 <script>
-	export default {
-    data () {
+  export default {
+    data() {
       return {
-        title:'',
+        Authid:'',
+        title: '',
         content: '',
-        commit:false,
+        pic: '',
+        commit: false,
+        type:['vue','js','css','html','react'],
+        select:"",
         editorOption: {
           placeholder: '请输入正文',
         }
       }
     },
-		created() {
-			var currentUser = Bmob.User.current();
-			if(!currentUser) {
-				this.$router.push('/login');
-				return;
-			}
-		},
+    created() {
+      var currentUser = Bmob.User.current();
+      if (!currentUser) {
+        this.$router.push('/login');
+        return;
+      }
+      this.Authid = currentUser.id
+    },
     computed: {
       editor() {
         return this.$refs.myQuillEditor.quill
       }
     },
-    mounted() {
-      // you can use current editor object to do something(quill methods)
-      console.log('this is current quill instance object', this.editor)
-    },
-		methods: {
-			loginOut() {
-				Bmob.User.logOut();
-				this.$router.push('/');
-			},
+    methods: {
+      loginOut() {
+        Bmob.User.logOut();
+        this.$router.push('/');
+      },
       input() {
-        this.commit = this.title && this.content ? true : false ;
+        this.commit = this.title && this.content && this.select ? true : false;
       },
-      onEditorBlur(editor) {
-        console.log('editor blur!', editor)
-      },
-      onEditorFocus(editor) {
-        console.log('editor focus!', editor)
-      },
-      onEditorReady(editor) {
-        console.log('editor ready!', editor)
-      },
-      onEditorChange({ editor, html, text }) {
-        this.input()
+      onEditorChange({editor, html, text}) {
+        this.input();
         this.content = html
       },
-      push(){
-			  console.log(this.title,this.content)
+      push() {
+        let detail = Bmob.Object.extend('detail');
+        let diary = new detail();
+        diary.set('title', this.title);
+        diary.set('detail', this.content);
+        diary.set('pic', this.pic);
+        diary.set('look', 0);
+        diary.set('type', this.select);
+
+        var post = Bmob.Object.createWithoutData("User", this.Authid);
+        diary.set("user", post);
+
+        diary.save(null, {
+          success: (res) => {
+            console.log(res)
+          },
+          error: (gameScore, error) => {
+            alert("发布失败")
+          }
+        });
       }
-		}
-	}
+    }
+  }
 </script>
 
 <style>
