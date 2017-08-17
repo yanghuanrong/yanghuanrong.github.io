@@ -21,7 +21,7 @@
       <div class="photo">
         <div class="cover-wrap">
           <i class="icon-cover"></i>
-          <input type="file" class="cover-upload" name="upload_file" accept=".jpeg, .jpg, .png">
+          <input type="file" class="cover-upload" name="upload_file" accept=".jpeg, .jpg, .png" @change="upload">
         </div>
       </div>
 
@@ -89,6 +89,33 @@
       onEditorChange({editor, html, text}) {
         this.input();
         this.content = html
+      },
+      upload(e){
+        //查询文章
+        let detail = Bmob.Object.extend("detail");
+        let query = new Bmob.Query(detail);
+
+        let files = e.target.files || e.dataTransfer.files;
+        if (!files.length) return;
+        let img = new Image();
+        let reader = new FileReader();
+        reader.readAsDataURL(files[0]);
+        reader.onload = function(e){
+          let mb = (e.total/1024)/1024;
+          if(mb>= 2){
+            alert('文件大小大于2M');
+            return;
+          }
+
+          let uploadfile = new Bmob.File("logo.jpg", files[0]);
+          uploadfile.save().then(function(obj) {
+            console.log(obj.url())
+          }, function(error) {
+            console.log(error)
+          });;
+
+          console.log(this.result);
+        }
       },
       push() {
         let detail = Bmob.Object.extend('detail');
