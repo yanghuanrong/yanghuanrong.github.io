@@ -19,9 +19,15 @@
 
     <div class="wrap edit-detail">
       <div class="photo">
-        <div class="cover-wrap">
+        <div class="no-cover-wrap" v-if="!pic">
           <i class="icon-cover"></i>
           <input type="file" class="cover-upload" name="upload_file" accept=".jpeg, .jpg, .png" @change="upload">
+        </div>
+        <div class="yes-cover-wrap" v-if="pic">
+          <div class="edit-img" @click="delPic">
+            <i class="icon-trash"></i>
+          </div>
+          <img :src="pic">
         </div>
       </div>
 
@@ -53,24 +59,27 @@
   export default {
     data() {
       return {
-        Authid:'',
+        Authid: '',
         title: '',
         content: '',
         pic: '',
         commit: false,
-        type:['vue','js','css','html','react'],
-        select:"",
+        type: ['vue', 'js', 'css', 'html', 'react'],
+        select: "",
         editorOption: {
           placeholder: '请输入正文',
         }
       }
     },
     created() {
-      var currentUser = Bmob.User.current();
+      //判断是否登录，没有登录则返回登录地址
+      let currentUser = Bmob.User.current();
       if (!currentUser) {
         this.$router.push('/login');
         return;
       }
+
+      //记录登录objid
       this.Authid = currentUser.id
     },
     computed: {
@@ -79,44 +88,37 @@
       }
     },
     methods: {
+      //退出登录
       loginOut() {
         Bmob.User.logOut();
         this.$router.push('/');
       },
+      //检测是否可以提交
       input() {
         this.commit = this.title && this.content && this.select ? true : false;
       },
+      //获取富文本内容
       onEditorChange({editor, html, text}) {
         this.input();
         this.content = html
       },
-      upload(e){
-        //查询文章
-        let detail = Bmob.Object.extend("detail");
-        let query = new Bmob.Query(detail);
-
+      //上传图片转base64
+      upload(e) {
         let files = e.target.files || e.dataTransfer.files;
         if (!files.length) return;
         let img = new Image();
         let reader = new FileReader();
         reader.readAsDataURL(files[0]);
-        reader.onload = function(e){
-          let mb = (e.total/1024)/1024;
-          if(mb>= 2){
+        reader.onload = e => {
+          let mb = (e.total / 1024) / 1024;
+          if (mb >= 2) {
             alert('文件大小大于2M');
             return;
           }
-
-          let uploadfile = new Bmob.File("logo.jpg", files[0]);
-          uploadfile.save().then(function(obj) {
-            console.log(obj.url())
-          }, function(error) {
-            console.log(error)
-          });;
-
-          console.log(this.result);
+          this.pic = reader.result;
         }
       },
+      // 发布文章，提交至数据库
       push() {
         let detail = Bmob.Object.extend('detail');
         let diary = new detail();
@@ -137,6 +139,9 @@
             alert("发布失败")
           }
         });
+      },
+      delPic(){
+        this.pic = ""
       }
     }
   }

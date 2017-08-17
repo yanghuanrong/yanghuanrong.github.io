@@ -70,8 +70,9 @@
       });
     },
     methods: {
+      //去掉所有的html标记
       delHtmlTag(str) {
-        return str.replace(/<[^>]+>/g, "");//去掉所有的html标记
+        return str.replace(/<[^>]+>/g, "");
       },
       //查询数据
       getList() {
@@ -95,7 +96,7 @@
                   'type': object.get('type'),
                   'pic': pic,
                   'look': object.get('look'),
-                  'detail':detail.length > 200 ? detail.substring(0, 200) + "..." : detail,
+                  'detail':detail.length > 200 ? detail.substring(0, 140) + "..." : detail,
                 'createdAt'
             :
               object.createdAt

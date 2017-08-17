@@ -56,13 +56,14 @@ input:focus,button:focus,textarea:focus{ outline: none;}
 
 .clearfix{display: inline-block;}
 .clearfix::after{content: ".";  display: block;  height: 0;  line-height: 0;  visibility: hidden;  clear: both;}
+
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?bwcujb');
-  src:  url('../fonts/icomoon.eot?bwcujb#iefix') format('embedded-opentype'),
-  url('../fonts/icomoon.ttf?bwcujb') format('truetype'),
-  url('../fonts/icomoon.woff?bwcujb') format('woff'),
-  url('../fonts/icomoon.svg?bwcujb#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?1qlxky');
+  src:  url('../fonts/icomoon.eot?1qlxky#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.ttf?1qlxky') format('truetype'),
+  url('../fonts/icomoon.woff?1qlxky') format('woff'),
+  url('../fonts/icomoon.svg?1qlxky#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -82,6 +83,9 @@ input:focus,button:focus,textarea:focus{ outline: none;}
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-trash:before {
+  content: "\e90e";
+}
 .icon-cover:before {
   content: "\e90d";
 }
@@ -236,7 +240,9 @@ input:focus,button:focus,textarea:focus{ outline: none;}
     display: flex; align-items: center; color:#808080; font-size: 12px; margin-top:22px;
     img{ width: 36px; height: 36px; margin-right: 12px; border-radius: 100%;}
 }
-.detail-article{ margin: 30px 0;  word-break: break-word;  white-space: normal; line-height: 1.7; white-space:pre-wrap}
+.detail-article{ margin: 30px 0;  word-break: break-word;  white-space: normal; line-height: 1.7; white-space:pre-wrap;
+  img{ max-width: 100%}
+}
 .detail-msg{
     display: flex; margin-top: 40px;
     dt{ width: 36px; height: 36px; flex-basis: 36px; margin-right: 12px;
@@ -373,18 +379,27 @@ padding: 0 15px; border-radius: 15px;  border: 1px solid rgba(0,0,0,.1); color: 
     select{ width: 100%; height: 34px;}
   }
 
-  .cover-wrap{
-    background: #f7f8f9;  line-height: 192px; color: #808080;  min-height: 192px; text-align: center; position: relative; margin: 30px 0;
-    &:before{ content: "添加照片"; color: #b3b3b3;  position: absolute; width: 100%; text-align: center; left: 0; bottom: 65px; line-height: 1; opacity: 0; z-index: 0; transform: translateY(12px); transition: all .2s;
+  .photo{
+    margin: 30px 0; position: relative;  min-height: 192px;
+    .no-cover-wrap{
+      background-color: #f7f8f9;  line-height: 192px; color: #808080; text-align: center;
+      &:before{ content: "添加照片"; color: #b3b3b3;  position: absolute; width: 100%; text-align: center; left: 0; bottom: 65px; line-height: 1; opacity: 0; z-index: 0; transform: translateY(12px); transition: all .2s;
+      }
+      &:hover:before{
+        opacity: 1;
+        transform: translateY(0);
+      }
+      i{ font-size: 36px; opacity: .3}
+      .cover-upload { position: absolute; display: block; top: 0;  left: 0;  height: 100%;  width: 100%;  opacity: 0; cursor: pointer; z-index: 2;}
     }
-    &:hover:before{
-      opacity: 1;
-      transform: translateY(0);
+    .yes-cover-wrap{
+      height: 192px; position: relative; overflow: hidden;
+      img{ width: 100%; position: absolute; top:50%; transform:translateY(-50%) }
+      .edit-img{ position: absolute; bottom: 10px; right: 10px; padding: 5px; cursor: pointer; font-size: 20px; color:#FFF;
+        z-index:1;}
     }
-    i{ font-size: 36px; opacity: .3}
-    .cover-upload { position: absolute; display: block; top: 0;  left: 0;  height: 100%;  width: 100%;  opacity: 0; cursor: pointer; z-index: 2;}
-  }
 
+  }
   .editor-container{ margin-top: 20px}
   .ql-toolbar.ql-snow{ border-left:none; border-right:none; border-bottom:none; }
   .ql-container.ql-snow{ border:none;}
