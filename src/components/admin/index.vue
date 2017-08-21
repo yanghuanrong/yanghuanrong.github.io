@@ -11,8 +11,14 @@
       </div>
       <div class="bar">
         <div class="more">
-          <span class="menu"><i class="icon-more"></i></span>
-
+          <span class="menu" @click.stop="menuShow"><i class="icon-more"></i></span>
+          <div class="menu-list" :class="{ active:menu }" @click.stop="menuShow">
+            <ul>
+              <li>发文章</li>
+              <li>发照片</li>
+              <li @click="loginOut">退出</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -68,7 +74,8 @@
         select: "",
         editorOption: {
           placeholder: '请输入正文',
-        }
+        },
+        menu:false,
       }
     },
     created() {
@@ -82,6 +89,11 @@
       //记录登录objid
       this.Authid = currentUser.id
     },
+    mounted(){
+      document.onclick = e=>{
+        this.menu=false
+      }
+    },
     computed: {
       editor() {
         return this.$refs.myQuillEditor.quill
@@ -92,6 +104,10 @@
       loginOut() {
         Bmob.User.logOut();
         this.$router.push('/');
+      },
+      //菜单显示
+      menuShow(){
+        this.menu = true;
       },
       //检测是否可以提交
       input() {
