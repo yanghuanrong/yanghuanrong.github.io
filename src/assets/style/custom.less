@@ -57,13 +57,14 @@ input:focus,button:focus,textarea:focus{ outline: none;}
 .clearfix{display: inline-block;}
 .clearfix::after{content: ".";  display: block;  height: 0;  line-height: 0;  visibility: hidden;  clear: both;}
 
+
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?1qlxky');
-  src:  url('../fonts/icomoon.eot?1qlxky#iefix') format('embedded-opentype'),
-  url('../fonts/icomoon.ttf?1qlxky') format('truetype'),
-  url('../fonts/icomoon.woff?1qlxky') format('woff'),
-  url('../fonts/icomoon.svg?1qlxky#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?wpyh7z');
+  src:  url('../fonts/icomoon.eot?wpyh7z#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.ttf?wpyh7z') format('truetype'),
+  url('../fonts/icomoon.woff?wpyh7z') format('woff'),
+  url('../fonts/icomoon.svg?wpyh7z#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -83,6 +84,9 @@ input:focus,button:focus,textarea:focus{ outline: none;}
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-exit:before {
+  content: "\e90f";
+}
 .icon-trash:before {
   content: "\e90e";
 }
@@ -204,7 +208,7 @@ input:focus,button:focus,textarea:focus{ outline: none;}
 //博客页面
 .blog-list{
     position: relative;
-    .loading{ display: flex; justify-content: center;}
+    .loading{ display: flex; justify-content: center; margin-top: 20px}
     .back-top{ position: fixed; right:50%; margin-right:-500px; bottom:40px; width: 40px; height: 40px; border:1px solid #eee; cursor: pointer; color: #999; text-align: center;
       line-height: 40px; font-size:12px;}
 }
@@ -352,48 +356,52 @@ padding: 0 15px; border-radius: 15px;  border: 1px solid rgba(0,0,0,.1); color: 
 * admin
 **/
 .admin{
-  .header{ height:59px; border-bottom: 1px solid rgba(0,0,0,.08); position: relative;
+  padding-top: 59px;
+
+  .bar{ position: fixed; right:20px; top:20px; display:flex;
+    z-index:3;
+    .more{
+      margin-left: 20px; position: relative;
+      i{ font-size: 14px; color: #666}
+      .menu{ cursor: pointer}
+      .menu-list{
+        opacity: 0; transition: all .3s;
+        &.active{
+          opacity: 1; transform: translateY(-5px);
+        }
+        &:before{ content: "";
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+          border-bottom: 10px solid white;
+          position: absolute;
+          top:-10px; right: 16px;
+          z-index:1;
+        }
+        &:after{ content: "";
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-bottom: 10px solid rgba(0,0,0,.08);
+          position: absolute;
+          top:-11px; right: 14px;
+        }
+        position: absolute; border: 1px solid rgba(0,0,0,.08); padding:5px 15px; width: 120px; right: 0; border-radius: 5px; background-color:#FFF ; box-shadow: 0 0 5px rgba(0,0,0,.08); top:43px;
+        li{ line-height: 30px; cursor: pointer; font-size: 14px;
+          &:hover{ color: @minColor}
+        }
+      }
+
+    }
+  }
+
+  .header{ height:59px; border-bottom: 1px solid rgba(0,0,0,.08); position: relative; position: fixed;
     &>div{ justify-content: space-between}
     h4{ font-weight: 600;
       small{ color: #999; margin-left: 10px;}
     }
-    .bar{ position: absolute; right:0; top:0; display:flex; padding-right: 20px;
-      .more{
-        margin-left: 20px; position: relative;
-        i{ font-size: 14px; color: #666}
-        .menu{ cursor: pointer}
-        .menu-list{
-          opacity: 0; transition: all .3s;
-          &.active{
-            opacity: 1; transform: translateY(-5px);
-          }
-          &:before{ content: "";
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-bottom: 10px solid white;
-            position: absolute;
-            top:-10px; right: 16px;
-            z-index:1;
-          }
-          &:after{ content: "";
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-bottom: 10px solid rgba(0,0,0,.08);
-            position: absolute;
-            top:-11px; right: 14px;
-          }
-           position: absolute; border: 1px solid rgba(0,0,0,.08); padding:5px 15px; width: 120px; right: 0; border-radius: 5px; background-color:#FFF ; box-shadow: 0 0 5px rgba(0,0,0,.08);
-          li{ line-height: 30px; cursor: pointer; font-size: 14px;
-            &:hover{ color: @minColor}
-          }
-        }
-
-      }
-    }
   }
   .wrap{ width: 660px;}
   .edit-detail{
-    .detail-title{ font-size: 32px;
+    .detail-title{ font-size: 26px;
       &::-webkit-input-placeholder{
         color: #9e9e9e;opacity:1;
       }
@@ -431,4 +439,15 @@ padding: 0 15px; border-radius: 15px;  border: 1px solid rgba(0,0,0,.1); color: 
   .ql-toolbar.ql-snow{ border-left:none; border-right:none; border-bottom:none; }
   .ql-container.ql-snow{ border:none;}
   .ql-editor{ padding-left: 0; padding-right: 0}
+
+
+
+  .photo-row{
+
+    input,textarea{
+      border: 1px solid #eee;
+    }
+
+  }
+
 }

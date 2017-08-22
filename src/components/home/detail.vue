@@ -23,7 +23,7 @@
         <dt><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2401881700,2342273471&fm=58"/></dt>
         <dd>
           <input type="text" placeholder="填写姓名" v-model="name" @keyup="input"/>
-          <textarea rows="3" id="msg" v-model="contont" @keyup="input"></textarea>
+          <textarea rows="3" id="msg" v-model="contont" @keyup="input" placeholder="填写内容"></textarea>
           <div class="detail-btn">
             <button class="submit" :disabled="!commit" :class="{active:commit}" @click="push">评论</button>
           </div>
