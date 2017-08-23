@@ -7,11 +7,13 @@ import router from './router'
 import layer from '@/assets/js/layer'
 import anime from 'animejs'
 import VueQuillEditor from 'vue-quill-editor'
+import qiniu from 'qiniu-js'
 
 
 Vue.config.productionTip = false;
 Vue.use(layer);
 Vue.use(VueQuillEditor);
+Vue.use(qiniu);
 Vue.prototype.$anime = anime;
 /* eslint-disable no-new */
 new Vue({

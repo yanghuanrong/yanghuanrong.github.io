@@ -57,14 +57,13 @@ input:focus,button:focus,textarea:focus{ outline: none;}
 .clearfix{display: inline-block;}
 .clearfix::after{content: ".";  display: block;  height: 0;  line-height: 0;  visibility: hidden;  clear: both;}
 
-
 @font-face {
   font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?wpyh7z');
-  src:  url('../fonts/icomoon.eot?wpyh7z#iefix') format('embedded-opentype'),
-  url('../fonts/icomoon.ttf?wpyh7z') format('truetype'),
-  url('../fonts/icomoon.woff?wpyh7z') format('woff'),
-  url('../fonts/icomoon.svg?wpyh7z#icomoon') format('svg');
+  src:  url('../fonts/icomoon.eot?ndypey');
+  src:  url('../fonts/icomoon.eot?ndypey#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.ttf?ndypey') format('truetype'),
+  url('../fonts/icomoon.woff?ndypey') format('woff'),
+  url('../fonts/icomoon.svg?ndypey#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -84,6 +83,9 @@ input:focus,button:focus,textarea:focus{ outline: none;}
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-add:before {
+  content: "\e910";
+}
 .icon-exit:before {
   content: "\e90f";
 }
@@ -132,8 +134,6 @@ input:focus,button:focus,textarea:focus{ outline: none;}
 .icon-weix:before {
   content: "\e90c";
 }
-
-
 
 
 
@@ -443,11 +443,33 @@ padding: 0 15px; border-radius: 15px;  border: 1px solid rgba(0,0,0,.1); color: 
 
 
   .photo-row{
-
+    margin-top: 20px;
     input,textarea{
-      border: 1px solid #eee;
+      border: 1px solid #eee; width: 100%; padding: 5px 10px; resize: none;
+      &:focus{
+        border-color: @minColor ;
+      }
     }
+    input{ height: 30px;}
 
+    p{ margin-bottom: 5px}
   }
-
+  .file-list{
+    li{ width: 150px; height: 150px;  display: flex; justify-content: center; align-items: center;  padding: 10px; border: 1px solid #eee; float: left; margin-right: 20px; margin-bottom: 20px; position: relative; z-index: 3;
+      &:nth-child(4n){ margin-right: 0}
+      img{max-width: 100%;}
+      .progress{
+        position: absolute; top: 60px; left: 10px; background:@minColor; padding: 10px; height: 33px;
+        .progress-wrap{
+          width: 108px;height: 14px;padding: 1px;border: 1px solid #FFF;
+          span{ background: rgb(255, 255, 255); display: block; width: 0%; height: 10px; transition: width .3s;
+            &.active{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    li.add-img{  font-size: 60px; text-align: center; line-height: 150px; color: #eee; background: #FFF; cursor: pointer}
+  }
 }

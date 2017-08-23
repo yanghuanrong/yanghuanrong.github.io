@@ -74,9 +74,6 @@
         return this.$refs.myQuillEditor.quill
       }
     },
-    created(){
-      console.log(this.Authid)
-    },
     methods: {
       //检测是否可以提交
       input() {
@@ -93,6 +90,7 @@
         if (!files.length) return;
         let img = new Image();
         let reader = new FileReader();
+        console.log(files[0]);
         reader.readAsDataURL(files[0]);
         reader.onload = e => {
           let mb = (e.total / 1024) / 1024;
