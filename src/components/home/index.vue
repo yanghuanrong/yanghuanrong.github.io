@@ -34,15 +34,13 @@
 				</div>
 			</div>
 		</header>
-		<div class="wrap">
-			<div class="page-body">
-				<transition name="fade" mode="out-in">
-					<keep-alive exclude="detail">
-						<router-view></router-view>
-					</keep-alive>
-				</transition>
-			</div>
-		</div>
+    <div class="page-body">
+      <transition name="fade" mode="out-in">
+        <keep-alive exclude="detail">
+          <router-view></router-view>
+        </keep-alive>
+      </transition>
+    </div>
 	</div>
 </template>
 

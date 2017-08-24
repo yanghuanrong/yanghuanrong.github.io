@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-list">
+  <div class="blog-list wrap">
     <div class="back-top" @click="backTop" v-if="isBack">Top</div>
     <div>
       <div class="blog-item" v-for="item in detail">

@@ -321,6 +321,36 @@ padding: 0 15px; border-radius: 15px;  border: 1px solid rgba(0,0,0,.1); color: 
 }
 
 
+//摄影页面
+.photo{ padding: 40px 75px; background: #f9f9f9;
+  .photo-list{
+    display: flex; flex-wrap: wrap;
+    li{
+      padding: 10px;
+      .post-photo{
+        height: 335px; position: relative;  cursor: pointer;
+        img{ height: 100%}
+        &:after{
+          content: ""; position: absolute; top:0; right: 0; left: 0; bottom: 0; transition: all .4s;
+        }
+        .photo-info{ position: absolute; top:20px; left: 20px;color: #FFF; opacity: 0; transition: all .4s; z-index: 1;
+          span:nth-child(1){ font-size: 16px; margin-right: 10px;}
+          span:nth-child(2){ font-size: 12px;}
+        }
+        &:hover{
+          &:after{
+            background: rgba(0,0,0,.5);
+          }
+          .photo-info{ opacity: 1}
+        }
+      }
+    }
+  }
+}
+
+
+
+
 //fade动画
 .fade-enter-active, .fade-leave-active {
   transition: opacity .3s

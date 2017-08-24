@@ -23,6 +23,7 @@
         <dt><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2401881700,2342273471&fm=58"/></dt>
         <dd>
           <input type="text" placeholder="填写姓名" v-model="name" @keyup="input"/>
+          <input type="text" placeholder="填写邮箱" v-model="email" @keyup="input"/>
           <textarea rows="3" id="msg" v-model="contont" @keyup="input" placeholder="填写内容"></textarea>
           <div class="detail-btn">
             <button class="submit" :disabled="!commit" :class="{active:commit}" @click="push">评论</button>
@@ -56,6 +57,7 @@
         post: null,
         detail: {},
         name: "",
+        email:"",
         contont: "",
         commit: false,
         message: [],
@@ -133,7 +135,8 @@
       },
       //判断是否可以提交
       input() {
-        this.commit = this.name && this.contont ? true : false ;
+        let reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+        this.commit = this.name && this.contont && reg.test(this.email) ? true : false ;
       },
       //提交评论
       push() {
@@ -141,6 +144,7 @@
         let diary = new msg();
         diary.set('name', this.name);
         diary.set('contont', this.contont);
+        diary.set('email', this.email);
         let post = Bmob.Object.createWithoutData('detail', this.$route.params.id);
         diary.set('detail', post);
         diary.save(null, {
