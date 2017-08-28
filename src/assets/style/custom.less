@@ -323,32 +323,59 @@ padding: 0 15px; border-radius: 15px;  border: 1px solid rgba(0,0,0,.1); color: 
 
 //摄影页面
 .photo{ padding: 40px 75px; background: #f9f9f9;
-  .photo-list{
-    display: flex; flex-wrap: wrap;
-    li{
-      padding: 10px;
-      .post-photo{
-        height: 335px; position: relative;  cursor: pointer;
-        img{ height: 100%}
-        &:after{
-          content: ""; position: absolute; top:0; right: 0; left: 0; bottom: 0; transition: all .4s;
-        }
-        .photo-info{ position: absolute; top:20px; left: 20px;color: #FFF; opacity: 0; transition: all .4s; z-index: 1;
-          span:nth-child(1){ font-size: 16px; margin-right: 10px;}
-          span:nth-child(2){ font-size: 12px;}
-        }
-        &:hover{
-          &:after{
-            background: rgba(0,0,0,.5);
-          }
-          .photo-info{ opacity: 1}
-        }
+  .post-photo{
+    position: relative; height: inherit;
+    .photo-img{ position: absolute; top: 5px; left: 5px; right: 5px;bottom: 5px; overflow: hidden;  cursor: pointer;
+      img{ width: 100%; transition: transform 1s; display: block}
+    }
+    &:after{
+      content: ""; position: absolute; top:20px; right: 20px; left: 20px; bottom: 20px; transition: all .4s; border: 1px solid transparent; cursor: pointer;
+    }
+    .photo-info{ position: absolute; bottom:30px; left: 30px;color: #FFF; opacity: 0; transition: all .4s; z-index: 1;
+      span:nth-child(1){ font-size: 16px; margin-right: 10px;}
+      span:nth-child(2){ font-size: 12px;}
+    }
+    &:hover{
+      &:after{
+        border-color:rgba(255,255,255,.5);
+      }
+      .photo-info{ opacity: 1}
+      .photo-img{
+        img{ transform: scale(1.05,1.05);  display: block}
       }
     }
   }
+
+  .photo-detail{ position: fixed;top: 0; left: 0; right: 0; bottom:0; background: #000; z-index: 9; display: flex; color: #FFF;
+    .photo-left{ flex:1; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
+      .photo-list-height{}
+      .photo-list-body{ flex: 1;
+        img{ max-width: 100%; max-height: 100%; margin: 0 auto; display: block}
+      }
+      .photo-list-footer{
+        flex-basis: 90px; position: relative;
+        .photo-list-scroll{
+          position: absolute; left: 0; top:0;
+          ul{
+            float: left;
+            li{ float: left; width: 106px; height: 70px; overflow: hidden; margin:0 2px; position: relative;  cursor: pointer;
+              img{ width: 100%; position: absolute; top: 50%; transform: translateY(-50%); opacity: .5}
+              &.active{
+                img{ opacity: 1}
+              }
+              &.active:after{
+                content: ""; position: absolute; top:0; left:0; right: 0; bottom: 0; border: 2px solid #FFF;
+              }
+            }
+          }
+        }
+      }
+    }
+    .photo-right{ flex-basis: 320px; border-left:1px solid rgba(255,255,255,.2) }
+  }
+
+
 }
-
-
 
 
 //fade动画

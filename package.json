@@ -13,7 +13,8 @@
     "animejs": "^2.0.2",
     "vue": "^2.3.3",
     "vue-quill-editor": "^2.3.0",
-    "vue-router": "^2.6.0"
+    "vue-router": "^2.6.0",
+    "vue-waterfall": "^1.0.6"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -63,14 +63,14 @@
       var uploader = Qiniu.uploader({
         runtimes: 'html5,flash,html4', //上传模式,依次退化
         browse_button: 'pickfiles', //上传选择的点选按钮，**必需**
-        uptoken: 'T6D-Sh74Dp7-1N_gZ2X14MY_PORKAXuhyh7ucawg:5zGc9d7t5Tib0oVinEy6ybp5AsE=:eyJzY29wZSI6IndlYnMiLCJkZWFkbGluZSI6NDYzODg3NzI2MX0=',
+        uptoken: 'T6D-Sh74Dp7-1N_gZ2X14MY_PORKAXuhyh7ucawg:nVoiO4H4aV10k2woXnliqyZ9-oo=:eyJzY29wZSI6IndlYnMiLCJkZWFkbGluZSI6NDYzODg3NzI2MSwicmV0dXJuQm9keSI6IntcImtleVwiOiAkKGtleSksIFwiaGFzaFwiOiAkKGV0YWcpLCBcIndcIjogJChpbWFnZUluZm8ud2lkdGgpLCBcImhcIjogJChpbWFnZUluZm8uaGVpZ2h0KX0ifQ==',
         domain: 'http://ov0xnpdna.bkt.clouddn.com/', //bucket 域名，下载资源时用到，**必需**
         get_new_uptoken: false, //设置上传文件的时候是否每次都重新获取新的token
         container: 'container', //上传区域DOM ID，默认是browser_button的父元素，
-        max_file_size: '100mb', //最大文件体积限制
+        max_file_size: '10mb', //最大文件体积限制
         flash_swf_url: 'Moxie.swf', //引入flash,相对路径
         max_retries: 3, //上传失败最大重试次数
-        dragdrop: true, //开启可拖曳上传
+        dragdrop: false, //开启可拖曳上传
         drop_element: 'container', //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
         chunk_size: '4mb', //分块上传时，每片的体积
         auto_start: true, //选择文件后自动上传，若关闭需要自己绑定事件触发上传
@@ -97,7 +97,11 @@
             let domain = up.getOption('domain');
             let res = JSON.parse(info.response);
             let sourceLink = domain + res.key; //获取上传成功后的文件的Url
-            this.callbackImg.push(sourceLink);
+            this.callbackImg.push({
+              src:sourceLink,
+              w:res.w,
+              h:res.h
+            });
             this.input();
           },
         }
@@ -105,7 +109,7 @@
     },
     methods:{
       input() {
-        this.commit = this.title && this.content && this.callbackImg.length>0 ? true : false;
+        this.commit = this.title && this.callbackImg.length>0 ? true : false;
       },
       push(){
         let photo = Bmob.Object.extend('photo');
