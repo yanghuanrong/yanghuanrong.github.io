@@ -1,144 +1,31 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video, input {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-weight: normal;
-    vertical-align: baseline;
-}
-
-a {
-    color: #7e8c8d;
-    text-decoration: none;
-    -webkit-backface-visibility: hidden;
-}
-
-*{box-sizing: border-box;}
-
-li {
-    list-style: none;
-}
-
-::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
-
-::-webkit-scrollbar-track-piece {
-    background-color: rgba(0, 0, 0, 0.2);
-    -webkit-border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:vertical {
-    height: 5px;
-    background-color: rgba(125, 125, 125, 0.7);
-    -webkit-border-radius: 6px;
-}
-
-::-webkit-scrollbar-thumb:horizontal {
-    width: 5px;
-    background-color: rgba(125, 125, 125, 0.7);
-    -webkit-border-radius: 6px;
-}
-input:focus,button:focus,textarea:focus{ outline: none;}
-
-
-.clearfix{display: inline-block;}
-.clearfix::after{content: ".";  display: block;  height: 0;  line-height: 0;  visibility: hidden;  clear: both;}
+@import "./init.less";
+@import "./icon.less";
 
 @font-face {
-  font-family: 'icomoon';
-  src:  url('../fonts/icomoon.eot?ndypey');
-  src:  url('../fonts/icomoon.eot?ndypey#iefix') format('embedded-opentype'),
-  url('../fonts/icomoon.ttf?ndypey') format('truetype'),
-  url('../fonts/icomoon.woff?ndypey') format('woff'),
-  url('../fonts/icomoon.svg?ndypey#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'THEX';
+  src: url('../fonts/HELVETICANEUELTPRO-THEX.otf');
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.clearfix{
+  display: inline-block;
+}
+.clearfix::after{
+  content: ".";  display: block;  height: 0;  line-height: 0;  visibility: hidden;  clear: both;
 }
 
-.icon-add:before {
-  content: "\e910";
-}
-.icon-exit:before {
-  content: "\e90f";
-}
-.icon-trash:before {
-  content: "\e90e";
-}
-.icon-cover:before {
-  content: "\e90d";
-}
-.icon-audio:before {
-  content: "\e900";
-}
-.icon-back:before {
-  content: "\e901";
-}
-.icon-blog:before {
-  content: "\e902";
-}
-.icon-close:before {
-  content: "\e903";
-}
-.icon-email:before {
-  content: "\e904";
-}
-.icon-github:before {
-  content: "\e905";
-}
-.icon-look:before {
-  content: "\e906";
-}
-.icon-more:before {
-  content: "\e907";
-}
-.icon-msg:before {
-  content: "\e908";
-}
-.icon-password:before {
-  content: "\e909";
-}
-.icon-user:before {
-  content: "\e90a";
-}
-.icon-weibo:before {
-  content: "\e90b";
-}
-.icon-weix:before {
-  content: "\e90c";
-}
-
-
-
+/**
+* 定义颜色
+**/
+@minColor:#ef1925;
+@font-lg:#E3E3E3;
+@font-md:#929292;
+@font-sm:#5E5E5E;
 @black:#2b2e2f;
 @white:#FFFFFF;
+@bodyBG:#111111;
+/**
+* 封装方法
+**/
 .lineBG(@val){
     background: linear-gradient(@val);
 }
@@ -148,51 +35,39 @@ input:focus,button:focus,textarea:focus{ outline: none;}
 .border-1px(@color){
     position: relative;
     &::after{
-        content: ""; position: absolute; width: 100%; border-top: 1px solid @color; left: 0; right: 0; bottom: 0;
+      content: ""; position: absolute; width: 100%; border-top: 1px solid @color; left: 0; right: 0; bottom: 0;
     }
 }
 
 /**
 * public
 **/
+.text-center{ text-align: center;}
 .flex{ display: flex;}
-.submit{
-  border: 1px solid #eee; background: transparent; padding: 6px 12px; border-radius: 3px; color: #eee;
-  &.active{ border-color: @minColor; color: @minColor; cursor: pointer;}
-}
+.position-rel{ position: relative}
+.p-d-md{ padding: 20px}
 
-
-//登录界面
-.login-body{
-    background:#FFF; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-repeat: repeat;  background-attachment: fixed;}
-.login-wrap{ position: absolute; top: 50%; left: 50%; transform: translate(-50%,-80%); width: 260px;}
-.login-logo{ text-align: center; font-size: 100px; color: @minColor;}
-.login-row{ position: relative; height: 35px; box-sizing: content-box; margin-bottom: 10px;  font-size: 12px; color: fade(@black,90%);
-    i{ position: absolute; left: 0; top: 50%; transform: translateY(-50%);}
-    input{ height: 100%; width: 100%; background: transparent; border-bottom: 1px solid rgba(0,0,0,.1); text-indent: 30px; color: @black;}
-    ::-webkit-input-placeholder{
-        color:fade(@black,90%);
-    }
-    input:-webkit-autofill {
-      -webkit-box-shadow : 0 0 0 1000px white inset;
-    }
-}
-.login-btn{ height: 44px; width: 100%; border-radius: 44px; background: @minColor; border: 0; color: @white; cursor: pointer; margin: 30px auto; display: block; text-align: center; transition:all .3s ease-in;
-    &:active{ background:fade(@minColor , 80%);}
-}
-.login-anime{ opacity: 0;}
-.back{ position: absolute; top: 30px; left: 100px; color: @black; cursor: pointer; font-size: 24px; opacity: 0;}
-
-
-
-@minColor:#3695ff;
 .wrap{ width: 900px; margin-left: auto; margin-right: auto;}
+.submit{
+  border: 1px solid rgba(255,255,255,.2); background: transparent; padding: 6px 12px;  color: rgba(255,255,255,.2); min-width: 80px; transition: all ease .4s;
+  &.active{
+    border-color: @font-lg; color: @font-lg; cursor: pointer; position: relative;
+    &:before{
+      content: ''; height: 100%; width: 0%; transition: all ease .4s; display: block; top:0;left:0; position: absolute; z-index: -1;
+    }
+    &:hover:before{ width: 100%; background-color: @minColor }
+  }
+}
+
 /*首页界面*/
-//头部
-.index{ background: #FFF; min-height: 100vh; padding-bottom: 40px; padding-top: 53px;}
+
+//页面框架
+.index{ min-height: 100vh; background:@bodyBG; padding-bottom: 60px; position: relative}
 .index a:hover{ color: @minColor;}
-.header{ height: 53px; border-bottom: 1px solid #ddd; box-shadow: 0 1px 3px 0 rgba(0,34,77,.05); line-height: 53px; background: #FFF; position: fixed; top: 0; left: 0; width: 100%; z-index: 2;
-    .logo{ font-size: 60px;
+.header{ height: 81px; border-bottom: 1px solid #ddd; border-bottom: 1px solid rgba(255,255,255,0.1); line-height: 81px; position: fixed; top: 0; left: 0; width: 100%; z-index: 2; transition: all ease .3s; padding: 0 60px 0 40px; background:@bodyBG;
+    &.mini{ height: 61px; line-height: 61px; background: #0b0c11 !important; }
+    .logo{
+        font-size: 60px;
         a{color: @minColor;}
     }
     nav{ flex: 1;
@@ -204,47 +79,105 @@ input:focus,button:focus,textarea:focus{ outline: none;}
         a{ font-size: 22px; margin-left: 20px;}
     }
 }
+.page-footer{
+  text-align: right;  padding: 20px 60px;  font-size: 12px; background: #000; position: absolute; bottom: 0; left: 0; width: 100%;
+  p{ color: #8e8e8e;  height: 20px;  line-height: 20px;}
+}
 
 //博客页面
-.blog-list{
-    position: relative;
-    .loading{ display: flex; justify-content: center; margin-top: 20px}
-    .back-top{ position: fixed; right:50%; margin-right:-500px; bottom:40px; width: 40px; height: 40px; border:1px solid #eee; cursor: pointer; color: #999; text-align: center;
-      line-height: 40px; font-size:12px;}
-}
-.blog-item{
-    padding: 16px 20px; margin-top: 10px; background: #fff; overflow: hidden; box-sizing: border-box; max-height: 400px;
-    .source{ color: #8590a6; display: block;}
-    .blog-title{
-         margin: 14px 0;
-        a{font-size: 18px; font-weight: 700; color: #1e1e1e;}
+.blog-wrap{
+  position: relative;
+  .loading{
+    display: flex; justify-content: center; margin-top: 20px
+  }
+  .back-top{
+    position: fixed; right:20px; bottom:80px; width: 40px; height: 40px; border:1px solid @white; cursor: pointer; color: @white;; text-align: center; line-height: 40px; font-size:16px; z-index:3; opacity: .3; transition: all ease .4s;
+    &:hover{
+      opacity:1;
     }
-    .blog-description{ display: flex;
-        .blog-img{ flex-basis:190px; height: 105px; background-size:cover; cursor: pointer; background-position: center; background-color:#eee; border-radius: 4px; margin-right: 18px;}
-        .blog-text{ flex: 1; line-height: 1.67; cursor: pointer; color:#333;
-            &:hover{ opacity: .9;}
+  }
+  .banner{
+    width: 100%; height: 380px; position: relative;
+    div{
+      background:#39383E url(../images/banner.jpg) no-repeat center; background-size: cover;  position: fixed; width: 100%; height: 380px;
+    }
+  }
+  .blog-list{
+    position: relative; z-index: 1; background: @bodyBG;
+    .title-wrap{
+      padding-top: 80px; padding-bottom: 50px; text-align: center;
+      .title{color: #E3E3E3; font-size: 26px;}
+      .subtitle{ color: #464646; font-size: 16px; text-transform: uppercase}
+    }
+    .blog-item{
+      overflow: hidden; box-sizing: border-box; height: 150px; padding-top: 40px; transition: all ease-out .2s;
+      &:hover{
+        background-color:@minColor;
+        .blog-date{
+          .md,.year{ color: #FFF !important;}
         }
+        .blog-content{
+          .blog-title,.blog-text{ color: #FFF !important;}
+        }
+        .blog-description{
+          transform:translateX(80px)
+        }
+        .blog-icon{
+          opacity: 1;  transform:translateX(20px)
+        }
+      }
+      .blog-icon{
+        position: absolute; top: 50%;color: #FFF; right: 0px; font-size: 36px; margin-top: -34px; transition: all ease-out .2s .1s; opacity: 0;
+      }
+      .blog-description{
+        display: flex; transform:translateX(120px); transition: all ease-out .4s; padding-right: 160px;
+        .blog-date{
+          flex-basis:190px; height: 105px; background-size:cover; cursor: pointer; background-position: center; margin-right: 50px; text-align: right; font-family: "THEX";
+          .md{
+            color: @minColor; font-size: 60px; line-height: 50px;
+          }
+          .year{ color: @font-md}
+        }
+        .blog-content{
+          flex: 1; line-height: 1.67; cursor: pointer;
+          .blog-title{ color:@font-md; font-size: 16px;}
+          .blog-text{ color:@font-sm; font-size: 13px}
+        }
+      }
     }
-    .blog-handle{ display: flex; margin-top: 15px; justify-content: space-between;
-        .blog-date{ font-size: 12px; color: #999;}
-    }
+  }
 }
+
+
 //博客详情
-.detail-wrap{ position: fixed; top:0; left: 0; bottom: 0; right: 0; background: #FFF; z-index: 2; overflow: auto;
+.detail-wrap{
+   background: @bodyBG; z-index: 2; position: relative;  z-index:3;
+  .loading-mask{
+    position: fixed; top:0; left: 0; right: 0; bottom:0; background: @bodyBG; z-index: 2;
     .loading-wrap{
-        position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
     }
+  }
 }
-.detail-body{ width: 660px; margin: 0 auto; padding-top: 80px; padding-bottom: 100px; position: relative;
-    .close{ position: absolute; top: 20px; font-size: 32px; right: 0; color: #999; cursor: pointer;}
+.detail-body{
+  width: 660px; margin: 0 auto; padding-top: 40px; padding-bottom: 100px; position: relative;
+  .close{
+    position: fixed; top: 40px; font-size: 32px; right: 50%; margin-right: -370px; color: @font-md; cursor: pointer; display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; border:1px solid rgba(255,255,255,.2); transition: all ease .4s;
+    &:hover{ background-color: @minColor; color: @white}
+  }
 }
-.detail-img{ width: 660px; height: 330px; background-size:cover; margin-bottom: 22px;     background-position: center;}
-.detail-title{ font-size: 32px; line-height: 1.3;  font-weight: 700; color: #1E1E1E;}
+.detail-img{
+  width: 660px; height: 330px; background-size:cover; margin-bottom: 22px; background-position: center;
+}
+.detail-title{
+  font-size: 26px; line-height: 1.3; color: @font-lg;
+}
 .detail-author{
-    display: flex; align-items: center; color:#808080; font-size: 12px; margin-top:22px;
+    display: flex; align-items: center; color:@font-md; font-size: 12px; margin-top:22px;
     img{ width: 36px; height: 36px; margin-right: 12px; border-radius: 100%;}
 }
-.detail-article{ margin: 30px 0;  word-break: break-word;  white-space: normal; line-height: 1.7; white-space:pre-wrap;
+.detail-article{
+  margin: 30px 0;  word-break: break-word;  white-space: normal; line-height: 1.7; hite-space:pre-wrap; color: @font-md;
   img{ max-width: 100%}
 }
 .detail-msg{
@@ -254,18 +187,18 @@ input:focus,button:focus,textarea:focus{ outline: none;}
     }
     dd{
         flex: 1;
-        input,textarea{ width: 100%; border: 1px solid #f0f0f0; padding: 8px 10px; margin-bottom: 10px; border-radius: 3px;
-            &:focus{ border-color: @minColor;}
+        input,textarea{
+          width: 100%; padding: 8px 10px; margin-bottom: 10px; background-color: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,.1); color: @white; transition: all ease .2s;
+          &:focus,&:hover{ border-color: @minColor;}
         }
         textarea{resize: none;}
         .detail-btn{
-            text-align: right;
-
+            text-align: right; padding-top: 25px;
         }
     }
 }
 .detail-look{
-  width: 60px; height: 60px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-direction: column;
+  width: 60px; height: 60px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-direction: column; color: @font-lg;
   p{ font-size: 12px}
   span{ font-size: 32px}
 }
@@ -277,85 +210,119 @@ input:focus,button:focus,textarea:focus{ outline: none;}
         }
         dd{
            flex: 1;
-           b{ font-weight: 700; font-size: 14px;}
-           p{ font-size: 14px;}
-           span{ color: #999; font-size: 12px; font-family: arial; float: right;}
+           b{ font-weight: 700; font-size: 14px; color: @font-lg}
+           p{ font-size: 14px; color: @font-md}
+           span{ color: @font-sm; font-size: 12px; font-family: arial; float: right;}
         }
     }
 }
 
 
 //关于页面
-.about-page{ width: 660px; margin: 0 auto;}
+.about-page{ width: 660px; margin: 0 auto; padding-top: 90px}
 .column-about{ text-align: center; width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 60px;}
 .author-photo{ width: 100px; height: 100px; border-radius: 100%; background-size:cover ; margin-bottom: 14px;}
-.author-name{ font-size: 20px; line-height: 28px;     text-rendering: optimizeLegibility; color: #333; margin-bottom: 14px;}
+.author-name{ font-size: 20px; line-height: 28px; text-rendering: optimizeLegibility; color: @font-lg; margin-bottom: 14px;}
 .author-app{ font-size: 22px; color: gray; margin-bottom: 10px;
     span{ margin: 0 5px;}
 }
-.author-label{
-    span{ display: inline-block; height: 30px; line-height: 30px; font-size: 14px;
-padding: 0 15px; border-radius: 15px;  border: 1px solid rgba(0,0,0,.1); color: gray;
- margin: 8px;
-    }
-}
-.column-title{ position: relative; margin-top: 60px;
-    span{ position: relative; z-index: 2; background: #FFF; padding-right: 20px;}
-    i{
-        width: 100%; display: block;
-        .border-1px(#f0f0f0);
-         position: absolute; top: 50%; left: 0; z-index: 1;
-    }
+.column-title{
+  position: relative; margin-top: 60px; color: @font-md;
+  span{
+    position: relative; z-index: 2; background: @bodyBG; padding-right: 20px;
+  }
+  i{
+    width: 100%; display: block;
+    .border-1px(rgba(255,255,255,.1));
+    position: absolute; top: 50%; left: 0; z-index: 1;
+  }
 }
 .course{
+    margin-bottom: 40px;
     dl{
         display: flex; margin-top: 35px;
-        dt{ display: flex; flex-direction:column;  flex-basis: 80px; font-size: 12px;
-            i{ width: 1px; height: 20px; background: #ccc; margin: 10px 0; display: block;}
+        dt{ display: flex; flex-direction:column;  flex-basis: 80px; font-size: 12px; color: @font-md;
+            i{ width: 1px; height: 20px; background: rgba(255,255,255,.1); margin: 10px 0; display: block;}
         }
         dd{ flex: 1;
-            b{ font-size: 20px; font-weight:700; margin-bottom: 10px; display: block;}
-            p{ font-size: 15px;}
+            b{ font-size: 20px;  margin-bottom: 10px; display: block; color: @font-lg}
+            p{ font-size: 15px; color: @font-md}
         }
     }
 }
 
 
 //摄影页面
-.photo{ padding: 40px 75px; background: #f9f9f9;
+.photo{ padding: 90px 75px;
   .post-photo{
     position: relative; height: inherit;
     .photo-img{ position: absolute; top: 5px; left: 5px; right: 5px;bottom: 5px; overflow: hidden;  cursor: pointer;
-      img{ width: 100%; transition: transform 1s; display: block}
+      img{ width: 100%; transition: all 1s; display: block; opacity: .5}
     }
     &:after{
-      content: ""; position: absolute; top:20px; right: 20px; left: 20px; bottom: 20px; transition: all .4s; border: 1px solid transparent; cursor: pointer;
+      content: ""; position: absolute; top:20px; right: 20px; left: 20px; bottom: 20px; transition: all .6s; border: 1px solid transparent; cursor: pointer;
     }
-    .photo-info{ position: absolute; bottom:30px; left: 30px;color: #FFF; opacity: 0; transition: all .4s; z-index: 1;
+    .photo-info{ position: absolute; bottom:30px; left: 30px;color: #FFF; opacity: 0; transition: all .4s; z-index: 1; transform: translateY(20px);
       span:nth-child(1){ font-size: 16px; margin-right: 10px;}
       span:nth-child(2){ font-size: 12px;}
     }
     &:hover{
       &:after{
-        border-color:rgba(255,255,255,.5);
+        border-color:rgba(255,255,255,.2);
+        box-shadow: 6px 0px 30px rgba(0, 0, 0, 0.7);
       }
-      .photo-info{ opacity: 1}
+      .photo-info{ opacity: 1; transform: translateY(0)}
       .photo-img{
-        img{ transform: scale(1.05,1.05);  display: block}
+        img{ transform: scale(1.05,1.05);  display: block; opacity: 1}
       }
     }
   }
 
-  .photo-detail{ position: fixed;top: 0; left: 0; right: 0; bottom:0; background: #000; z-index: 9; display: flex; color: #FFF;
-    .photo-left{ flex:1; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
-      .photo-list-height{}
-      .photo-list-body{ flex: 1;
-        img{ max-width: 100%; max-height: 100%; margin: 0 auto; display: block}
+  .photo-detail{
+    position: fixed;top: 0; left: 0; right: 0; bottom:0; background: #000; z-index: 9; display: flex; color: @font-lg; opacity: 0; pointer-events: none; transition: all ease .4s;
+    &.active{ opacity: 1; pointer-events: auto;}
+    .photo-left{
+      flex:1; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
+      .photo-list-header{
+        height: 60px; position: relative; line-height: 60px; text-align: center;
+        .close{ cursor: pointer; width: 40px; height: 40px; font-size: 32px; position: absolute; right: 20px; top:10px;}
+        .title{ position:absolute; left: 20px; }
+      }
+      .photo-list-body{
+        flex: 1; box-sizing: border-box; position: relative;
+        &:hover{
+          .next{right: 100px;}
+          .prev{left: 100px;}
+        }
+        .next,.prev{
+          position: absolute; top:50%; margin-top: -20px; height: 40px; width: 40px; border: 1px solid rgba(255,255,255,.2); display: flex; justify-content: center; align-items: center; cursor: pointer; z-index:9; transition: all ease .6s; color: @font-lg;
+          &:before{
+            content: ""; height: 1px; width: 100px; position: absolute; top:19px;  background: rgba(255,255,255,.2); display: block;
+          }
+        }
+        .next{
+          right: 60px;
+          &:before{
+            right: -101px;
+          }
+        }
+        .prev{
+          left: 60px;
+          &:before{
+             left: -101px;
+          }
+        }
+        .prev{ }
+        .prev{ }
+        .photo-plus-wrap{
+          position: absolute; top:0; left: 0; right: 0; bottom:0;
+          img{ max-width: 100%; max-height: 100%; margin: 0 auto; display: block}
+        }
       }
       .photo-list-footer{
-        flex-basis: 90px; position: relative;
+        height: 140px; position: relative;
         .photo-list-scroll{
-          position: absolute; left: 0; top:0;
+          position: absolute; left: 0; top:20px;
           ul{
             float: left;
             li{ float: left; width: 106px; height: 70px; overflow: hidden; margin:0 2px; position: relative;  cursor: pointer;
@@ -530,3 +497,27 @@ padding: 0 15px; border-radius: 15px;  border: 1px solid rgba(0,0,0,.1); color: 
     li.add-img{  font-size: 60px; text-align: center; line-height: 150px; color: #eee; background: #FFF; cursor: pointer}
   }
 }
+
+
+
+//登录界面
+.login-body{
+  background:#FFF; position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-repeat: repeat;  background-attachment: fixed;}
+.login-wrap{ position: absolute; top: 50%; left: 50%; transform: translate(-50%,-80%); width: 260px;}
+.login-logo{ text-align: center; font-size: 100px; color: @minColor;}
+.login-row{ position: relative; height: 35px; box-sizing: content-box; margin-bottom: 10px;  font-size: 12px; color: fade(@black,90%);
+  i{ position: absolute; left: 0; top: 50%; transform: translateY(-50%);}
+  input{ height: 100%; width: 100%; background: transparent; border-bottom: 1px solid rgba(0,0,0,.1); text-indent: 30px; color: @black;}
+  ::-webkit-input-placeholder{
+    color:fade(@black,90%);
+  }
+  input:-webkit-autofill {
+    -webkit-box-shadow : 0 0 0 1000px white inset;
+  }
+}
+.login-btn{ height: 44px; width: 100%; border-radius: 44px; background: @minColor; border: 0; color: @white; cursor: pointer; margin: 30px auto; display: block; text-align: center; transition:all .3s ease-in;
+  &:active{ background:fade(@minColor , 80%);}
+}
+.login-anime{ opacity: 0;}
+.back{ position: absolute; top: 30px; left: 100px; color: @black; cursor: pointer; font-size: 24px; opacity: 0;}
+

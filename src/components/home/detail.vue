@@ -1,7 +1,9 @@
 <template>
   <div class="detail-wrap">
-    <div class="loading-wrap">
-      <loading v-if="loading"></loading>
+    <div class="loading-mask" v-if="loading">
+      <div class="loading-wrap">
+        <loading></loading>
+      </div>
     </div>
     <div class="detail-body" v-if="!loading">
       <div class="close" @click="close"><i class="icon-close"></i></div>
@@ -16,7 +18,7 @@
         <p>人气</p>
       </div>
       <div class="column-title">
-        <span>{{message.length}}条评论</span>
+        <span>{{message.length}} 条评论</span>
         <i></i>
       </div>
       <dl class="detail-msg">
@@ -24,7 +26,7 @@
         <dd>
           <input type="text" placeholder="填写姓名" v-model="name" @keyup="input"/>
           <input type="text" placeholder="填写邮箱" v-model="email" @keyup="input"/>
-          <textarea rows="3" id="msg" v-model="contont" @keyup="input" placeholder="填写内容"></textarea>
+          <textarea rows="5" id="msg" v-model="contont" @keyup="input" placeholder="填写内容"></textarea>
           <div class="detail-btn">
             <button class="submit" :disabled="!commit" :class="{active:commit}" @click="push">评论</button>
           </div>

@@ -1,24 +1,35 @@
 <template>
-  <div class="blog-list wrap">
-    <div class="back-top" @click="backTop" v-if="isBack">Top</div>
-    <div>
+  <div class="blog-wrap">
+    <div class="banner">
+      <div></div>
+    </div>
+    <div class="back-top" @click="backTop" v-if="isBack">
+      <i class="icon-angle-up"></i>
+    </div>
+
+    <div class="blog-list">
+      <div class="title-wrap">
+        <p class="title">日记</p>
+        <p class="subtitle">diary</p>
+      </div>
+
       <div class="blog-item" v-for="item in detail">
-        <p class="source">该话题来自:{{item.type}}</p>
-        <div class="blog-title">
-          <router-link :to="'/detail/'+item.id">{{item.title}}</router-link>
-        </div>
-        <div class="blog-description">
-          <router-link :to="'/detail/'+item.id" class="blog-img" tag="div" v-if="item.pic"
-                       :style="item.pic"></router-link>
-          <router-link :to="'/detail/'+item.id" class="blog-text" tag="div">
-            {{item.detail}}
-          </router-link>
-        </div>
-        <div class="blog-handle">
-          <div class="blog-date">{{item.createdAt}}</div>
-        </div>
+        <router-link :to="'/detail/'+item.id" class="wrap position-rel" tag="div">
+          <div class="blog-description">
+            <div class="blog-date">
+              <p class="md">{{item.md}}</p>
+              <p class="year">{{item.year}}</p>
+            </div>
+            <div class="blog-content">
+              <div class="blog-title">{{item.title}}</div>
+              <div class="blog-text">{{item.detail}}</div>
+            </div>
+          </div>
+          <div class="blog-icon"><i class="icon-angle-right"></i></div>
+        </router-link>
       </div>
     </div>
+
     <div class="loading" v-if="loading">
       <loading></loading>
     </div>
@@ -85,22 +96,18 @@
             this.loading = false;
             for (let i = 0; i < results.length; i++) {
               let object = results[i];
-              let pic = object.get('pic') ? {
-                "background-image": `url(${object.get('pic')})`
-              } : false;
-
               let detail = this.delHtmlTag(object.get('detail'));
+              let year = object.createdAt.substring(0,4);
+              let md = object.createdAt.substring(5,10);
               this.detail.push({
-                  'id': object.id,
-                  'title': object.get('title'),
-                  'type': object.get('type'),
-                  'pic': pic,
-                  'look': object.get('look'),
-                  'detail':detail.length > 200 ? detail.substring(0, 140) + "..." : detail,
-                'createdAt'
-            :
-              object.createdAt
-            })
+                'id': object.id,
+                'title': object.get('title'),
+                'type': object.get('type'),
+                'look': object.get('look'),
+                'detail': detail.length > 70 ? detail.substring(0, 70) + "..." : detail,
+                'year': year,
+                'md':md
+              })
             }
           },
           error: (error) => {

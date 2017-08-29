@@ -11,12 +11,7 @@
 					<i class="icon-email"></i>
 				</span>
 			</div>
-			<div class="author-label">
-				<span>Vue.js</span>
-				<span>javascript</span>
-				<span>html</span>
-				<span>css3</span>
-			</div>
+
 		</div>
 		<div class="column-title">
 			<span>个人履历</span>

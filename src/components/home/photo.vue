@@ -21,30 +21,42 @@
             <span>{{ item.pic.length }} 张</span>
           </div>
           <div class="photo-img">
-            <img :src="item.pic[0].src" alt="">
+            <img :src="item.pic[0].src">
           </div>
         </div>
       </waterfall-slot>
     </waterfall>
     </div>
 
-    <div class="photo-detail" v-if="showImg != ''">
+    <div class="photo-detail" :class="{ active:showImg != '' }">
       <div class="photo-left">
-        <div class="photo-list-header">top</div>
-        <div class="photo-list-body">
-          <img :src="showImg" alt="">
+        <div class="photo-list-header">
+          <div class="title">{{ title }}</div>
+          <div>{{sum}} / {{allsum}}</div>
+          <div class="close" @click="closeImg"><i class="icon-close"></i></div>
+        </div>
+        <div class="photo-list-body" ref="imgWrap">
+          <div class="prev" @click="prevImg">
+            <i class="icon-angle-left"></i>
+          </div>
+          <div class="photo-plus-wrap">
+            <img :src="showImg" alt="" ref="imgPlus">
+          </div>
+          <div class="next" @click="nextImg">
+            <i class="icon-angle-right"></i>
+          </div>
         </div>
         <div class="photo-list-footer">
           <div class="photo-list-scroll" :style="{width:allWidth+'px'}">
             <ul v-for="(item, index) in detail">
-              <li v-for="(items, indexs) in item.pic" @click="clickImg(index,indexs)" :class="{active:showImg == items.src}">
+              <li v-for="(items, indexs) in item.pic" @click="switchImg(index,indexs)" :class="{active:showImg == items.src}">
                 <img :src="items.src" alt="">
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="photo-right">1231</div>
+      <div class="photo-right"></div>
     </div>
 
   </div>
@@ -63,13 +75,20 @@
         detail:[],
         grow: [2, 2, 3, 2],
         loading:false,
-        showImg:""
+        showImg:"",
+        title:"标题",
+        allsum:0,
+        sum:0,
+        parent:null,
+        child:null
       }
     },
     created(){
+      //获取数据
       this.getList();
     },
     computed:{
+      //计算图片列表的宽度
       allWidth(){
         let iNow = 0;
         for(let i=0; i<this.detail.length; i++){
@@ -107,12 +126,35 @@
           }
         });
       },
-      clickImg(parent,child){
+      //切换图片
+      switchImg(parent,child){
         this.showImg = this.detail[parent].pic[child].src;
+        this.title = this.detail[parent].title;
+        this.allsum = this.detail[parent].pic.length;
+        this.sum = child+1;
+        this.parent = parent;
+        this.child = child;
       },
+      //弹出大图
       showPlus(index){
-        console.log(1)
         this.showImg = this.detail[index].pic[0].src;
+        this.title = this.detail[index].title;
+        this.allsum = this.detail[index].pic.length;
+        this.sum = 1;
+        this.parent = index;
+        this.child = 0;
+        document.body.style="overflow:hidden;";
+      },
+      //关闭图片
+      closeImg(){
+        this.showImg = "";
+        document.body.style= "";
+      },
+      nextImg(){
+
+      },
+      prevImg(){
+
       }
     },
     components:{

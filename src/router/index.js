@@ -5,7 +5,6 @@ import Router from 'vue-router'
 import index from '@/components/home/index'
 import home from '@/components/home/home'
 import photo from '@/components/home/photo'
-import draw from '@/components/home/draw'
 import about from '@/components/home/about'
 import msg from '@/components/home/msg'
 import detail from '@/components/home/detail'
@@ -31,6 +30,7 @@ export default new Router({
     redirect: '/home',
     children: [{
       path: '/home',
+      name:'home',
       component: home,
     }, {
       path: '/detail/:id?',
@@ -38,10 +38,8 @@ export default new Router({
       component: detail,
     }, {
       path: '/photo',
+      name: 'photo',
       component: photo
-    }, {
-      path: '/draw',
-      component: draw
     }, {
       path: '/about',
       name: 'about',
