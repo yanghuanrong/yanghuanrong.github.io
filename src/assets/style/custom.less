@@ -72,11 +72,14 @@
     }
     nav{ flex: 1;
         li{ margin-left: 30px; font-size: 15px;
-            &>.router-link-active{ color: @minColor;}
+          a{transition: all .3s}
+          &>.router-link-active{ color: @minColor;}
         }
     }
     .app{ flex-basis: 220px; text-align: right;
-        a{ font-size: 22px; margin-left: 20px;}
+      a{ font-size: 22px; margin-left: 20px; transition: all .3s}
+      a:nth-child(1):hover{color: #56abe2}
+      a:nth-child(2):hover{color: #e6162d}
     }
 }
 .page-footer{
@@ -134,7 +137,7 @@
         .blog-date{
           flex-basis:190px; height: 105px; background-size:cover; cursor: pointer; background-position: center; margin-right: 50px; text-align: right; font-family: "THEX";
           .md{
-            color: @minColor; font-size: 60px; line-height: 50px;
+            color: @minColor; font-size: 48px; line-height: 50px;
           }
           .year{ color: @font-md}
         }
@@ -160,11 +163,18 @@
   }
 }
 .detail-body{
-  width: 660px; margin: 0 auto; padding-top: 40px; padding-bottom: 100px; position: relative;
+  width: 660px; margin: 0 auto; padding-top: 90px; padding-bottom: 100px; position: relative;
   .close{
-    position: fixed; top: 40px; font-size: 32px; right: 50%; margin-right: -370px; color: @font-md; cursor: pointer; display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; border:1px solid rgba(255,255,255,.2); transition: all ease .4s;
-    &:hover{ background-color: @minColor; color: @white}
+    position: fixed; top: 0px; left: 0; color: @font-md;  width: 100%; height: 60px; border:1px solid rgba(255,255,255,.2); background: @bodyBG; z-index:3;
+    .wrap{ width: 660px;}
+    .close-btn{
+      transition: all ease .4s; width: 120px; border-right: 1px solid rgba(255,255,255,.2); height: 58px; line-height: 58px; display: flex; align-items: center;
+      i{ font-size: 24px; cursor: pointer;}
+      span{ font-size: 16px; cursor: pointer;}
+      &:hover{ color: @minColor; color: @white}
+    }
   }
+
 }
 .detail-img{
   width: 660px; height: 330px; background-size:cover; margin-bottom: 22px; background-position: center;
@@ -254,6 +264,7 @@
 
 //摄影页面
 .photo{ padding: 90px 75px;
+  .loading-wrap{ display: flex; justify-content: center}
   .post-photo{
     position: relative; height: inherit;
     .photo-img{ position: absolute; top: 5px; left: 5px; right: 5px;bottom: 5px; overflow: hidden;  cursor: pointer;
@@ -320,12 +331,10 @@
         }
       }
       .photo-list-footer{
-        height: 140px; position: relative;
-        .photo-list-scroll{
-          position: absolute; left: 0; top:20px;
+        height: 90px; padding-top: 10px;
           ul{
-            float: left;
-            li{ float: left; width: 106px; height: 70px; overflow: hidden; margin:0 2px; position: relative;  cursor: pointer;
+            display: flex; justify-content: center;
+            li{  width: 106px; height: 70px; overflow: hidden; margin:0 2px; position: relative;  cursor: pointer;
               img{ width: 100%; position: absolute; top: 50%; transform: translateY(-50%); opacity: .5}
               &.active{
                 img{ opacity: 1}
@@ -335,7 +344,6 @@
               }
             }
           }
-        }
       }
     }
     .photo-right{ flex-basis: 320px; border-left:1px solid rgba(255,255,255,.2) }

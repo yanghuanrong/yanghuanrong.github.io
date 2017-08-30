@@ -1,8 +1,5 @@
 <template>
   <div class="photo">
-    <div class="loading-wrap">
-      <loading v-if="loading"></loading>
-    </div>
     <div id="listwrap">
     <waterfall :line-gap="200" :watch="detail" :grow="grow">
       <!-- each component is wrapped by a waterfall slot -->
@@ -27,6 +24,9 @@
       </waterfall-slot>
     </waterfall>
     </div>
+    <div class="loading-wrap">
+      <loading v-if="loading"></loading>
+    </div>
 
     <div class="photo-detail" :class="{ active:showImg != '' }">
       <div class="photo-left">
@@ -46,17 +46,15 @@
             <i class="icon-angle-right"></i>
           </div>
         </div>
-        <div class="photo-list-footer">
-          <div class="photo-list-scroll" :style="{width:allWidth+'px'}">
-            <ul v-for="(item, index) in detail">
-              <li v-for="(items, indexs) in item.pic" @click="switchImg(index,indexs)" :class="{active:showImg == items.src}">
-                <img :src="items.src" alt="">
+        <div class="photo-list-footer" v-if="showImg != ''">
+            <ul>
+              <li v-for="(item, index) in detail[parent].pic"  @click="switchImg(parent,index)" :class="{active:showImg == item.src}">
+                <img :src="item.src" alt="">
               </li>
             </ul>
-          </div>
         </div>
       </div>
-      <div class="photo-right"></div>
+      <!--<div class="photo-right"></div>-->
     </div>
 
   </div>
@@ -86,16 +84,6 @@
     created(){
       //获取数据
       this.getList();
-    },
-    computed:{
-      //计算图片列表的宽度
-      allWidth(){
-        let iNow = 0;
-        for(let i=0; i<this.detail.length; i++){
-          iNow += this.detail[i].pic.length
-        }
-        return iNow * 110
-      }
     },
     methods:{
       //查询数据
@@ -150,11 +138,41 @@
         this.showImg = "";
         document.body.style= "";
       },
+
+      //切换下一组
       nextImg(){
+        let parent = this.parent;
+        let child = this.child;
 
+        if(parent+1 == this.detail.length && child+1 == this.detail[parent].pic.length){
+          alert('最后一组了')
+        }else{
+          if(child+1 == this.detail[parent].pic.length){
+            this.parent++;
+            this.child = 0;
+          }else{
+            this.child++;
+          }
+          this.switchImg(this.parent,this.child)
+        }
       },
+      //切换上一组
       prevImg(){
+        let parent = this.parent;
+        let child = this.child;
 
+        if(parent <= 0 && child <= 0){
+          alert('第一组了')
+        }else{
+          if(child <= 0){
+            this.parent--;
+            this.child = this.detail[this.parent].pic.length-1;
+            console.log(this.parent,this.child)
+          }else{
+            this.child--;
+          }
+          this.switchImg(this.parent,this.child)
+        }
       }
     },
     components:{

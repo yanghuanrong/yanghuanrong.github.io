@@ -6,7 +6,13 @@
       </div>
     </div>
     <div class="detail-body" v-if="!loading">
-      <div class="close" @click="close"><i class="icon-close"></i></div>
+      <div class="close" @click="close">
+        <div class="wrap">
+          <div class="close-btn">
+            <i class="icon-close"></i> <span>关闭</span>
+          </div>
+        </div>
+      </div>
       <div class="detail-img" v-if="detail.pic" :style="detail.pic"></div>
       <h1 class="detail-title">{{detail.title}}</h1>
       <div class="detail-author" v-if="detail.author">
@@ -22,7 +28,7 @@
         <i></i>
       </div>
       <dl class="detail-msg">
-        <dt><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2401881700,2342273471&fm=58"/></dt>
+        <dt><img src="http://ov0xnpdna.bkt.clouddn.com/profile.jpg"/></dt>
         <dd>
           <input type="text" placeholder="填写姓名" v-model="name" @keyup="input"/>
           <input type="text" placeholder="填写邮箱" v-model="email" @keyup="input"/>
@@ -34,7 +40,7 @@
       </dl>
       <div class="detail-msg-list">
         <dl v-for="item in message">
-          <dt><img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2401881700,2342273471&fm=58"/></dt>
+          <dt><img src="http://ov0xnpdna.bkt.clouddn.com/profile.jpg"/></dt>
           <dd>
             <span>{{item.createdAt}}</span>
             <b>{{item.name}}</b>
