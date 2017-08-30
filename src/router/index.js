@@ -7,6 +7,7 @@ import home from '@/components/home/home'
 import photo from '@/components/home/photo'
 import about from '@/components/home/about'
 import msg from '@/components/home/msg'
+import link from '@/components/home/link'
 import detail from '@/components/home/detail'
 
 //后端管理
@@ -48,6 +49,10 @@ export default new Router({
       path: '/msg',
       name: 'msg',
       component: msg
+    }, {
+      path: '/link',
+      name: 'link',
+      component: link
     }]
   },
     {

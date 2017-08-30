@@ -348,10 +348,25 @@
     }
     .photo-right{ flex-basis: 320px; border-left:1px solid rgba(255,255,255,.2) }
   }
-
-
 }
 
+//友情链接
+.link{
+  .title-wrap{ padding-top: 120px !important;}
+  .link-list{
+    display: flex; justify-content: center;
+    ul{
+      width: 900px; display: flex; justify-content: center;
+      li{
+        height: 70px; display: flex; align-items: center; justify-content: center; padding: 0 20px;
+        img{ height: 40px; filter: grayscale(1); transition:all ease .4s}
+        &:hover{
+          img{ filter: initial; }
+        }
+      }
+    }
+  }
+}
 
 //fade动画
 .fade-enter-active, .fade-leave-active {

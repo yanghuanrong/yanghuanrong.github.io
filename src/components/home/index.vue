@@ -19,6 +19,9 @@
 						<li>
 							<router-link to="/msg" tag="a">留言</router-link>
 						</li>
+            <li>
+							<router-link to="/link" tag="a">链接</router-link>
+						</li>
 					</ul>
 				</nav>
 				<div class="app">

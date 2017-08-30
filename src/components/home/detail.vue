@@ -130,6 +130,16 @@
           alert("查询失败: " + error.code + " " + error.message);
         }
       });
+
+
+      //判断local是否有信息
+      const local = this.$local.fetch('user');
+
+      if(!this.isEmptyObject(local)){
+        this.name = local.name;
+        this.email = local.email;
+      }
+
     },
     watch: {
       '$route': 'fetchData'
@@ -161,13 +171,24 @@
               'createdAt': res.createdAt,
               'name': res.get('name'),
               'contont': res.get('contont')
-            })
+            });
             this.contont = "";
             this.commit = false;
+            //将名字和邮箱保存至本地；避免重复输入
+            this.$local.save('user',{
+              'name':this.name,
+              'email':this.email
+            });
           },
           error: (gameScore, error) => {
           }
         });
+      },
+      isEmptyObject(e){
+        let t;
+        for(t in e)
+          return !1;
+        return !0;
       }
     },
     components: {
