@@ -1,8 +1,10 @@
 const path = require('path')
-
+console.log(process.env.NODE_ENV)
 module.exports = {
     // 扩展 webpack 配置
+    publicPath: process.env.NODE_ENV === "production" ? "/blog" : "/",
     chainWebpack: config => {
+        
         config.resolve.alias
             .set('@blog', path.resolve('src/blog'));
 
