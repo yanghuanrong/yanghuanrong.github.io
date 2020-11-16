@@ -4,7 +4,7 @@ module.exports = {
     // 扩展 webpack 配置
     chainWebpack: config => {
         config.resolve.alias
-            .set('@blog', path.resolve('blog'));
+            .set('@blog', path.resolve('src/blog'));
 
         config.module.rule('md')
             .test(/\.md/)
