@@ -30,15 +30,15 @@ const md = require('markdown-it')({
   // 使用 emoji 插件渲染 emoji
   .use(emoji)
   // 使用 anchor 插件为标题元素添加锚点
-  .use(anchor, {
-    permalink: true,
-    permalinkBefore: true,
-    permalinkSymbol: '#'
-  })
+  // .use(anchor, {
+  //   permalink: true,
+  //   permalinkBefore: true,
+  //   permalinkSymbol: '#'
+  // })
   // 使用 table-of-contents 插件实现自动生成目录
-  .use(toc, {
-    includeLevel: [2, 3]
-  })
+  // .use(toc, {
+  //   includeLevel: [2, 3]
+  // })
   // 定义自定义的块容器
   .use(containers)
 
@@ -60,7 +60,7 @@ module.exports = function (src) {
 
   const res = (
     `<template>\n` +
-    `<div class="content">${html}</div>\n` +
+    `<div class="markdown">${html}</div>\n` +
     `</template>\n`
   )
   cache.set(key, res)

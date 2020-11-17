@@ -9,7 +9,7 @@ fs.readdir(path(__dirname, '../blog'), (err, files) => {
   if (err) {
     return console.log('目录不存在')
   }
-
+  console.log('正在读取md文件')
   files.forEach((file, i) => {
     const filePath = path(__dirname, `../blog/${file}`)
     const fileContent = fs.readFileSync(filePath, 'utf-8')
@@ -27,13 +27,15 @@ fs.readdir(path(__dirname, '../blog'), (err, files) => {
     })
   })
 
+  console.log('正在写入数据')
+
   const fileArray = fileJSON.sort((a, b) => (Date.parse(b.ctime) - Date.parse(a.ctime)))
 
   const dataJSON = `export default { data:${JSON.stringify(fileArray)} }`
   
   const dataPath = path(__dirname, `../src/utils/data.js`)
   fs.writeFile(dataPath, dataJSON, err => {
-    console.log('src/utils/data.json文件更新成功')
+    console.log('data.js文件更新成功')
     if (err) {
       console.error(err)
       return
