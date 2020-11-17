@@ -1,17 +1,23 @@
-name: buildAndDeploy
 on:
-  push
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest # 我们选择使用最新的ubuntu系统
-    steps:
-    - name: checkout
-      uses: actions/checkout@master # 将代码拷贝到虚机中
+  push:
+    branches:
+    - master
 
-    - name: buildAndDeploy
-      uses: JamesIves/github-pages-deploy-action@master 
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - run: npm ci
+    - run: npm run build
+
+    #发布到mybells.github.io/master
+    - name: Deploy yanghuanrong.github.io/master
+      uses: peaceiris/actions-gh-pages@v2
       env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # 使用刚新建的secret
-        BRANCH: gh-pages # 存放产物的分支名称
-        FOLDER: dist # 存放build后产物的目录
-        BUILD_SCRIPT: npm install && npm run build # 执行的命令
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACCESS_TOKEN }}
+        EXTERNAL_REPOSITORY: yanghuanrong/yanghuanrong.github.io #可以新建一个mybells.github.io仓库发布到master
+        PUBLISH_BRANCH: master
+        PUBLISH_DIR: dist
+      with:
+          emptyCommits: false

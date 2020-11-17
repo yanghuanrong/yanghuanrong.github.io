@@ -2,10 +2,11 @@
   "name": "codes",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://yanghuanrong.github.io/vue-running",
+  "homepage":"https://yanghuanrong.github.io/",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "publish": "deploy.sh"
   },
   "dependencies": {
     "core-js": "^3.6.5",
