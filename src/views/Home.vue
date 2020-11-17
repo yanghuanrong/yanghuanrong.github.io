@@ -1,20 +1,25 @@
 <template>
   <div class="home">
     2
-    <test></test>
+    <md0></md0>
+    <!-- <test></test> -->
+    <HelloWorld/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-import test from '@blog/test.md'
+
+const components = {
+  HelloWorld
+}
+
+// const test = 'test'
+// components[test] = () => import('@blog/' + test + '.md');
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld,
-    test
-  }
+  components: components
 }
 </script>
