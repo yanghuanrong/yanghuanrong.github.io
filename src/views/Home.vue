@@ -2,7 +2,7 @@
   <div class="home">
     <div class="container intro">
       <div class="sectionheader flex flex-column">
-        <h3>我是一名WEB前端工作者，住在广东的佛山地区——用耳熟能详的前端技术构建成熟的应用程序。</h3>
+        <h3>我是一名WEB前端工作者，住在广东的佛山地区——用耳熟能详的前端技术快乐的构建应用程序。</h3>
         <p>现在每天早上起床，在Wechat, QQ上和朋友们一起探讨和研究技术。总是致力于建造和学习新东西。</p>
       </div>
     </div>
@@ -27,7 +27,7 @@
         <div class="info">
           <h4>提升</h4>
           <p>
-            使用Vue编写的功能齐全的WEB应用程序
+            使用VUE编写的功能齐全的WEB应用程序
             <br />供内部使用。
           </p>
         </div>
@@ -60,7 +60,7 @@
             </div>
           </h3>
 
-          <p>我们都热爱开源。因为它可以促进人类社会的发展。下面是我构建与参与的几个项目。</p>
+          <p>我们都热爱开源，它可以让我们更好的工作。下面是我构建与参与的几个项目。</p>
         </div>
         <div class="splitter">
           <span>OPEN SOURCE PROJECTS</span>
@@ -72,7 +72,7 @@
             <h5>RelaxUI</h5>
           </div>
           <div class="col-xs-12 col-sm-7">
-            <p class="mb6">基于Vue编写的UI组件库</p>
+            <p class="mb6">基于VUE编写的UI组件库</p>
             <a href="https://github.com/yanghuanrong/RelaxUI" class="button link" target="_blank">
               <span>GitHub</span>
               <svg
@@ -98,7 +98,7 @@
             <h5>hydrogen-js-sdk</h5>
           </div>
           <div class="col-xs-12 col-sm-7">
-            <p class="mb6">本SDK基于es6开发，致力打造基于前端混合开发需求，支持微信小程序、H5、快应用、游戏Cocos、混合App等平台。</p>
+            <p class="mb6">本SDK基于ES6开发，致力打造基于前端混合开发需求，支持微信小程序、H5、快应用、游戏Cocos、混合App等平台。</p>
             <a href="https://github.com/bmob/hydrogen-js-sdk" class="button link" target="_blank">
               <span>GitHub</span>
               <svg
@@ -121,17 +121,17 @@
       </div>
     </section>
 
-    <!-- <section class="container flex flex-column talk">
+    <section class="container flex flex-column talk">
       <div class="project black">
         <div class="info">
-          <h4>有项目吗</h4>
+          <h4>有项目吗？聊聊。</h4>
           <p>
-            具备设计和编写网站的重要技能
-            <br />HTML CSS JavaScript
+            即使是一个重构切图的项目或者是想法？
+            <br />也可以告诉我
           </p>
         </div>
       </div>
-    </section> -->
+    </section>
 
   </div>
 </template>
