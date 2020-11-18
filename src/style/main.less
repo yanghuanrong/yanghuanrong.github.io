@@ -1,1 +1,150 @@
 @import 'rest.less';
+@import 'layout.less';
+
+body {
+  font-family: 'calibre bold';
+  font-size: 22px;
+}
+
+#app {
+  padding-top: 80px;
+}
+
+.header {
+  padding: 32px;
+
+  .logo {
+    font-family: 'calibre bold';
+    font-weight: bold;
+  }
+}
+
+.hljs code {
+  font-family: 'calibre';
+}
+
+.sectionheader {
+  line-height: 1.4;
+
+  h3 {
+    font-family: "Calibre bold";
+    font-size: 64px;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  p {
+    margin-top: 24px;
+    font-size: 26px;
+  }
+}
+
+.project {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 80px;
+  overflow: hidden;
+  transform: scale(1);
+  transition: transform .18s ease;
+  border-radius: 8px;
+  color: #FFF;
+  margin-top: 32px;
+
+  &:nth-of-type(1) {
+    margin-top: 0;
+  }
+
+  &.black {
+    background-color: #000;
+  }
+
+  &.blue {
+    background-color: #30f;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  .info {
+    h4 {
+      font-size: 44px;
+    }
+
+    p {
+      margin-top: 20px;
+      color: fade(#FFF, 80%);
+    }
+  }
+}
+
+.opensource {
+  margin-top: 124px;
+
+  .sectionheader {
+
+    p {
+      font-size: 26px;
+      line-height: 1.5;
+      max-width: 800px;
+      margin-top: 24px;
+    }
+
+  }
+
+  .splitter {
+    margin-top: 72px;
+  }
+
+  h3 {
+    font-size: 64px;
+  }
+
+  .pulse {
+    animation: pulse .65s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+
+    60% {
+      transform: scale(1.14);
+    }
+
+    80% {
+      transform: scale(0.94);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+.osproject {
+  padding: 48px 0;
+  position: relative;
+
+  &+&{
+    border-top: 1px solid #efefef;
+  }
+
+  h5{
+    font-size: 32px;
+  }
+  p{
+    color: #1b1b1b;
+    font-weight: 400;
+    margin-bottom: 24px;
+    font-size: 22px;
+    font-family: "calibre";
+  }
+}
+
+.footer{
+  padding-top: 64px;
+  padding-bottom: 64px;
+}

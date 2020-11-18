@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import "highlight.js/styles/github.css"
 import './style/main.less'
+
 import {registered} from './utils/registered'
 Vue.config.productionTip = false
 
