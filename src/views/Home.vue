@@ -124,7 +124,7 @@
     <section class="container flex flex-column talk">
       <div class="project black">
         <div class="info">
-          <h4>有项目吗？聊聊。</h4>
+          <h4>有项目吗？聊聊</h4>
           <p>
             即使是一个重构切图的项目或者是想法？
             <br />也可以告诉我
