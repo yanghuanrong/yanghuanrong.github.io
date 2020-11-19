@@ -27,7 +27,7 @@
         <div class="info">
           <h4>提升</h4>
           <p>
-            使用VUE编写的功能齐全的WEB应用程序
+            使用VUE编写功能齐全的WEB应用程序
             <br />供内部使用。
           </p>
         </div>

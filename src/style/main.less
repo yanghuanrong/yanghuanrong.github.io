@@ -128,14 +128,15 @@ body {
   padding: 48px 0;
   position: relative;
 
-  &+&{
+  &+& {
     border-top: 1px solid #efefef;
   }
 
-  h5{
+  h5 {
     font-size: 32px;
   }
-  p{
+
+  p {
     color: #1b1b1b;
     font-weight: 400;
     margin-bottom: 24px;
@@ -144,7 +145,21 @@ body {
   }
 }
 
-.footer{
+.footer {
   padding-top: 64px;
   padding-bottom: 64px;
+
+  .socialicons {
+
+    a {
+      margin-left: 30px;
+      transform: scale(1);
+      transition: all 0.18s ease;
+
+      &:hover {
+        color: #000;
+        transform: scale(1.12);
+      }
+    }
+  }
 }
