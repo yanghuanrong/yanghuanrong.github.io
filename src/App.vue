@@ -2,7 +2,7 @@
   <div id="app">
     <header class="header">
       <div class="container">
-        <div class="logo">贝贝的HTML</div>
+        <div class="logo"><a href="/">贝贝的HTML</a></div>
         <div class="menu"></div>
       </div>
     </header>

@@ -5,13 +5,15 @@ const md = new MarkdownIt();
 
 const fileJSON = []
 
-fs.readdir(path(__dirname, '../blog'), (err, files) => {
+const blogPath = '../blog/md'
+
+fs.readdir(path(__dirname, blogPath), (err, files) => {
   if (err) {
     return console.log('目录不存在')
   }
   console.log('正在读取md文件')
   files.forEach((file, i) => {
-    const filePath = path(__dirname, `../blog/${file}`)
+    const filePath = path(__dirname, `${blogPath}/${file}`)
     const fileContent = fs.readFileSync(filePath, 'utf-8')
     const fileHTML = md.render(fileContent);
     const title = fileHTML.match(/<h1.*?>(.*?)<\/h1>/)
