@@ -1,4 +1,7 @@
-on: page_build
+on: 
+  page_build:
+    branches:
+      - gh-pages
 
 jobs:
   sync:
