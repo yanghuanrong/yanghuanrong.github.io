@@ -18,10 +18,7 @@ jobs:
         FOLDER: dist # 存放build后产物的目录
         BUILD_SCRIPT: npm install && npm run build # 执行的命令
 
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Sync to Gitee
+    - name: SyncToGitee
       uses: wearerequired/git-mirror-action@master
       env:
           # 注意在 Settings->Secrets 配置 GITEE_RSA_PRIVATE_KEY
@@ -32,7 +29,7 @@ jobs:
           # 注意替换为你的 Gitee 目标仓库地址  
           destination-repo: "git@gitee.com:bsie/bsie.git"
 
-    - name: Build Gitee Pages
+    - name: BuildGiteePages
       uses: yanglbme/gitee-pages-action@master
       with:
           # 注意替换为你的 Gitee 用户名
