@@ -13,7 +13,7 @@ module.exports = {
             .use('vue-loader')
             .loader('vue-loader')
             .end()
-            .use(path.resolve('config/lib/index.js'))
-            .loader(path.resolve('config/lib/index.js'))
+            .use(path.resolve('config/md-loader/index.js'))
+            .loader(path.resolve('config/md-loader/index.js'))
     }
 }

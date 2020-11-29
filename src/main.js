@@ -8,8 +8,18 @@ import {registered} from './utils/registered'
 Vue.config.productionTip = false
 
 
+import Button from './components/Button'
+import demoBlock from './components/demoBlock'
+
 registered(Vue)
 
+Vue.config.warnHandler = function (msg, vm, trace) {
+  // `trace` 是组件的继承关系追踪
+  console.log(msg)
+}
+
+Vue.component('Button', Button)
+Vue.component('demoBlock', demoBlock)
 
 new Vue({
   router,

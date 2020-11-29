@@ -6,7 +6,8 @@
         <div class="menu"></div>
       </div>
     </header>
-    <router-view />
+
+    <router-view></router-view>
 
     <footer class="container flex flex-column footer">
       <div class="links flex justify-between">
