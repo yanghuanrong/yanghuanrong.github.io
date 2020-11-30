@@ -23,9 +23,9 @@ fs.readdir(path(__dirname, blogPath), (err, files) => {
     fileJSON.push({
       title: title[1],
       file: file,
-      ctime: fileInfo.ctime,
+      ctime: fileInfo.birthtime,
       components: `md${i}`,
-      createTime: timeFormat(fileInfo.ctime)
+      createTime: timeFormat(fileInfo.birthtime)
     })
   })
 
