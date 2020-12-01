@@ -1,0 +1,68 @@
+.blog-doc {
+    margin: 120px 0 152px;
+
+    &>h1 {
+        font-family: "Calibre bold";
+        font-size: 64px;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    &>p {
+        margin-top: 24px;
+        font-size: 26px;
+    }
+
+    .demo-block {
+        margin-top: 124px;
+
+        code {
+            font-family: Menlo, Monaco, Consolas, Courier, monospace;
+        }
+
+        .source {
+            padding: 24px 0;
+        }
+
+        .description {
+            box-sizing: border-box;
+            border-radius: 3px;
+            font-size: 14px;
+            line-height: 22px;
+            color: #666;
+            word-break: break-word;
+
+            p {
+                margin: 0;
+                line-height: 26px;
+            }
+
+            code {
+                color: #5e6d82;
+                display: inline-block;
+                padding: 20px;
+                font-size: 12px;
+                border-radius: 3px;
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .highlight {
+            pre {
+                margin: 0;
+            }
+
+            code.hljs {
+                margin: 0;
+                border: none;
+                max-height: none;
+                border-radius: 0;
+
+                &::before {
+                    content: none;
+                }
+            }
+        }
+    }
+}
