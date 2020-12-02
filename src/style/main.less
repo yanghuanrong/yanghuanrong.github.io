@@ -15,21 +15,26 @@ body {
   padding-top: 175px;
 }
 
-.header {
-  padding: 32px;
+.header{
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  padding-top: 112px;
-
+  
   &.fixed {
     position: fixed;
-    padding-top: 32px;
     background-color: fade(#FFF, 98%);
-    z-index: 10;
     backdrop-filter: blur(10px);
+    z-index: 100;
+
+    .topbar{
+      padding-top: 32px;
+    }
   }
+
+.topbar {
+  padding: 32px;
+  padding-top: 112px;
 
   .logo {
     font-family: 'calibre bold';
@@ -51,7 +56,7 @@ body {
     right: 32px;
     top: 0;
     cursor: pointer;
-    z-index: 51;
+    z-index: 2;
     transition: all .4s ease;
 
     &.open {
@@ -114,11 +119,12 @@ body {
     }
 
   }
+}
 
   .menu{
     background-color: #000;
     position: fixed;
-    z-index: 50;
+    z-index: 1;
     height: 0;
     left: 0;
     right: 0;

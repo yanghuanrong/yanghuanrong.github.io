@@ -1,24 +1,31 @@
 <template>
-  <header class="header" :class="{ fixed: fixed }">
-    <div class="container flex items-center justify-between relative">
-      <div class="logo">
-        <a href="/">贝贝的HTML</a>
+  <div class="header" :class="{ fixed: fixed}" >
+    <header class="topbar">
+      <div class="container flex items-center justify-between relative">
+        <div class="logo">
+          <a href="/">贝贝的HTML</a>
+        </div>
+        <div class="menutoggle" @click="menuTap" ref="close" :class="{ open: menu }">
+          <span>
+            <i></i>
+          </span>
+          <span>
+            <i></i>
+          </span>
+        </div>
       </div>
-      <div class="menutoggle" @click="menuTap" ref="close" :class="{ open: menu }">
-        <span>
-          <i></i>
-        </span>
-        <span>
-          <i></i>
-        </span>
-      </div>
-    </div>
+    </header>
     <div class="menu" :class="{open: menu}">
       <div class="container flex flex-column">
         <div class="splitter">
           <span>Contents</span>
         </div>
-        <a v-for="(item, i) in nav" @click="router(item, i)" :class="{active: active === i}" :key="item.name">
+        <a
+          v-for="(item, i) in nav"
+          @click="router(item, i)"
+          :class="{active: active === i}"
+          :key="item.name"
+        >
           <span>{{item.name}}</span>
           <div class="arrow">
             <svg
@@ -39,7 +46,7 @@
         </a>
       </div>
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -49,28 +56,30 @@ export default {
       fixed: false,
       menu: false,
       active: null,
-      nav:[{
-        path: '/blog',
-        name: '博客文章'
-      },{
-        path: '/about',
-        name: '关于'
-      }]
+      nav: [
+        {
+          path: "/blog",
+          name: "博客文章",
+        },
+        {
+          path: "/about",
+          name: "关于",
+        },
+      ],
     };
   },
   mounted() {
     window.addEventListener("scroll", this.isFixed, false);
   },
   methods: {
-    router(item, i){
-      if(this.$route.path === item.path) return
+    router(item, i) {
+      if (this.$route.path === item.path) return;
 
-      this.active = i
+      this.active = i;
       setTimeout(() => {
-        this.menuTap()
-        this.$router.push(item.path)
-      }, 800)
-
+        this.menuTap();
+        this.$router.push(item.path);
+      }, 800);
     },
     isFixed() {
       this.fixed = window.pageYOffset >= 80 ? true : false;
@@ -79,7 +88,7 @@ export default {
       this.menu = !this.menu;
 
       if (this.menu) {
-        this.active = null
+        this.active = null;
         this.$refs.close.style.top = this.fixed ? "80px" : "0";
         document.body.style.overflow = "hidden";
       } else {
