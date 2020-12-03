@@ -6,14 +6,14 @@ module.exports = {
     chainWebpack: config => {
         
         config.resolve.alias
-            .set('@blog', path.resolve('blog'));
+            .set('@blog', path.resolve('blog'))
 
         config.module.rule('md')
             .test(/\.md/)
             .use('vue-loader')
             .loader('vue-loader')
             .end()
-            .use(path.resolve('config/md-loader/index.js'))
-            .loader(path.resolve('config/md-loader/index.js'))
+            .use(path.resolve('blog/config/md-loader.js'))
+            .loader(path.resolve('blog/config/md-loader.js'))
     }
 }

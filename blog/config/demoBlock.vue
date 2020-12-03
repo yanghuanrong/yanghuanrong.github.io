@@ -22,7 +22,6 @@
 import hljs from "highlight.js";
 import "highlight.js/styles/atom-one-dark.css";
 
-import { stripScript, stripStyle, stripTemplate } from "./util.js";
 export default {
   mounted() {
     this.$nextTick(() => {

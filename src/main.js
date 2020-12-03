@@ -3,17 +3,10 @@ import App from './App.vue'
 import router from './router'
 import './style/main.less'
 
-import { registered } from './utils/registered'
+import Blog from '@blog/data'
 Vue.config.productionTip = false
 
-
-// import Button from './components/Button'
-import demoBlock from './components/demoBlock'
-
-registered(Vue)
-
-// Vue.component('Button', Button)
-Vue.component('demoBlock', demoBlock)
+Vue.use(Blog)
 
 new Vue({
   router,
