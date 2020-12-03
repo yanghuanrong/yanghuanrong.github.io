@@ -7,12 +7,12 @@ import { registered } from './utils/registered'
 Vue.config.productionTip = false
 
 
-import Button from './components/Button'
+// import Button from './components/Button'
 import demoBlock from './components/demoBlock'
 
 registered(Vue)
 
-Vue.component('Button', Button)
+// Vue.component('Button', Button)
 Vue.component('demoBlock', demoBlock)
 
 new Vue({

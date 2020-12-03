@@ -71,7 +71,7 @@ export default {
 
 <style lang="less" scope>
   
-  @default:#e3eaef;
+@default:#e3eaef;
 @success:#0acf97;
 @primary:#2d7bf4;
 @warning:#f9bc0b;

@@ -4,9 +4,10 @@ const {
   genInlineComponentText
 } = require('./util');
 const md = require('./config');
+const matter = require('gray-matter');
 
 module.exports = function(source) {
-  const content = md.render(source);
+  const content = md.render(matter(source).content);
 
   const startTag = '<!--element-demo:';
   const startTagLen = startTag.length;
@@ -57,8 +58,6 @@ module.exports = function(source) {
 
 
   output.push(content.slice(start));
-  
-  console.log(output.join(''))
 
   return `
     <template>
