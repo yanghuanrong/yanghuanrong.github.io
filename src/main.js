@@ -12,10 +12,6 @@ import demoBlock from './components/demoBlock'
 
 registered(Vue)
 
-Vue.config.warnHandler = function (msg, vm, trace) {
-  console.log(msg)
-}
-
 Vue.component('Button', Button)
 Vue.component('demoBlock', demoBlock)
 

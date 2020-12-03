@@ -2,8 +2,8 @@
   <div class="header" :class="{ fixed: fixed}" >
     <header class="topbar">
       <div class="container flex items-center justify-between relative">
-        <div class="logo">
-          <a href="/">贝贝的HTML</a>
+        <div class="logo" @click="logoTap">
+          <a>贝贝的HTML</a>
         </div>
         <div class="menutoggle" @click="menuTap" ref="close" :class="{ open: menu }">
           <span>
@@ -72,6 +72,10 @@ export default {
     window.addEventListener("scroll", this.isFixed, false);
   },
   methods: {
+    logoTap(){
+      if (this.$route.path === '/') return;
+      this.$router.push('/');
+    },
     router(item, i) {
       if (this.$route.path === item.path) return;
 

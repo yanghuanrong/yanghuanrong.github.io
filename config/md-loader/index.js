@@ -55,7 +55,11 @@ module.exports = function(source) {
     pageScript = content.slice(0, start);
   }
 
+
   output.push(content.slice(start));
+  
+  console.log(output.join(''))
+
   return `
     <template>
       <section class="content blog-doc">
