@@ -38,3 +38,13 @@
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
 }
+
+.logo-enter-active, .logo-leave-active {
+    transition: all .5s;
+  }
+.logo-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    transform: translateY(-100%);
+}
+.logo-enter{
+    transform: translateY(100%);
+}

@@ -60,10 +60,10 @@ export default {
           this.fly = box.querySelectorAll('.fly-span')
   
           const off = this.list[this.active].move = true
-
-          ;[].forEach.call(this.fly, function(o){
-            o.style.cssText = `transform:translate3d(${(off ? random(-500, 500) : 0)}px, ${(off ? random(-500, 500) : 0)}px,${(off ? random(-500, 500) : 0)}px) scale(${(off ? random(2, 1) : 1)});opacity: ${(off ? 0 : 1)}; transition:all ${random(1, 2)}s ease ${random(0, 0.2)}s;`;  
-          });
+          this.fly.forEach((item) => {
+            item.style.cssText = `transform:translate3d(${(off ? random(-500, 500) : 0)}px, ${(off ? random(-500, 500) : 0)}px,${(off ? random(-500, 500) : 0)}px) scale(${(off ? random(2, 1) : 1)});opacity: ${(off ? 0 : 1)}; transition:all ${random(1, 2)}s ease ${random(0, 0.2)}s;`;
+          })
+    
           setTimeout(() => {
             this.$router.push({ name: 'detail', params: { id: item.blogName }})
           }, 800)
@@ -77,9 +77,9 @@ export default {
         }
         const off = this.list[this.active].move = false
         setTimeout(() => {
-          ;[].forEach.call(this.fly, function(o){
-          o.style.cssText = `transform:translate3d(${(off ? random(-500, 500) : 0)}px, ${(off ? random(-500, 500) : 0)}px,${(off ? random(-500, 500) : 0)}px) scale(${(off ? random(2, 1) : 1)});opacity: ${(off ? 0 : 1)}; transition:all ${random(1, 2)}s ease ${random(0, 0.2)}s`;  
-        });
+          this.fly.forEach((item) => {
+            item.style.cssText = `transform:translate3d(${(off ? random(-500, 500) : 0)}px, ${(off ? random(-500, 500) : 0)}px,${(off ? random(-500, 500) : 0)}px) scale(${(off ? random(2, 1) : 1)});opacity: ${(off ? 0 : 1)}; transition:all ${random(1, 2)}s ease ${random(0, 0.2)}s;`;
+          })
         })
     })
   }

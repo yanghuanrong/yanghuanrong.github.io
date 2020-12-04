@@ -3,7 +3,10 @@
     <header class="topbar">
       <div class="container flex items-center justify-between relative">
         <div class="logo" @click="logoTap">
-          <a>贝贝的HTML</a>
+          <transition name="logo" mode="out-in">
+            <a @click="$router.back(-1)" v-if="isDetial" key="logo">返回Blog</a>
+            <router-link  to="/"  v-else key="back">贝贝的HTML</router-link>
+          </transition>
         </div>
         <div class="menutoggle" @click="menuTap" ref="close" :class="{ open: menu }">
           <span>
@@ -56,6 +59,7 @@ export default {
       fixed: false,
       menu: false,
       active: null,
+      isDetial: false,
       nav: [
         {
           path: "/blog",
@@ -67,6 +71,13 @@ export default {
         },
       ],
     };
+  },
+  watch:{
+    $route(to,from){
+      setTimeout(() => {
+        this.isDetial = to.name === 'detail'
+      }, 1000)
+    }
   },
   mounted() {
     window.addEventListener("scroll", this.isFixed, false);
