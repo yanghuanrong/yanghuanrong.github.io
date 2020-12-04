@@ -426,3 +426,47 @@ body {
     }
   }
 }
+
+.blog-list{
+  margin-top: 120px;
+  li{
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 50px;
+
+    .time{
+      position: relative;
+      margin-right: 50px;
+
+      .year{
+        font-size: 12px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        letter-spacing: 4px;
+      }
+      .day{
+        font-size: 72px;
+      }
+    }
+
+    .title{
+      font-size: 56px;
+      font-family: 'calibre bold';
+      margin: 0;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;   
+      perspective: 400px;
+
+      span{
+        font-weight: 600;
+        font-family: 'calibre bold';
+        display: inline-block;
+      }
+    }
+  }
+}
