@@ -1,10 +1,12 @@
 <template>
   <div id="app">
-    <Header/>
-     <transition name="fade" mode="out-in">
-      <router-view class="body"></router-view>
+    <Header />
+    <transition name="fade" mode="out-in">
+      <keep-alive include="blog">
+        <router-view class="body"></router-view>
+      </keep-alive>
     </transition>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
