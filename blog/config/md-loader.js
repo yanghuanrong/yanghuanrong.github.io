@@ -1,7 +1,14 @@
 const loaderUtils = require('loader-utils')
-const md = require('markdown-it')()
 const mdContainer = require('markdown-it-container')
 const matter = require('gray-matter');
+
+const topbar = '<div class="hljs-topbar"><div class="dot"><i class="red"></i><i class="yellow"></i><i class="green"></i></div></div>'
+
+const md = require('markdown-it')({
+  highlight: function (str, lang) {
+    return `<pre class="hljs-pre">${topbar}<code>${md.utils.escapeHtml(str)}</code></pre>`;
+  }
+})
 
 let docPart = []
 
@@ -29,7 +36,7 @@ md.use(function () {
     const prevToken = tokens[idx - 1];
     const isInDemoContainer = prevToken && prevToken.nesting === 1 && prevToken.info.trim().match(/^demo\s*(.*)$/);
     if (token.info.trim() === 'html' && isInDemoContainer) {
-      return `<template slot="highlight"><pre v-pre><code class="html">${md.utils.escapeHtml(token.content)}</code></pre></template>`;
+      return `<template slot="highlight"><pre class="hljs-pre" v-pre>${topbar}<code class="html">${md.utils.escapeHtml(token.content)}</code></pre></template>`;
     }
     return defaultRender(tokens, idx, options, env, self);
   };

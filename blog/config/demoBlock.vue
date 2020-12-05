@@ -1,25 +1,51 @@
 <template>
   <div class="demo-block">
     <div class="source">
-      <slot name="source"></slot>
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="dot">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+          <div class="address">
+            <span>https://github.com/yanghuanrong</span>
+          </div>
+        </div>
+        <div class="browser-body">
+          <div class="description" v-if="$slots.default">
+            <slot></slot>
+          </div>
+          <slot name="source"></slot>
+        </div>
+      </div>
     </div>
     <div class="meta" ref="meta">
-      <div class="description" v-if="$slots.default">
-        <slot></slot>
-      </div>
       <div class="highlight">
         <slot name="highlight"></slot>
       </div>
     </div>
+    <div class="background" :style="{background: backColr}"></div>
   </div>
 </template>
 
 <script type="text/babel">
 import hljs from "highlight.js";
-import "highlight.js/styles/atom-one-dark.css";
+import "./highlight.css";
 import "./demoBlock.less";
 
 export default {
+  data(){
+    function randomColor(){
+      const s = (Math.random() * 0xfffff * 1000000).toString(16)
+      return '#' + s.slice(0, 6)
+    }
+
+    return {
+      backColr: randomColor()
+    }
+  },
+
   mounted() {
     this.$nextTick(() => {
       const blocks = document.querySelectorAll("pre code:not(.hljs)");
