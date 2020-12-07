@@ -1,3 +1,9 @@
+const fs = require('fs')
+const path = require('path')
+
+// var source = fs.readFileSync(path.resolve(__dirname, '../md/test1.md'), 'utf8')
+// setTimeout(mdLoader, 0, source)
+
 const loaderUtils = require('loader-utils')
 const mdContainer = require('markdown-it-container')
 const matter = require('gray-matter');
@@ -19,9 +25,10 @@ md.use(mdContainer, 'demo', {
       const description = m && m.length > 1 ? m[1] : '';
       const content = tokens[idx + 1].type === 'fence' ? tokens[idx + 1].content : '';
       docPart.push(content)
+
       return `<demo-block>
       ${description ? `<div>${md.render(description)}</div>` : ''}
-      <demo${docPart.length} slot="source" />
+      <demo${docPart.length} slot="source"/>
       `;
     }
     return '</demo-block>';
@@ -32,11 +39,12 @@ md.use(function () {
   const defaultRender = md.renderer.rules.fence;
   md.renderer.rules.fence = (tokens, idx, options, env, self) => {
     const token = tokens[idx];
+
     // 判断该 fence 是否在 :::demo 内
     const prevToken = tokens[idx - 1];
     const isInDemoContainer = prevToken && prevToken.nesting === 1 && prevToken.info.trim().match(/^demo\s*(.*)$/);
-    if (token.info.trim() === 'html' && isInDemoContainer) {
-      return `<template slot="highlight"><pre class="hljs-pre" v-pre>${topbar}<code class="html">${md.utils.escapeHtml(token.content)}</code></pre></template>`;
+    if (token.info.trim() === 'html' && isInDemoContainer) { 
+      return `<template slot="highlight"><pre class="hljs-pre" v-pre><code class="html">${md.utils.escapeHtml(token.content)}</code></pre></template>`;
     }
     return defaultRender(tokens, idx, options, env, self);
   };
@@ -72,6 +80,8 @@ function mdLoader(source) {
   }
   </script>
   `
+console.log(template)
+
   const page = `
   ${template}
   ${script}

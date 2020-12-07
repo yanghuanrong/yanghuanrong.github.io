@@ -14,11 +14,29 @@ fs.readdir(path(__dirname, blogPath), (err, files) => {
     const fileContent = fs.readFileSync(filePath, 'utf-8')
     const matterData = matter(fileContent).data
 
+    const fileImport = fileContent.match(/import.*'/g)
+    
+    const blogList = []
+    fileImport && fileImport.forEach((item) => {
+      const data = item.split(' ')
+      const name = data[1]
+      const address = data[3].replace(/(\'*)/g, '')
+      const ext = address.split('.').pop()
+      const core = fs.readFileSync(path(__dirname, address), 'utf8')
+      blogList.push({
+        name,
+        ext,
+        path: address,
+        core
+      })
+    })
+
     if(Object.keys(matterData).length){
       fileJSON.push({
         ...matterData,
         blogName: `md${i}`,
         blogFile: file,
+        blogList
       })
     }
   })

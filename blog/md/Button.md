@@ -18,6 +18,7 @@ date: 2020.11.20
 
 <script>
 import Button from '../package/Button.vue'
+import test from '../package/test.js'
 export default {
   components: {Button},
   data(){
@@ -27,7 +28,7 @@ export default {
   },
   methods: {
     test(){
-      alert(111)
+      test.test()
     }
   }
 }
