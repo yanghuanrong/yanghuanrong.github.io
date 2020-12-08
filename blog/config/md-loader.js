@@ -80,7 +80,6 @@ function mdLoader(source) {
   }
   </script>
   `
-console.log(template)
 
   const page = `
   ${template}
