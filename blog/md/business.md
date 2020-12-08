@@ -16,4 +16,13 @@ function moneyFormat(value) {
 moneyFormat("1024.31") //1,024.31
 ```
 
+## 随机生成颜色值
+
+```js
+function randomColor() {
+    const s = (Math.random() * 0xfffff * 1000000).toString(16)
+    return '#' + s.slice(0, 6)
+}
+randomColor() //#12cf63
+```
 

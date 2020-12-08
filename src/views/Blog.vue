@@ -7,9 +7,7 @@
             <span class="year">{{item.year}}</span>
             <span class="day">{{item.day}}</span>
           </div>
-          <div class="title" :class="{active: active === i}" @click="toDetail(item, i, $event)">
-            {{ item.title }}
-          </div>
+          <div class="title" :class="{active: active === i}" @click="toDetail(item, i, $event)" v-html="item.titleHTML"></div>
         </li>
       </ul>
     </div>
@@ -24,6 +22,11 @@ const list = data.map(item => {
   item.year = `${time[0]}.${time[1]}`
   item.day = time[2]
   item.move = false
+  let html = ""
+  item.title.split('').map(text => {
+    html += `<span class="fly-span">${text}</span>`
+  })
+  item.titleHTML = html
   return item
 })
 
@@ -36,51 +39,49 @@ export default {
   data() {
     return {
       active: null,
+      router: true,
       list: list,
       fly: []
     };
   },
-  mounted(){
-    const title = document.querySelectorAll('.title')
-
-    title.forEach(item => {
-      let html = ""
-      item.innerHTML.split('').forEach((text) => {
-        html += `<span class="fly-span">${text}</span>`
-      })
-      item.innerHTML = html
-    })
-    
-  },
   methods: {
+    test(){
+      console.log(1)
+    },
     toDetail(item, i, e){
+      if(!this.router) return
+      this.router = false
+
       this.active = i
-        this.$nextTick(() => {
-          const box = document.querySelector('.title.active')
-          this.fly = box.querySelectorAll('.fly-span')
+      this.$nextTick(() => {
+        const box = document.querySelector('.title.active')
+        this.fly = box.querySelectorAll('.fly-span')
+
+        const off = this.list[this.active].move = true
+        this.flySpan(off)
   
-          const off = this.list[this.active].move = true
-          this.fly.forEach((item) => {
-            item.style.cssText = `transform:translate3d(${(off ? random(-500, 500) : 0)}px, ${(off ? random(-500, 500) : 0)}px,${(off ? random(-500, 500) : 0)}px) scale(${(off ? random(2, 1) : 1)});opacity: ${(off ? 0 : 1)}; transition:all ${random(1, 2)}s ease ${random(0, 0.2)}s;`;
-          })
-    
-          setTimeout(() => {
-            this.$router.push({ name: 'detail', params: { id: item.blogName }})
-          }, 800)
-        })
+        setTimeout(() => {
+          this.$router.push({ name: 'detail', params: { id: item.blogName }})
+          this.router = true
+        }, 800)
+      })
+    },
+    flySpan(off){
+      this.fly.forEach((item) => {
+        item.style.cssText = `transform:translate3d(${(off ? random(-500, 500) : 0)}px, ${(off ? random(-500, 500) : 0)}px,${(off ? random(-500, 500) : 0)}px) scale(${(off ? random(2, 1) : 1)});opacity: ${(off ? 0 : 1)}; transition:all ${random(1, 2)}s ease ${random(0, 0.2)}s;`;
+      })
     }
   },
   activated(){
     this.$nextTick(() => {
-        if(this.active === null){
-          return
-        }
-        const off = this.list[this.active].move = false
-        setTimeout(() => {
-          this.fly.forEach((item) => {
-            item.style.cssText = `transform:translate3d(${(off ? random(-500, 500) : 0)}px, ${(off ? random(-500, 500) : 0)}px,${(off ? random(-500, 500) : 0)}px) scale(${(off ? random(2, 1) : 1)});opacity: ${(off ? 0 : 1)}; transition:all ${random(1, 2)}s ease ${random(0, 0.2)}s;`;
-          })
-        })
+      this.router = true
+      if(this.active === null){
+        return
+      }
+      const off = this.list[this.active].move = false
+      setTimeout(() => {
+        this.flySpan(off)
+      })
     })
   }
 };
