@@ -67,7 +67,6 @@ export default {
           this.fileList = item.blogList
         }
       })
-      console.log(this.fileList)
     }
   },
   mounted() {

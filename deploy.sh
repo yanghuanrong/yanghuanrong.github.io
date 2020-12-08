@@ -3,6 +3,8 @@ set -e
 
 git add .
 git commit -am 'deploy'
+git checkout master
+git merge dev
 
 # 如果发布到 https://<USERNAME>.github.io  USERNAME=你的用户名
 git push -u origin master

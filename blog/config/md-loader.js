@@ -1,15 +1,15 @@
-const fs = require('fs')
-const path = require('path')
-
+// const fs = require('fs')
+// const path = require('path')
 // var source = fs.readFileSync(path.resolve(__dirname, '../md/test1.md'), 'utf8')
 // setTimeout(mdLoader, 0, source)
+
+
 
 const loaderUtils = require('loader-utils')
 const mdContainer = require('markdown-it-container')
 const matter = require('gray-matter');
-
-const topbar = '<div class="hljs-topbar"><div class="dot"><i class="red"></i><i class="yellow"></i><i class="green"></i></div></div>'
-
+// const topbar = '<div class="hljs-topbar"><div class="dot"><i class="red"></i><i class="yellow"></i><i class="green"></i></div></div>'
+const topbar = ''
 const md = require('markdown-it')({
   highlight: function (str, lang) {
     return `<pre class="hljs-pre">${topbar}<code>${md.utils.escapeHtml(str)}</code></pre>`;
