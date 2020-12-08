@@ -1,5 +1,8 @@
 <template>
   <div class="demo-block">
+    <div class="description" v-if="$slots.default">
+      <slot></slot>
+    </div>
     <div class="source">
       <div class="browser">
         <div class="browser-bar">
@@ -13,9 +16,6 @@
           </div>
         </div>
         <div class="browser-body">
-          <div class="description" v-if="$slots.default">
-            <slot></slot>
-          </div>
           <slot name="source"></slot>
         </div>
       </div>
@@ -30,7 +30,7 @@
             <div v-for="(item, i) in fileList" class="hljs-problems__list" :key="'file' + i">
               <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="flex-none text-amber-400"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
               <p>
-                You may need to <span class="hljs-keyword download" @click="download(item)">download</span> it <span class="hljs-string">{{item.name}}.{{item.ext}}</span>
+                You may need to download it <span class="hljs-string download" @click="download(item)">{{item.name}}.{{item.ext}}</span>
               </p>
             </div>
             </code>
@@ -42,8 +42,6 @@
 </template>
 
 <script type="text/babel">
-import hljs from "highlight.js";
-import "./highlight.css";
 import "./demoBlock.less";
 import FileSaver from "file-saver";
 import {data} from '../data/data.json'
@@ -68,25 +66,6 @@ export default {
         }
       })
     }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      const blocks = document.querySelectorAll("pre code:not(.hljs)");
-      Array.prototype.forEach.call(blocks, hljs.highlightBlock);
-
-      const elements = document.querySelectorAll("pre code.hljs");
-      for (let i = 0; i < elements.length; i++) {
-        let html = elements[i].innerHTML;
-        let num = 1;
-        html = '<span class="ln-num" data-num="' + num + '"></span>' + html;
-        html = html.trim().replace(/\r\n|\r|\n/g, function (a) {
-          num++;
-          return a + '<span class="ln-num" data-num="' + num + '"></span>';
-        });
-        html = '<span class="ln-bg"></span>' + html;
-        elements[i].innerHTML = html;
-      }
-    });
   },
   methods: {
     download(data){
