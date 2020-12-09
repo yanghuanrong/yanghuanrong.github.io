@@ -31,7 +31,7 @@ function cssText(off) {
             display: inline-block;
             transition:all ${s}s ease ${d}s;`;
 }
-let iStartTop;
+
 export default {
   name: "textFly",
   props: {

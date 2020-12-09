@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
   .page{
     font-size:  56px;
     font-weight: bold;
