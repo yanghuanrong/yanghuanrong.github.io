@@ -17,7 +17,6 @@ moneyFormat("1024.31") //1,024.31
 ```
 
 ## 随机生成颜色值
-
 ```js
 function randomColor() {
     const s = (Math.random() * 0xfffff * 1000000).toString(16)
@@ -26,3 +25,16 @@ function randomColor() {
 randomColor() //#12cf63
 ```
 
+## 随机生成范围的值
+```js
+function randomScope() {
+    return Math.random() * (max - min) + min;
+}
+```
+
+## 随机在数组中选一个
+```js
+function randomSelect(arr) {
+    return arr[Math.floor(Math.random() * arr.length)]
+}
+```
