@@ -4,8 +4,8 @@
       <div class="container flex items-center justify-between relative">
         <div class="logo" @click="logoTap">
           <transition name="logo" mode="out-in">
-            <a @click="$router.back(-1)" v-if="isDetial" key="logo">返回Blog</a>
-            <router-link  to="/"  v-else key="back">贝贝的HTML</router-link>
+            <a v-if="isDetial" key="logo">返回Blog</a>
+            <a v-else key="back">贝贝的HTML</a>
           </transition>
         </div>
         <div class="menutoggle" @click="menuTap" ref="close" :class="{ open: menu }">
@@ -85,7 +85,12 @@ export default {
   methods: {
     logoTap(){
       if (this.$route.path === '/') return;
-      this.$router.push('/');
+
+      if (this.isDetial){
+        this.$router.back(-1)
+      } else {
+        this.$router.push('/');
+      }
     },
     router(item, i) {
       if (this.$route.path === item.path) return;
