@@ -2,7 +2,10 @@
   <div class="header" :class="{ fixed: fixed }">
     <header class="topbar">
       <div class="logo" @click="logoTap">
-        <a key="back">贝贝的HTML</a>
+        <transition name="logo" mode="out-in">
+          <a v-if="isDetial" key="logo">返回Blog</a>
+          <a v-else key="back">贝贝的HTML</a>
+        </transition>
       </div>
       <div
         class="menutoggle"
@@ -20,7 +23,7 @@
       </div>
     </header>
 
-    <div class="nav-wrap" v-if="menu">
+    <div class="nav-wrap" v-if="isMenu">
       <div class="container flex flex-column menu " :class="{ open: menu }">
         <div class="splitter">
           <span>Contents</span>
@@ -51,7 +54,7 @@
         </a>
       </div>
     </div>
-    <ShapeOverlays v-model="menu" />
+    <ShapeOverlays v-model="menu" @move="isMenu = menu" />
   </div>
 </template>
 
@@ -65,6 +68,7 @@ export default {
     return {
       fixed: false,
       menu: false,
+      isMenu: false,
       active: null,
       isDetial: false,
       nav: [

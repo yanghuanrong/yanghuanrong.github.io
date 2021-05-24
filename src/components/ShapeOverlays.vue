@@ -173,6 +173,9 @@ export default {
   watch: {
     value() {
       this.overlay.toggle()
+      setTimeout(() => {
+        this.$emit('move')
+      }, 500)
     },
   },
   mounted() {
