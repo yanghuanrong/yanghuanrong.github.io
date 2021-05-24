@@ -1,6 +1,6 @@
 <template>
-  <footer class="container flex flex-column footer">
-    <div class="links flex justify-between">
+  <footer class=" flex flex-column footer">
+    <div class="links flex">
       <div class="status"></div>
       <div class="socialicons">
         <a href="weixin://">
@@ -9,8 +9,8 @@
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1024 1024"
             fill="currentColor"
-            height="24"
-            width="24"
+            height="20"
+            width="20"
             stroke="currentColor"
             stroke-width="0"
             stroke-linejoin="round"
@@ -28,8 +28,8 @@
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
-            height="24"
-            width="24"
+            height="20"
+            width="20"
             stroke="currentColor"
             stroke-width="0"
             stroke-linejoin="round"
@@ -44,3 +44,28 @@
     </div>
   </footer>
 </template>
+
+<style scoped lang="less">
+.footer {
+  position: fixed;
+  padding: 64px 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .socialicons {
+
+    a {
+      margin-right: 30px;
+      transform: scale(1);
+      transition: all 0.18s ease;
+
+      &:hover {
+        color: #000;
+        transform: scale(1.12);
+      }
+    }
+  }
+}
+
+</style>
