@@ -37,13 +37,18 @@ export default {
 :::
 
 -----------
-
+:::demo 这就是来自`RelaxUI`的Button
 ```html
+<template>
+<div>
 <div>1111</div>
 <div>1111</div>
 <div>1111</div>
 <div>1111</div>
+</div>
+</template>
 ```
+:::
 
 
 ```js

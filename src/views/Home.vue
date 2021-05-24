@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+
     <div class="container intro">
       <div class="sectionheader flex flex-column">
         <h3>我是一名WEB前端工作者，住在广东的佛山地区——用耳熟能详的前端技术快乐的构建应用程序。</h3>
