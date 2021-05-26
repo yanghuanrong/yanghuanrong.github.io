@@ -44,29 +44,3 @@
     </div>
   </footer>
 </template>
-
-<style scoped lang="less">
-.footer {
-  position: fixed;
-  padding: 64px 80px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  font-size: 12px;
-  justify-content: space-between;
-
-  .socialicons {
-    a {
-      margin-right: 30px;
-      transform: scale(1);
-      transition: all 0.18s ease;
-
-      &:hover {
-        color: #000;
-        transform: scale(1.12);
-      }
-    }
-  }
-}
-</style>

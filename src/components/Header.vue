@@ -55,6 +55,7 @@
       </div>
     </div>
     <ShapeOverlays v-model="menu" @move="isMenu = menu" />
+    <!-- <div id="maskMove"></div> -->
   </div>
 </template>
 
@@ -90,9 +91,6 @@ export default {
       }, 1000)
     },
   },
-  mounted() {
-    window.addEventListener('scroll', this.isFixed, false)
-  },
   methods: {
     logoTap() {
       if (this.$route.path === '/') return
@@ -112,19 +110,14 @@ export default {
         this.$router.push(item.path)
       }, 800)
     },
-    isFixed() {
-      this.fixed = window.pageYOffset >= 80 ? true : false
-    },
     menuTap() {
       this.menu = !this.menu
 
       if (this.menu) {
         this.active = null
-        this.$refs.close.style.top = this.fixed ? '80px' : '0'
         document.body.style.overflow = 'hidden'
       } else {
         document.body.style.overflow = 'auto'
-        this.$refs.close.style.top = 0
       }
     },
   },

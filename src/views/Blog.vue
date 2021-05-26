@@ -1,26 +1,41 @@
 <template>
   <div class="blog" style="overflow: hidden">
-        <div class="container">
-    <ul class="blog-list">
-      <li v-for="(item, i) in list" :key="item.title">
+    <div class="container intro">
+      <div class="sectionheader flex flex-column">
+        <h3>
+          博客文章
+        </h3>
+      </div>
+    </div>
+
+    <div class="container">
+      <ul class="blog-list">
+        <li v-for="(item, i) in list" :key="item.title" @click="toDetail(item)">
           <div class="time">
-            <span class="year">{{ item.year }}</span>
-            <span class="day">{{ item.day }}</span>
+            <span>{{ item.lastUpdated }}</span>
           </div>
           <div
             class="title"
             :class="{ active: active === i }"
-            @click="toDetail(item, i, $event)"
           >
-            <text-fly
-              :text="item.title"
-              v-model="item.move"
-              @move="end"
-            ></text-fly>
-        </div>
-      </li>
-    </ul>
+            {{item.title}}
           </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="type">
+      <ul>
+        <li class="active">
+          <span>View All</span>
+        </li>
+        <li>
+          <span>Vue</span>
+          <i>5</i>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </template>
 
@@ -34,41 +49,17 @@ export default {
   },
   name: "blog",
   data() {
-    const list = data.map((item, i) => {
-      const time = item.date.split(".");
-      item.year = `${time[0]}.${time[1]}`;
-      item.day = time[2];
-      item.move = true;
-      return item;
-    });
     return {
       open: true,
       active: null,
       router: true,
-      list: list,
+      list: data,
     };
   },
   methods: {
-    end() {
-      const item = this.list[this.active];
+    toDetail(item) {
       this.$router.push({ name: "detail", params: { id: item.blogName } });
-      this.router = true;
     },
-    toDetail(item, i, e) {
-      if (!this.router) return;
-      this.router = false;
-      item.move = false;
-      this.active = i;
-    },
-  },
-  activated() {
-    this.$nextTick(() => {
-      this.router = true;
-      if (this.active === null) {
-        return;
-      }
-      this.list[this.active].move = true;
-    });
-  },
+  }
 };
 </script>

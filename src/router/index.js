@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home
   },
   {
@@ -34,6 +34,29 @@ const router = new VueRouter({
     return { x: 0, y: 0 }
   },
   routes
+})
+
+router.beforeEach((to,from,next) => {
+  const el = document.getElementById('maskMove')
+  if(el) {
+    document.body.style = "overflow: hidden"
+    el.style.width = '100%'
+
+    el.addEventListener('transitionend', () => {
+      el.style.left = 'inherit'
+      el.style.right = '0'
+      el.style.width = '0'
+      document.body.style = ""
+
+      next()
+      el.addEventListener('transitionend', () => {
+        el.style.left = '0'
+        el.style.right = 'inherit'
+      })
+    })
+  } else {
+	  next()
+  }
 })
 
 export default router
