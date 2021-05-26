@@ -1,9 +1,17 @@
-:root {
+[data-color-mode=light] {
   --textColor: #a2a2a2;
   --mainColor: #FFF;
   --bgColor: #151515;
   --lineColor: #313131;
 }
+
+[data-color-mode=dark] {
+  --textColor: #a2a2a2;
+  --mainColor: #FFF;
+  --bgColor: #151515;
+  --lineColor: #313131;
+}
+
 
 @import 'rest.less';
 @import 'layout.less';
@@ -255,7 +263,7 @@ body {
     }
 
     .time {
-      font-size: 18px;
+      font-size: 16px;
       position: relative;
       margin-bottom: 40px;
     }
@@ -501,10 +509,12 @@ body {
   justify-content: space-between;
 
   .socialicons {
+
     a {
       margin-right: 30px;
       transform: scale(1);
       transition: all 0.18s ease;
+      cursor: pointer;
 
       &:hover {
         color: var(--mainColor);
