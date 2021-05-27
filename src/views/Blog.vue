@@ -12,7 +12,9 @@
       <ul class="blog-list">
         <li v-for="(item) in list" :key="item.id" @click="toDetail(item)">
           <div class="time">
-            <span>{{ item.lastUpdated }}</span>
+            {{ item.tag }}
+            <span> | </span>
+            {{ item.lastUpdated }}
           </div>
           <div
             class="title"

@@ -266,6 +266,10 @@ body {
       font-size: 16px;
       position: relative;
       margin-bottom: 40px;
+
+      span{
+        margin: 0 10px;
+      }
     }
 
     .title {
@@ -520,6 +524,51 @@ body {
         color: var(--mainColor);
         transform: scale(1.12);
       }
+    }
+  }
+}
+
+.scroll-view{
+  position: fixed;
+  bottom: 10%;
+  left: 80px;
+  width: 2px;
+  height: 50px;
+  background-color: var(--lineColor);
+  z-index: 1;
+
+  i{
+    width: 12px;
+    height: 12px;
+    background-color: var(--mainColor);
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: scroll 2s ease-in-out infinite ;
+  }
+
+  @keyframes scroll {
+    0%{
+      top: 0;
+      opacity: 0;
+    }
+    10%{
+      top: 0;
+      opacity: 1;
+    }
+    50%{
+      opacity: 1;
+      top: 48px;
+    }
+    70%{
+      opacity: 0;
+      top: 48px;
+    }
+    100%{
+      opacity: 0;
+      top: 48px;
     }
   }
 }
