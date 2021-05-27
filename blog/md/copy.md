@@ -1,7 +1,6 @@
 ---
 title: 实现一键复制
-tag: vue
-date: 2020.12.08
+tag: Vue
 ---
 
 # 一键复制

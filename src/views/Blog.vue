@@ -10,13 +10,12 @@
 
     <div class="container">
       <ul class="blog-list">
-        <li v-for="(item, i) in list" :key="item.title" @click="toDetail(item)">
+        <li v-for="(item) in list" :key="item.id" @click="toDetail(item)">
           <div class="time">
             <span>{{ item.lastUpdated }}</span>
           </div>
           <div
             class="title"
-            :class="{ active: active === i }"
           >
             {{item.title}}
           </div>
@@ -29,9 +28,9 @@
         <li class="active">
           <span>View All</span>
         </li>
-        <li>
-          <span>Vue</span>
-          <i>5</i>
+        <li v-for="(item, i) in tag" :key="i">
+          <span>{{item.label}}</span>
+          <i>{{item.value}}</i>
         </li>
       </ul>
     </div>
@@ -40,7 +39,7 @@
 </template>
 
 <script>
-import { data } from "@blog/data/data.json";
+import { data, tag } from "@blog/data/data.json";
 import textFly from "@/components/TextFly.vue";
 
 export default {
@@ -49,16 +48,23 @@ export default {
   },
   name: "blog",
   data() {
+    const tagName = Object.keys(tag).map((k) => ({
+      label: k,
+      value: tag[k]
+    }))
+    
     return {
       open: true,
       active: null,
       router: true,
       list: data,
+      tag: tagName
+
     };
   },
   methods: {
     toDetail(item) {
-      this.$router.push({ name: "detail", params: { id: item.blogName } });
+      this.$router.push({ path: '/blog/' + item.id});
     },
   }
 };

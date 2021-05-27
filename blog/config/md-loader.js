@@ -63,9 +63,13 @@ function mdLoader(source) {
   }).join('\n')
   const template = `
   <template>
-    <div class="content blog-doc">
-      ${html}
-    </div> 
+    <div class="blog">
+      <div class="container">
+      <div class="content blog-doc">
+        ${html}
+      </div> 
+      </div> 
+    </div>
   </template>`
 
   const script = `

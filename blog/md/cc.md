@@ -1,7 +1,6 @@
 ---
 title: 日历
-tag: vue
-date: 2020.11.14
+tag: Vue
 ---
 
 # 日历

@@ -1,7 +1,6 @@
 ---
 title: 一些会常用的业务代码整理
-tag: any
-date: 2020.12.08
+tag: JavaScript
 ---
 
 # 一些会常用的业务代码整理
