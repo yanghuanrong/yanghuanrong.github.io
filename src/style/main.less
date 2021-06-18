@@ -1,17 +1,16 @@
-[data-color-mode=light] {
+[data-color-mode='light'] {
   --textColor: #a2a2a2;
-  --mainColor: #FFF;
+  --mainColor: #fff;
   --bgColor: #151515;
   --lineColor: #313131;
 }
 
-[data-color-mode=dark] {
+[data-color-mode='dark'] {
   --textColor: #a2a2a2;
-  --mainColor: #FFF;
+  --mainColor: #fff;
   --bgColor: #151515;
   --lineColor: #313131;
 }
-
 
 @import 'rest.less';
 @import 'layout.less';
@@ -37,7 +36,7 @@ body {
   line-height: 1.4;
 
   h3 {
-    font-family: "Calibre bold";
+    font-family: 'Calibre bold';
     font-size: 64px;
     margin: 0;
     font-weight: 600;
@@ -58,9 +57,9 @@ body {
   padding: 80px;
   overflow: hidden;
   transform: scale(1);
-  transition: transform .18s ease;
+  transition: transform 0.18s ease;
   border-radius: 8px;
-  color: #FFF;
+  color: #fff;
   margin-top: 32px;
 
   &:nth-of-type(1) {
@@ -86,7 +85,7 @@ body {
 
     p {
       margin-top: 20px;
-      color: fade(#FFF, 80%);
+      color: fade(#fff, 80%);
     }
   }
 }
@@ -95,13 +94,11 @@ body {
   margin-top: 124px;
 
   .sectionheader {
-
     p {
       font-size: 26px;
       line-height: 1.5;
       margin-top: 24px;
     }
-
   }
 
   .splitter {
@@ -113,7 +110,7 @@ body {
   }
 
   .pulse {
-    animation: pulse .65s ease-in-out infinite;
+    animation: pulse 0.65s ease-in-out infinite;
   }
 
   @keyframes pulse {
@@ -139,7 +136,7 @@ body {
   padding: 48px 0;
   position: relative;
 
-  &+& {
+  & + & {
     border-top: 1px solid var(--lineColor);
   }
 
@@ -153,7 +150,7 @@ body {
     font-weight: 400;
     margin-bottom: 24px;
     font-size: 22px;
-    font-family: "calibre";
+    font-family: 'calibre';
   }
 }
 
@@ -176,7 +173,7 @@ body {
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       width: 6px;
       height: 6px;
       border-radius: 50%;
@@ -184,17 +181,15 @@ body {
       position: absolute;
       bottom: 5px;
       right: -10px;
-      background-color: #FFF;
+      background-color: #fff;
     }
 
     &::after {
-      animation: pulseDot 2.5s cubic-bezier(.47, -.2, .13, 1.35) infinite;
+      animation: pulseDot 2.5s cubic-bezier(0.47, -0.2, 0.13, 1.35) infinite;
       transform-origin: center;
     }
   }
-
 }
-
 
 .body {
   padding-top: 175px;
@@ -202,7 +197,6 @@ body {
   min-height: 100%;
   box-sizing: border-box;
 }
-
 
 .blog {
   .type {
@@ -229,30 +223,38 @@ body {
   }
 }
 
-
 .blog-list {
   width: 80%;
 
   li {
+    opacity: 0;
+    transition: 0.6s ease 0.2s;
+    &.show {
+      opacity: 1;
+      transform: translateY(-10%);
+    }
+
+    &:hover {
+      .item {
+        transform: translateX(20px);
+        &::after {
+          left: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .item {
     position: relative;
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid var(--lineColor);
     padding: 60px 0;
     cursor: pointer;
-    transition: .25s ease;
-
-    &:hover {
-      transform: translateX(20px);
-
-      &::after {
-        left: 0;
-        width: 100%;
-      }
-    }
+    transition: 0.25s ease;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       height: 1px;
       bottom: 0;
@@ -267,7 +269,7 @@ body {
       position: relative;
       margin-bottom: 40px;
 
-      span{
+      span {
         margin: 0 10px;
       }
     }
@@ -280,8 +282,6 @@ body {
     }
   }
 }
-
-
 
 .header {
   position: fixed;
@@ -434,7 +434,7 @@ body {
       cursor: pointer;
       opacity: 0;
 
-      &+a {
+      & + a {
         margin-top: 40px;
       }
 
@@ -505,7 +505,6 @@ body {
   }
 }
 
-
 .footer {
   padding: 64px 80px;
   display: flex;
@@ -513,7 +512,6 @@ body {
   justify-content: space-between;
 
   .socialicons {
-
     a {
       margin-right: 30px;
       transform: scale(1);
@@ -528,7 +526,7 @@ body {
   }
 }
 
-.scroll-view{
+.scroll-view {
   position: fixed;
   bottom: 10%;
   left: 80px;
@@ -537,7 +535,7 @@ body {
   background-color: var(--lineColor);
   z-index: 1;
 
-  i{
+  i {
     width: 12px;
     height: 12px;
     background-color: var(--mainColor);
@@ -546,27 +544,27 @@ body {
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: scroll 2s ease-in-out infinite ;
+    animation: scroll 2s ease-in-out infinite;
   }
 
   @keyframes scroll {
-    0%{
+    0% {
       top: 0;
       opacity: 0;
     }
-    10%{
+    10% {
       top: 0;
       opacity: 1;
     }
-    50%{
+    50% {
       opacity: 1;
       top: 48px;
     }
-    70%{
+    70% {
       opacity: 0;
       top: 48px;
     }
-    100%{
+    100% {
       opacity: 0;
       top: 48px;
     }

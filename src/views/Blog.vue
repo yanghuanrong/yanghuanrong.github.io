@@ -11,15 +11,17 @@
     <div class="container">
       <ul class="blog-list">
         <li v-for="(item) in list" :key="item.id" @click="toDetail(item)">
-          <div class="time">
-            {{ item.tag }}
-            <span> | </span>
-            {{ item.lastUpdated }}
-          </div>
-          <div
-            class="title"
-          >
-            {{item.title}}
+          <div class="item">
+            <div class="time">
+              {{ item.tag }}
+              <span> | </span>
+              {{ item.lastUpdated }}
+            </div>
+            <div
+              class="title"
+            >
+              {{item.title}}
+            </div>
           </div>
         </li>
       </ul>
@@ -44,6 +46,10 @@
 import { data, tag } from "@blog/data/data.json";
 import textFly from "@/components/TextFly.vue";
 
+function query(selector) {
+  return Array.from(document.querySelectorAll(selector));
+}
+
 export default {
   components: {
     textFly,
@@ -63,6 +69,24 @@ export default {
       tag: tagName
 
     };
+  },
+  mounted(){
+    const observer = new IntersectionObserver(
+      (changes) => {
+        changes.forEach(function(change) {
+          if(change.intersectionRatio === 1) {
+            change.target.className = 'show'
+          }
+        });
+      },
+      {
+        threshold: [0, 1]
+      }
+    );
+
+    query('.blog-list li').forEach(function (item) {
+      observer.observe(item);
+    });
   },
   methods: {
     toDetail(item) {

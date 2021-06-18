@@ -1,73 +1,72 @@
 @keyframes nav-menu {
-    0% {
-        opacity: 0;
-        transform: translateY(40%);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(40%);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes nav-menu-click {
-    0% {
-        opacity: 1;
-        transform: translateX(0%);
-    }
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
 
-    100% {
-        opacity: 0;
-        transform: translateX(60%);
-    }
+  100% {
+    opacity: 0;
+    transform: translateX(60%);
+  }
 }
 
 @keyframes nav-split {
-    0% {
-        opacity: 0;
-        transform: translateY(-40%);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-40%);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity .5s;
+  transition: opacity 0.5s;
 }
 
 .fade-enter,
 .fade-leave-to {
-    opacity: 0;
+  opacity: 0;
 }
-
 
 .logo-enter-active,
 .logo-leave-active {
-    transition: all .5s;
+  transition: all 0.5s;
 }
 
 .logo-leave-to
 
 /* .fade-leave-active below version 2.1.8 */
-    {
-    transform: translateY(-100%);
+ {
+  transform: translateY(-100%);
 }
 
 .logo-enter {
-    transform: translateY(100%);
+  transform: translateY(100%);
 }
 
 #maskMove {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 0;
-    transition: .7s ease-in-out;
-    z-index: 2;
-    background: #262626;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  transition: 0.7s ease-in-out;
+  z-index: 2;
+  background: #262626;
 }
