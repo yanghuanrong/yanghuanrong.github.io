@@ -29,10 +29,7 @@
 
     <div class="type">
       <ul>
-        <li class="active">
-          <span>View All</span>
-        </li>
-        <li v-for="(item, i) in tag" :key="i">
+        <li v-for="(item, i) in tag" :key="i" @click="setType(item)" :class="{active: type === item.label}">
           <span>{{item.label}}</span>
           <i>{{item.value}}</i>
         </li>
@@ -55,20 +52,42 @@ export default {
     textFly,
   },
   name: "blog",
+  inject: ['reload'],
   data() {
     const tagName = Object.keys(tag).map((k) => ({
       label: k,
       value: tag[k]
     }))
     
+    tagName.unshift({
+      label: 'View All',
+      value: ''
+    })
+
     return {
       open: true,
-      active: null,
       router: true,
-      list: data,
+      list: [],
       tag: tagName
 
     };
+  },
+  computed: {
+    type(){
+      return this.$route.query.type || 'View All'
+    },
+  },
+  created(){
+    if(this.$route.query.type) {
+         this.list = data.filter(item => {
+        if(item.tag === this.$route.query.type) {
+          return item
+        }
+    })
+    } else {
+      this.list = data
+    }
+ 
   },
   mounted(){
     const observer = new IntersectionObserver(
@@ -92,6 +111,25 @@ export default {
     toDetail(item) {
       this.$router.push({ path: '/blog/' + item.id});
     },
+    setType(item){
+      if(item.label === this.$route.query.type || !this.$route.query.type && item.label === 'View All') {
+        return
+      }
+      if(item.label === 'View All'){
+        this.$router.push('/blog')
+      } else {
+        this.$router.push({
+          path: '/blog',
+          query: {
+            type: item.label
+          }
+        })
+      }
+   
+      setTimeout(() => {
+        this.reload()
+      }, 800)
+    }
   }
 };
 </script>

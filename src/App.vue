@@ -8,9 +8,7 @@
           <i></i>
         </div>
       </transition>
-      <keep-alive include="blog">
-        <router-view class="body"></router-view>
-      </keep-alive>
+      <router-view class="body" v-if="isRouterAlive"></router-view>
       <Footer />
     </div>
   </div>
@@ -24,8 +22,14 @@ export default {
     Header,
     Footer,
   },
+  provide(){
+    return {
+      reload: this.reload
+    }
+  },
   data(){
     return {
+      isRouterAlive: true,
       scrollView: false
     }
   },
@@ -50,6 +54,12 @@ export default {
     },
     isScrollShow(){
        this.scrollView = window.pageYOffset >= 80 ? false : true;
+    },
+    reload(){
+      this.isRouterAlive = false
+      this.$nextTick(() => {
+        this.isRouterAlive = true
+      })
     }
   }
 }
