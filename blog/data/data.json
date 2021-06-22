@@ -29,6 +29,13 @@
     "fileName": "copy.md"
   },
   {
+    "title": "地址栏输入URL这个过程发生了什么？",
+    "tag": "JavaScript",
+    "lastUpdated": "Invalid Date",
+    "id": "15407fe1c54ff83f14d40bd4d249370d",
+    "fileName": "http.md"
+  },
+  {
     "title": "文字飞散特效组件",
     "tag": "Vue",
     "lastUpdated": "2021-5-27 14:04:42",
@@ -37,7 +44,7 @@
   }
 ], 
     "tag": {
-  "JavaScript": 1,
+  "JavaScript": 2,
   "Vue": 4
 }
   }
