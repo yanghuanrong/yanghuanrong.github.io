@@ -1,33 +1,100 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video, input {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input {
   margin: 0;
   padding: 0;
   border: 0;
   font-weight: normal;
   vertical-align: baseline;
 }
-
+body {
+  user-select: none;
+}
 a {
-  color: #8A8A8A;
   text-decoration: none;
   -webkit-backface-visibility: hidden;
 }
 
-*{box-sizing: border-box;}
-
-li {
-  list-style: none;
+* {
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
@@ -42,28 +109,36 @@ li {
 
 ::-webkit-scrollbar-thumb:vertical {
   height: 5px;
-  background-color: #FFF;
-
+  background-color: #fff;
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
   width: 5px;
-  background-color: #FFF;
+  background-color: #fff;
 }
 
-input:focus,button:focus,textarea:focus{ outline: none;}
-body,input,textarea{ font-family: "THEX",'微软雅黑',Arial;}
+input:focus,
+button:focus,
+textarea:focus {
+  outline: none;
+}
+body,
+input,
+textarea {
+  font-family: 'THEX', '微软雅黑', Arial;
+}
 
-
-body{ -webkit-tap-highlight-color:#FFF; }
-
+body {
+  -webkit-tap-highlight-color: #fff;
+  font-family: 'calibre';
+}
 
 @font-face {
   font-family: 'calibre bold';
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url("font/calibre-semibold.woff2") format("woff2"),
+  src: url('font/D-DIN-Bold.woff2') format('woff2');
 }
 
 @font-face {
@@ -71,5 +146,5 @@ body{ -webkit-tap-highlight-color:#FFF; }
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url("font/calibre-regular.woff2") format("woff2"),
+  src: url('font/D-DIN.woff2') format('woff2');
 }

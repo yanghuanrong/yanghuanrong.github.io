@@ -1,9 +1,8 @@
+import Blog from '@blog/data';
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import './style/main.less';
-
-import Blog from '@blog/data';
 Vue.config.productionTip = false;
 
 Vue.use(Blog);

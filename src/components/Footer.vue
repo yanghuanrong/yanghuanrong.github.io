@@ -1,13 +1,23 @@
 <template>
   <footer class="footer">
     <div class="status">
-      中国JavaScript高端玩家
+      © 2012 - 2021
     </div>
     <div class="socialicons">
-      <!-- <a @click="setToggle">
-      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 36 36" height="20"
-          width="20"> <path d="M18,0C8.1,0,0,8.1,0,18c0,9.9,8.1,18,18,18c9.9,0,18-8.1,18-18C36,8.1,27.9,0,18,0z M18,32V4 c7.7,0,14,6.3,14,14C32,25.7,25.7,32,18,32z"></path> </svg>
-      </a> -->
+      <a @click="setToggle">
+        <svg
+          class="icon"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 36 36"
+          height="20"
+          width="20"
+        >
+          <path
+            d="M18,0C8.1,0,0,8.1,0,18c0,9.9,8.1,18,18,18c9.9,0,18-8.1,18-18C36,8.1,27.9,0,18,0z M18,32V4 c7.7,0,14,6.3,14,14C32,25.7,25.7,32,18,32z"
+          ></path>
+        </svg>
+      </a>
       <a href="weixin://">
         <svg
           class="icon"
@@ -50,31 +60,31 @@
 </template>
 
 <script>
-const DARK = 'dark'
-const LIGHT = 'light'
+const DARK = 'dark';
+const LIGHT = 'light';
 
 export default {
-  data(){
-    const theme = localStorage.getItem('color-mode')
+  data() {
+    const theme = localStorage.getItem('color-mode');
     return {
-      toggle: theme === DARK
-    }
+      toggle: theme === DARK,
+    };
   },
-  mounted(){
-    localStorage.setItem('color-mode', DARK)
-    document.documentElement.setAttribute('data-color-mode', DARK)
-  },
+  // mounted() {
+  //   localStorage.setItem('color-mode', LIGHT);
+  //   document.documentElement.setAttribute('data-color-mode', LIGHT);
+  // },
   methods: {
-    setToggle(){
+    setToggle() {
       if (this.toggle) {
-        localStorage.setItem('color-mode', DARK)
-        document.documentElement.setAttribute('data-color-mode', DARK)
+        localStorage.setItem('color-mode', DARK);
+        document.documentElement.setAttribute('data-color-mode', DARK);
       } else {
-        localStorage.setItem('color-mode', LIGHT)
-        document.documentElement.setAttribute('data-color-mode', LIGHT)
+        localStorage.setItem('color-mode', LIGHT);
+        document.documentElement.setAttribute('data-color-mode', LIGHT);
       }
-      this.toggle = !this.toggle
-    }
-  }
-}
+      this.toggle = !this.toggle;
+    },
+  },
+};
 </script>

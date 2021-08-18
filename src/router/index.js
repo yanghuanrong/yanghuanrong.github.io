@@ -1,9 +1,8 @@
+import '@/style/highlight.css';
+import Blog from '@blog/data';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
-import Blog from '@blog/data';
-import hljs from 'highlight.js';
-import '@/style/highlight.css';
 
 Vue.use(VueRouter);
 
@@ -47,44 +46,22 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const el = document.getElementById('maskMove');
   if (el) {
-    document.body.style = 'overflow: hidden';
-    el.style.width = '100%';
-
-    el.addEventListener('transitionend', () => {
+    el.className = 'show';
+    el.addEventListener('transitionend', fn1);
+    function fn1() {
       next();
-      el.style.left = 'inherit';
-      el.style.right = '0';
-      el.style.width = '0';
-      document.body.style = '';
-
-      // el.addEventListener('transitionend', () => {
-      //   el.style.left = '0'
-      //   el.style.right = 'inherit'
-      // })
-    });
+      el.className = 'hide';
+      el.removeEventListener('transitionend', fn1);
+      el.addEventListener('transitionend', fn2);
+    }
+    function fn2() {
+      el.className = '';
+      el.style = '';
+      el.removeEventListener('transitionend', fn2);
+    }
   } else {
     next();
   }
-});
-
-router.afterEach(() => {
-  Vue.nextTick(() => {
-    const blocks = document.querySelectorAll('pre code:not(.hljs)');
-    Array.prototype.forEach.call(blocks, hljs.highlightBlock);
-
-    const elements = document.querySelectorAll('pre code.hljs');
-    for (let i = 0; i < elements.length; i++) {
-      let html = elements[i].innerHTML;
-      let num = 1;
-      html = '<span class="ln-num" data-num="' + num + '"></span>' + html;
-      html = html.trim().replace(/\r\n|\r|\n/g, function(a) {
-        num++;
-        return a + '<span class="ln-num" data-num="' + num + '"></span>';
-      });
-      html = '<span class="ln-bg"></span>' + html;
-      elements[i].innerHTML = html;
-    }
-  });
 });
 
 export default router;

@@ -1,8 +1,9 @@
+:root,
 [data-color-mode='light'] {
-  --textColor: #a2a2a2;
-  --mainColor: #fff;
-  --bgColor: #151515;
-  --lineColor: #313131;
+  --textColor: #666;
+  --mainColor: #333;
+  --bgColor: #fff;
+  --lineColor: #e6e6e6;
 }
 
 [data-color-mode='dark'] {
@@ -15,12 +16,41 @@
 @import 'rest.less';
 @import 'layout.less';
 @import 'keyframes.less';
-@import 'md.less';
+@import 'markdown.less';
+
+// #mask {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+//   z-index: 6;
+//   visibility: hidden;
+// }
+#maskMove {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  transform: translateY(100%);
+  background: var(--bgColor);
+  z-index: 6;
+
+  &.show {
+    transform: translateY(0);
+    transition: 0.3s ease-in-out;
+  }
+  &.hide {
+    transition: 0.3s 0.4s ease-in-out;
+    transform: translateY(-100%);
+  }
+}
 
 html {
   --path-fill-1: url(#gradient1);
   --path-fill-2: url(#gradient2);
-  --path-fill-3: url(#gradient3);
+  --path-fill-3: var(--bgColor);
 }
 
 html,
@@ -217,7 +247,9 @@ body {
       }
 
       &.active {
-        border-bottom: 1px solid var(--textColor);
+        span {
+          border-bottom: 1px solid var(--textColor);
+        }
       }
     }
   }
@@ -227,6 +259,7 @@ body {
   width: 80%;
 
   li {
+    list-style: none;
     opacity: 0;
     transition: 0.6s ease 0.2s;
     &.show {
@@ -324,7 +357,7 @@ body {
       &.open {
         span {
           i {
-            background: #fff;
+            background: var(--mainColor);
           }
 
           &:nth-of-type(1) {
@@ -427,7 +460,7 @@ body {
     a {
       position: relative;
       width: fit-content;
-      color: #fff;
+      color: var(--mainColor);
       display: flex;
       font-size: 36px;
       line-height: 44px;
@@ -490,7 +523,7 @@ body {
         display: flex;
         width: 24px;
         height: 2px;
-        background-color: fade(#fff, 30%);
+        background-color: var(--lineColor);
       }
 
       span {
@@ -511,12 +544,16 @@ body {
   font-size: 12px;
   justify-content: space-between;
 
+  .status {
+    font-size: 16px;
+  }
   .socialicons {
     a {
       margin-right: 30px;
       transform: scale(1);
       transition: all 0.18s ease;
       cursor: pointer;
+      color: var(--textColor);
 
       &:hover {
         color: var(--mainColor);
