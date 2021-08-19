@@ -66,16 +66,17 @@ const LIGHT = 'light';
 export default {
   data() {
     const theme = localStorage.getItem('color-mode');
+    document.documentElement.setAttribute('data-color-mode', theme);
     return {
       toggle: theme === DARK,
     };
   },
-  // mounted() {
-  //   localStorage.setItem('color-mode', LIGHT);
-  //   document.documentElement.setAttribute('data-color-mode', LIGHT);
-  // },
+  mounted() {
+    this.toggle();
+  },
   methods: {
     setToggle() {
+      this.toggle = !this.toggle;
       if (this.toggle) {
         localStorage.setItem('color-mode', DARK);
         document.documentElement.setAttribute('data-color-mode', DARK);
@@ -83,7 +84,6 @@ export default {
         localStorage.setItem('color-mode', LIGHT);
         document.documentElement.setAttribute('data-color-mode', LIGHT);
       }
-      this.toggle = !this.toggle;
     },
   },
 };
