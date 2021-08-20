@@ -90,6 +90,13 @@ export default {
         this.isDetial = to.name === 'detail';
       }, 1000);
     },
+    menu(value) {
+      if (!value) {
+        setTimeout(() => {
+          document.querySelector('#maskMove').className = '';
+        }, 300);
+      }
+    },
   },
   methods: {
     logoTap() {

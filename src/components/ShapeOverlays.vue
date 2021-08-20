@@ -67,7 +67,7 @@ class ShapeOverlays {
     this.elm = elm;
     this.path = elm.querySelectorAll('path');
     this.numPoints = 10;
-    this.duration = 900;
+    this.duration = 600;
     this.delayPointsArray = [];
     this.delayPointsMax = 300;
     this.delayPerPath = 250;
