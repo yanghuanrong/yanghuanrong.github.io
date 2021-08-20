@@ -9,7 +9,7 @@ Vue.use(Blog);
 
 Vue.directive('hover', {
   // 当被绑定的元素插入到 DOM 中时……
-  inserted: function(el) {
+  inserted: function(el, binding) {
     document.addEventListener('mousemove', function(e) {
       // 兼容性处理
       var event = e || window.event;
@@ -25,6 +25,11 @@ Vue.directive('hover', {
     el.addEventListener('click', () => {
       document.querySelector('.cursor').classList.remove('hover');
       document.querySelector('.cursor').classList.add('click');
+      if (binding.value) {
+        setTimeout(() => {
+          document.querySelector('.cursor').classList.remove('click');
+        }, 600);
+      }
     });
   },
 });

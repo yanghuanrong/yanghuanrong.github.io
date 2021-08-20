@@ -10,7 +10,7 @@
       <div
         class="menutoggle"
         @click="menuTap"
-        v-hover
+        v-hover="true"
         ref="close"
         id="menus1"
         :class="{ open: menu }"
@@ -121,7 +121,6 @@ export default {
     },
     menuTap() {
       this.menu = !this.menu;
-
       if (this.menu) {
         document.querySelector('#maskMove').className = 'menus';
         this.active = null;
