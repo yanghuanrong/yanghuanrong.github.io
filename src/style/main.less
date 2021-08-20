@@ -18,6 +18,38 @@
 @import 'keyframes.less';
 @import 'markdown.less';
 
+html,
+body,
+a {
+  cursor: none !important;
+}
+.cursor {
+  --cursor: #c3c8de;
+  position: fixed;
+  top: -50px;
+  z-index: 99;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: none;
+  border: solid 2px var(--cursor);
+  pointer-events: none;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease,
+    opacity 0.3s ease;
+
+  &.hover {
+    mix-blend-mode: difference;
+    transform: scale(1.5);
+    cursor: none;
+    background: #fff;
+    border-color: #fff;
+  }
+  &.click {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
 .mao {
   width: 60px;
   height: 60px;
@@ -256,13 +288,12 @@ body {
   .type {
     position: fixed;
     left: 80px;
-    top: 300px;
+    top: 265px;
 
     li {
       display: flex;
       justify-content: flex-start;
       margin-bottom: 30px;
-      cursor: pointer;
 
       i {
         font-style: normal;
@@ -294,6 +325,9 @@ body {
     &:hover {
       .item {
         transform: translateX(20px);
+        .title {
+          color: var(--mainColor);
+        }
         &::after {
           left: 0;
           width: 100%;
@@ -307,7 +341,7 @@ body {
     flex-direction: column;
     border-bottom: 1px solid var(--lineColor);
     padding: 60px 0;
-    cursor: pointer;
+
     transition: 0.25s ease;
 
     &::after {
@@ -360,7 +394,6 @@ body {
       overflow: hidden;
 
       a {
-        cursor: pointer;
         font-weight: bold;
         position: relative;
         display: block;
@@ -374,7 +407,7 @@ body {
       position: fixed;
       right: 80px;
       top: 35px;
-      cursor: pointer;
+
       z-index: 15;
       transition: all 0.4s ease;
 
@@ -488,7 +521,7 @@ body {
       display: flex;
       font-size: 36px;
       line-height: 44px;
-      cursor: pointer;
+
       opacity: 0;
 
       & + a {
@@ -576,7 +609,7 @@ body {
       margin-right: 30px;
       transform: scale(1);
       transition: all 0.18s ease;
-      cursor: pointer;
+
       color: var(--textColor);
 
       &:hover {

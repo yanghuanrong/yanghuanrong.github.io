@@ -2,7 +2,7 @@ import '@/style/highlight.css';
 import Blog from '@blog/data';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import Index from '../views/Index.vue';
 
 Vue.use(VueRouter);
 
@@ -18,8 +18,8 @@ const BlogRoute = Blog.data.map((item) => ({
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home,
+    name: 'index',
+    component: Index,
   },
   {
     path: '/blog',
@@ -45,11 +45,12 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const el = document.querySelector('#maskMove:not(.menus)');
-  document.body.style.overflow = 'hidden';
-  document.body.style.paddingRight = '10px';
+
   if (el) {
     el.className = 'show';
     el.addEventListener('transitionend', fn1);
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = '10px';
     function fn1() {
       next();
       el.className = 'hide';

@@ -1,7 +1,7 @@
 <template>
   <div class="header" :class="{ fixed: fixed }">
     <header class="topbar">
-      <div class="logo" @click="logoTap">
+      <div class="logo" @click="logoTap" v-hover>
         <transition name="logo" mode="out-in">
           <a v-if="isDetial" key="logo">返回Blog</a>
           <a v-else key="back">贝贝的HTML</a>
@@ -10,6 +10,7 @@
       <div
         class="menutoggle"
         @click="menuTap"
+        v-hover
         ref="close"
         id="menus1"
         :class="{ open: menu }"
@@ -33,6 +34,7 @@
           @click="router(item, i)"
           :class="{ active: active === i }"
           :key="item.name"
+          v-hover
         >
           <span>{{ item.name }}</span>
           <div class="arrow">
