@@ -10,9 +10,14 @@ Vue.use(Blog);
 Vue.directive('hover', {
   // 当被绑定的元素插入到 DOM 中时……
   inserted: function(el) {
-    // 聚焦元素
-    el.addEventListener('mouseenter', () => {
-      document.querySelector('.cursor').classList.add('hover');
+    document.addEventListener('mousemove', function(e) {
+      // 兼容性处理
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      // 判断是否匹配目标元素
+      if (el.contains(target)) {
+        document.querySelector('.cursor').classList.add('hover');
+      }
     });
     el.addEventListener('mouseleave', () => {
       document.querySelector('.cursor').classList.remove('hover');
