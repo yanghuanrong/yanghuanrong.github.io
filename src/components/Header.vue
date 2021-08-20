@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import ShapeOverlays from './ShapeOverlays'
+import ShapeOverlays from './ShapeOverlays';
 export default {
   components: {
     ShapeOverlays,
@@ -82,44 +82,45 @@ export default {
           name: '关于',
         },
       ],
-    }
+    };
   },
   watch: {
     $route(to, from) {
       setTimeout(() => {
-        this.isDetial = to.name === 'detail'
-      }, 1000)
+        this.isDetial = to.name === 'detail';
+      }, 1000);
     },
   },
   methods: {
     logoTap() {
-      if (this.$route.path === '/') return
+      if (this.$route.path === '/') return;
 
       if (this.isDetial) {
-        this.$router.back(-1)
+        this.$router.back(-1);
       } else {
-        this.$router.push('/')
+        this.$router.push('/');
       }
     },
     router(item, i) {
-      if (this.$route.path === item.path) return
+      if (this.$route.path === item.path) return;
 
-      this.active = i
+      this.active = i;
       setTimeout(() => {
-        this.menuTap()
-        this.$router.push(item.path)
-      }, 800)
+        this.menuTap();
+        this.$router.push(item.path);
+      }, 800);
     },
     menuTap() {
-      this.menu = !this.menu
+      this.menu = !this.menu;
 
       if (this.menu) {
-        this.active = null
-        document.body.style.overflow = 'hidden'
+        document.querySelector('#maskMove').className = 'menus';
+        this.active = null;
+        document.body.style.overflow = 'hidden';
       } else {
-        document.body.style.overflow = 'auto'
+        document.body.style.overflow = 'auto';
       }
     },
   },
-}
+};
 </script>

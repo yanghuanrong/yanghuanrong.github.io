@@ -18,32 +18,56 @@
 @import 'keyframes.less';
 @import 'markdown.less';
 
-// #mask {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   bottom: 0;
-//   right: 0;
-//   z-index: 6;
-//   visibility: hidden;
-// }
+.mao {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  bottom: -3px;
+  right: 30px;
+  z-index: 10;
+  color: var(--mainColor);
+
+  .eyes {
+    background: #fff;
+    width: 26px;
+    height: 15px;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    z-index: -1;
+  }
+}
+
 #maskMove {
   position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
-  transform: translateY(100%);
-  background: var(--bgColor);
   z-index: 6;
+  background: var(--bgColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: inset(100vh 0 0 0);
 
   &.show {
-    transform: translateY(0);
-    transition: 0.3s ease-in-out;
+    clip-path: inset(0 0 0 0);
+    transition: 0.4s ease-in-out;
   }
   &.hide {
     transition: 0.3s 0.4s ease-in-out;
-    transform: translateY(-100%);
+    clip-path: inset(0 0 100vh 0);
+  }
+  .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    color: var(--mainColor);
+    margin-top: 40px;
+    letter-spacing: 10px;
   }
 }
 

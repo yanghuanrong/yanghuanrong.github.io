@@ -4,20 +4,6 @@
       © 2012 - 2021
     </div>
     <div class="socialicons">
-      <a @click="setToggle">
-        <svg
-          class="icon"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 36 36"
-          height="20"
-          width="20"
-        >
-          <path
-            d="M18,0C8.1,0,0,8.1,0,18c0,9.9,8.1,18,18,18c9.9,0,18-8.1,18-18C36,8.1,27.9,0,18,0z M18,32V4 c7.7,0,14,6.3,14,14C32,25.7,25.7,32,18,32z"
-          ></path>
-        </svg>
-      </a>
       <a href="weixin://">
         <svg
           class="icon"
@@ -58,33 +44,3 @@
     </div>
   </footer>
 </template>
-
-<script>
-const DARK = 'dark';
-const LIGHT = 'light';
-
-export default {
-  data() {
-    const theme = localStorage.getItem('color-mode');
-    document.documentElement.setAttribute('data-color-mode', theme);
-    return {
-      toggle: theme === DARK,
-    };
-  },
-  mounted() {
-    this.toggle();
-  },
-  methods: {
-    setToggle() {
-      this.toggle = !this.toggle;
-      if (this.toggle) {
-        localStorage.setItem('color-mode', DARK);
-        document.documentElement.setAttribute('data-color-mode', DARK);
-      } else {
-        localStorage.setItem('color-mode', LIGHT);
-        document.documentElement.setAttribute('data-color-mode', LIGHT);
-      }
-    },
-  },
-};
-</script>

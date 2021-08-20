@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <div id="maskMove"></div>
+    <div id="maskMove">
+      <Loading />
+      <div class="text">贝贝的HTML</div>
+    </div>
+    <Mao />
     <div style="position: relative; z-index: 2">
       <Header />
       <div v-if="$route.name === 'blog'">
@@ -19,10 +23,14 @@
 <script>
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import Loading from '@/components/Loading.vue';
+import Mao from '@/components/Mao.vue';
 export default {
   components: {
     Header,
     Footer,
+    Loading,
+    Mao,
   },
   provide() {
     return {

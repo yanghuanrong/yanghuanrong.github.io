@@ -44,7 +44,9 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const el = document.getElementById('maskMove');
+  const el = document.querySelector('#maskMove:not(.menus)');
+  document.body.style.overflow = 'hidden';
+  document.body.style.paddingRight = '10px';
   if (el) {
     el.className = 'show';
     el.addEventListener('transitionend', fn1);
@@ -58,9 +60,13 @@ router.beforeEach((to, from, next) => {
       el.className = '';
       el.style = '';
       el.removeEventListener('transitionend', fn2);
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '0';
     }
   } else {
     next();
+    const el = document.querySelector('#maskMove');
+    el && (el.className = '');
   }
 });
 

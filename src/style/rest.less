@@ -109,28 +109,12 @@ a {
 
 ::-webkit-scrollbar-thumb:vertical {
   height: 5px;
-  background-color: #fff;
+  background-color: var(--mainColor);
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
   width: 5px;
-  background-color: #fff;
-}
-
-input:focus,
-button:focus,
-textarea:focus {
-  outline: none;
-}
-body,
-input,
-textarea {
-  font-family: 'THEX', '微软雅黑', Arial;
-}
-
-body {
-  -webkit-tap-highlight-color: #fff;
-  font-family: 'calibre';
+  background-color: var(--mainColor);
 }
 
 @font-face {
@@ -147,4 +131,20 @@ body {
   font-weight: 100;
   font-display: swap;
   src: url('font/D-DIN.woff2') format('woff2');
+  // src: url('font/calibre-regular.woff2') format('woff2');
+}
+
+input:focus,
+button:focus,
+textarea:focus {
+  outline: none;
+}
+body,
+input,
+textarea {
+  font-family: 'calibre', '微软雅黑', Arial;
+}
+
+body {
+  -webkit-tap-highlight-color: #fff;
 }
