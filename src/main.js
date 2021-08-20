@@ -19,17 +19,23 @@ Vue.directive('hover', {
         document.querySelector('.cursor').classList.add('hover');
       }
     });
+    document.addEventListener('click', function(e) {
+      // 兼容性处理
+      var event = e || window.event;
+      var target = event.target || event.srcElement;
+      // 判断是否匹配目标元素
+      if (el.contains(target)) {
+        document.querySelector('.cursor').classList.remove('hover');
+        document.querySelector('.cursor').classList.add('click');
+        if (binding.value) {
+          setTimeout(() => {
+            document.querySelector('.cursor').classList.remove('click');
+          }, 600);
+        }
+      }
+    });
     el.addEventListener('mouseleave', () => {
       document.querySelector('.cursor').classList.remove('hover');
-    });
-    el.addEventListener('click', () => {
-      document.querySelector('.cursor').classList.remove('hover');
-      document.querySelector('.cursor').classList.add('click');
-      if (binding.value) {
-        setTimeout(() => {
-          document.querySelector('.cursor').classList.remove('click');
-        }, 600);
-      }
     });
   },
 });

@@ -31,7 +31,7 @@
         </div>
         <a
           v-for="(item, i) in nav"
-          @click="router(item, i)"
+          @click="router($event, item, i)"
           :class="{ active: active === i }"
           :key="item.name"
           v-hover
@@ -110,14 +110,15 @@ export default {
         this.$router.push('/');
       }
     },
-    router(item, i) {
-      if (this.$route.path === item.path) return;
+    router(e, item, i) {
+      if (this.$route.path === item.path) {
+        e && e.stopPropagation();
+        return;
+      }
 
       this.active = i;
-      setTimeout(() => {
-        this.menuTap();
-        this.$router.push(item.path);
-      }, 800);
+      this.menuTap();
+      this.$router.push(item.path);
     },
     menuTap() {
       this.menu = !this.menu;

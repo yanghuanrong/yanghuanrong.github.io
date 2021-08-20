@@ -70,6 +70,10 @@ router.beforeEach((to, from, next) => {
     next();
     const el = document.querySelector('#maskMove');
     el && (el.className = '');
+    setTimeout(() => {
+      const cursor = document.querySelector('.cursor.click');
+      cursor && cursor.classList.remove('click');
+    }, 600);
   }
 });
 
