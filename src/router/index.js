@@ -63,6 +63,8 @@ router.beforeEach((to, from, next) => {
       el.removeEventListener('transitionend', fn2);
       document.body.style.overflow = '';
       document.body.style.paddingRight = '0';
+      document.querySelector('.cursor').classList.remove('hover');
+      document.querySelector('.cursor').classList.remove('click');
     }
   } else {
     next();

@@ -23,15 +23,8 @@ Vue.directive('hover', {
       document.querySelector('.cursor').classList.remove('hover');
     });
     el.addEventListener('click', () => {
+      document.querySelector('.cursor').classList.remove('hover');
       document.querySelector('.cursor').classList.add('click');
-      document
-        .querySelector('.cursor')
-        .addEventListener('transitionend', function() {
-          setTimeout(() => {
-            this.classList.remove('hover');
-            this.classList.remove('click');
-          }, 400);
-        });
     });
   },
 });
