@@ -1,7 +1,7 @@
 <template>
   <div class="header" :class="{ fixed: fixed }">
     <header class="topbar">
-      <div class="logo" @click="logoTap" v-hover>
+      <div class="logo" @click="logoTap($event)" v-hover>
         <transition name="logo" mode="out-in">
           <a v-if="isDetial" key="logo">返回Blog</a>
           <a v-else key="back">贝贝的HTML</a>
@@ -101,8 +101,11 @@ export default {
     },
   },
   methods: {
-    logoTap() {
-      if (this.$route.path === '/') return;
+    logoTap(e) {
+      if (this.$route.path === '/') {
+        e && e.stopPropagation();
+        return;
+      }
 
       if (this.isDetial) {
         this.$router.back(-1);
