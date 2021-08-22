@@ -3,6 +3,7 @@
   --textColor: #6B7AA1;
   --mainColor: #11324D;
   --bgColor: #fff;
+  --cursor: #c3c8de;
   --lineColor: #e6e6e6;
 }
 
@@ -13,18 +14,47 @@
   --lineColor: #313131;
 }
 
+@font-face {
+  font-family: 'pingfang';
+  src: url('font/PingFang.ttf');
+}
+@font-face {
+  font-family: 'pingfang Bold';
+  src: url('font/PingFangBold.ttf');
+}
+
 @import 'rest.less';
 @import 'layout.less';
 @import 'keyframes.less';
 @import 'markdown.less';
+
+
+html {
+  --path-fill-1: url(#gradient1);
+  --path-fill-2: url(#gradient2);
+  --path-fill-3: var(--bgColor);
+}
+html,
+body {
+  font-family: 'pingfang';
+  font-size: 22px;
+  min-height: 100vh;
+  color: var(--textColor);
+  background: var(--bgColor);
+}
+body {
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
 
 html,
 body,
 a {
   cursor: none !important;
 }
+
+
 .cursor {
-  --cursor: #c3c8de;
   position: fixed;
   top: -50px;
   z-index: 99;
@@ -103,36 +133,25 @@ a {
   }
 }
 
-html {
-  --path-fill-1: url(#gradient1);
-  --path-fill-2: url(#gradient2);
-  --path-fill-3: var(--bgColor);
-}
-
-html,
-body {
-  font-family: 'calibre bold';
-  font-size: 22px;
-  min-height: 100vh;
-  color: var(--textColor);
-  background: var(--bgColor);
-}
-body {
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-}
 
 .sectionheader {
   line-height: 1.4;
 
   h3 {
-    font-family: 'Calibre bold';
+    font-family: 'pingfang bold';
     font-size: 64px;
     margin: 0;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--mainColor);
   }
 
+  h4{
+    margin-top: 30px;
+    font-size: 48px;
+  }
+
   p {
+    font-family: pingfang;
     margin-top: 24px;
     font-size: 26px;
     line-height: 1.6;
@@ -198,7 +217,7 @@ body {
   }
 
   h3 {
-    font-size: 64px;
+    font-size: 56px;
   }
 
   .pulse {
@@ -242,7 +261,6 @@ body {
     font-weight: 400;
     margin-bottom: 24px;
     font-size: 22px;
-    font-family: 'calibre';
   }
 }
 
@@ -373,7 +391,6 @@ body {
 
     .title {
       font-size: 24px;
-      font-family: 'calibre bold';
       margin: 0;
       position: relative;
       color: var(--mainColor);
@@ -396,7 +413,7 @@ body {
     justify-content: space-between;
 
     .logo {
-      font-family: 'calibre bold';
+      font-family: '微软雅黑';
       height: 30px;
       overflow: hidden;
 

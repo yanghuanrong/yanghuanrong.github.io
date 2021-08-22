@@ -37,22 +37,6 @@
           v-hover
         >
           <span>{{ item.name }}</span>
-          <div class="arrow">
-            <svg
-              class="icon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              height="48"
-              width="48"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linejoin="round"
-              stroke-linecap="round"
-            >
-              <path stroke="currentColor" d="M5 12h14m0 0l-6-6m6 6l-6 6" />
-            </svg>
-          </div>
         </a>
       </div>
     </div>

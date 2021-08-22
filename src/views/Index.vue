@@ -32,7 +32,7 @@
         <div class="info">
           <h4>提升</h4>
           <p>
-            使用VUE编写功能齐全的WEB应用程序
+            使用 VUE or React 编写功能齐全的WEB应用程序
             <br />供内部使用
           </p>
         </div>
@@ -66,7 +66,7 @@
           </h3>
 
           <p>
-            我们都热爱开源，它可以让我们更好的工作。下面是我构建与参与的几个项目。
+            构建了几个不成器的开源项目，总是因为精力不够而疏忽维护。
           </p>
         </div>
         <div class="splitter">
@@ -76,30 +76,32 @@
 
         <div class="osproject grid">
           <div class="col-xs-12 col-sm-5">
+            <h5>RelaxPlus</h5>
+          </div>
+          <div class="col-xs-12 col-sm-7">
+            <p class="mb6">使用VUE3编写的UI组件库，轻量、精美，融入更多思考</p>
+            <a
+              href="https://github.com/yanghuanrong/RelaxPlus"
+              class="button link"
+              target="_blank"
+            >
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="osproject grid">
+          <div class="col-xs-12 col-sm-5">
             <h5>RelaxUI</h5>
           </div>
           <div class="col-xs-12 col-sm-7">
-            <p class="mb6">基于VUE2编写的UI组件库</p>
+            <p class="mb6">使用VUE2编写的UI组件库，奠定了VUE组件开发基础</p>
             <a
               href="https://github.com/yanghuanrong/RelaxUI"
               class="button link"
               target="_blank"
             >
               <span>GitHub</span>
-              <svg
-                class="icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                height="24"
-                width="24"
-                stroke="currentColor"
-                stroke-width="3"
-                stroke-linejoin="round"
-                stroke-linecap="round"
-              >
-                <path stroke="currentColor" d="M5 12h14m0 0l-6-6m6 6l-6 6" />
-              </svg>
             </a>
           </div>
         </div>
@@ -110,7 +112,7 @@
           </div>
           <div class="col-xs-12 col-sm-7">
             <p class="mb6">
-              本SDK基于ES6开发，致力打造基于前端混合开发需求，支持微信小程序、H5、快应用、游戏Cocos、混合App等平台。
+              使用ES6开发的SDK，致力打造基于前端混合开发需求，支持微信小程序、H5、快应用、游戏Cocos、混合App等平台。
             </p>
             <a
               href="https://github.com/bmob/hydrogen-js-sdk"
@@ -118,20 +120,6 @@
               target="_blank"
             >
               <span>GitHub</span>
-              <svg
-                class="icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                height="24"
-                width="24"
-                stroke="currentColor"
-                stroke-width="3"
-                stroke-linejoin="round"
-                stroke-linecap="round"
-              >
-                <path stroke="currentColor" d="M5 12h14m0 0l-6-6m6 6l-6 6" />
-              </svg>
             </a>
           </div>
         </div>
@@ -141,10 +129,10 @@
     <section class="container flex flex-column talk">
       <div class="project module3">
         <div class="info">
-          <h4>有项目吗？聊聊</h4>
+          <h4>交个朋友？聊聊</h4>
           <p>
-            即使是一个重构切图的项目或者是想法？
-            <br />也可以告诉我
+            修图、P图、改图、作图、切图、拍图、H5、小程序
+            <br />都可以
           </p>
         </div>
       </div>
