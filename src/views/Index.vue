@@ -3,10 +3,10 @@
     <div class="container intro">
       <div class="sectionheader flex flex-column">
         <h3>
-          我是一名WEB前端工作者，住在广东的佛山地区——用前端技术快乐的构建应用程序。
+          用毕生所学快乐的构建应用程序，希望能创造出可以成为他人回忆的事物。
         </h3>
         <p>
-          现在每天早上起床，在Wechat,
+          每天，在Wechat,
           QQ上和朋友们一起探讨和研究技术。总是致力于建造和学习新东西。
         </p>
       </div>
@@ -126,7 +126,7 @@
       </div>
     </section>
 
-    <section class="container flex flex-column talk">
+    <section class="container flex flex-column talk" v-hover @click="to">
       <div class="project module3">
         <div class="info">
           <h4>交个朋友？聊聊</h4>
@@ -143,5 +143,10 @@
 <script>
 export default {
   name: 'Home',
+  methods: {
+    to() {
+      this.$router.push('about');
+    },
+  },
 };
 </script>

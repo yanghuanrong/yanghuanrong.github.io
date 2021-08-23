@@ -3,42 +3,42 @@
   {
     "title": "一些会常用的业务代码整理",
     "tag": "JavaScript",
-    "lastUpdated": "2021-5-27 14:04:42",
+    "lastUpdated": "2021/5/27 下午2:04:42",
     "id": "0e3d3582e2578ecb2f85553e3b06ef5e",
     "fileName": "business.md"
   },
   {
     "title": "打造现象级WEB按钮",
     "tag": "Vue",
-    "lastUpdated": "2021-5-27 14:04:42",
+    "lastUpdated": "2021/5/27 下午2:04:42",
     "id": "5e05aed07c8c7dc9dc526cfc03f37e8a",
     "fileName": "Button.md"
   },
   {
     "title": "日历",
     "tag": "Vue",
-    "lastUpdated": "2021-5-27 14:04:42",
+    "lastUpdated": "2021/5/27 下午2:04:42",
     "id": "419c9ad1b4f88563eb956861b1ef1f22",
     "fileName": "cc.md"
   },
   {
     "title": "实现一键复制",
     "tag": "Vue",
-    "lastUpdated": "2021-5-27 14:04:42",
+    "lastUpdated": "2021/5/27 下午2:04:42",
     "id": "4657f3a43760d5e8f25bf5f09217eaf0",
     "fileName": "copy.md"
   },
   {
     "title": "地址栏输入URL这个过程发生了什么？",
     "tag": "JavaScript",
-    "lastUpdated": "2021-6-22 22:03:11",
+    "lastUpdated": "2021/6/22 下午10:03:11",
     "id": "15407fe1c54ff83f14d40bd4d249370d",
     "fileName": "http.md"
   },
   {
     "title": "文字飞散特效组件",
     "tag": "Vue",
-    "lastUpdated": "2021-5-27 14:04:42",
+    "lastUpdated": "2021/5/27 下午2:04:42",
     "id": "a579ce412128c10dca4402062375d6cb",
     "fileName": "TextFly.md"
   }
