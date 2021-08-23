@@ -31,7 +31,7 @@
           结交一些人，做一点事。
         </p>
       </div>
-      <div class="project module3">
+      <div class="project module3 talk">
         <div class="info">
           <h4>交个朋友？聊聊</h4>
           <p>
