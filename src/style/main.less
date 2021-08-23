@@ -1,7 +1,7 @@
 :root,
 [data-color-mode='light'] {
-  --textColor: #6B7AA1;
-  --mainColor: #11324D;
+  --textColor: #6b7aa1;
+  --mainColor: #11324d;
   --bgColor: #fff;
   --cursor: #c3c8de;
   --lineColor: #e6e6e6;
@@ -28,7 +28,6 @@
 @import 'keyframes.less';
 @import 'markdown.less';
 
-
 html {
   --path-fill-1: url(#gradient1);
   --path-fill-2: url(#gradient2);
@@ -46,17 +45,32 @@ body {
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
-
 html,
 body,
 a {
   cursor: none !important;
 }
+#app {
+  opacity: 0;
+  transition: opacity 1s;
+}
+#loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  transform: translate(-50%, -50%);
+  margin-top: 20px;
 
-
+  &::after {
+    content: '% LOADING';
+  }
+}
 .cursor {
   position: fixed;
-  top: -50px;
+  top: 50%;
+  left: 50%;
   z-index: 99;
   width: 40px;
   height: 40px;
@@ -67,6 +81,25 @@ a {
   transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease,
     opacity 0.3s ease;
 
+  &.load {
+    width: 90px;
+    height: 90px;
+    margin-left: -45px;
+    margin-top: -90px;
+    border: none;
+    background-color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    line-height: 1.8;
+    box-sizing: border-box;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%),
+      linear-gradient(to bottom right, #10afe9, #3affff);
+    font-weight: 300;
+    padding: 8px;
+    border-radius: 100px;
+    background-clip: content-box, padding-box;
+    animation: rotate 1s linear infinite;
+  }
   &.hover {
     mix-blend-mode: difference;
     transform: scale(1.5);
@@ -133,7 +166,6 @@ a {
   }
 }
 
-
 .sectionheader {
   line-height: 1.4;
 
@@ -145,7 +177,7 @@ a {
     color: var(--mainColor);
   }
 
-  h4{
+  h4 {
     margin-top: 30px;
     font-size: 48px;
   }
@@ -175,14 +207,14 @@ a {
   }
 
   &.module1 {
-    background-color: #E7E0C9 ;
+    background-color: #e7e0c9;
   }
 
   &.module2 {
-    background-color: #C1CFC0;
+    background-color: #c1cfc0;
   }
-  &.module3{
-    background-color: #6B7AA1;
+  &.module3 {
+    background-color: #6b7aa1;
   }
 
   &:hover {

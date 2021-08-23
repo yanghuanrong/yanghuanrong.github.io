@@ -3,6 +3,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import './style/main.less';
+import loading from './utils/loading';
 Vue.config.productionTip = false;
 
 Vue.use(Blog);
@@ -40,10 +41,26 @@ Vue.directive('hover', {
   },
 });
 
-new Vue({
-  router,
-  render: (h) => h(App),
-}).$mount('#app');
+let load = true;
+loading({
+  onloading(i) {
+    document.getElementById('loading').innerHTML = i;
+  },
+  done() {
+    load = false;
+    document.getElementById('loading').style.display = 'none';
+    document.querySelector('.cursor').className = 'cursor';
+    new Vue({
+      router,
+      render: (h) => h(App),
+      mounted() {
+        this.$nextTick(() => {
+          document.getElementById('app').style.opacity = '1';
+        });
+      },
+    }).$mount('#app');
+  },
+});
 
 if (document.addEventListener) {
   const _titleChange = document.title;
@@ -54,7 +71,6 @@ if (document.addEventListener) {
   });
 }
 
-// --- CURSOR
 const size = 20;
 const cursor = document.querySelector('.cursor');
 let top = 0;
@@ -65,6 +81,7 @@ window.addEventListener('scroll', (event) => {
     (event.srcElement ? event.srcElement.body.scrollTop : 0);
 });
 document.addEventListener('mousemove', function(e) {
+  if (load) return;
   cursor.style.left = e.pageX - size + 'px';
   cursor.style.top = e.pageY - top - size + 'px';
 });
