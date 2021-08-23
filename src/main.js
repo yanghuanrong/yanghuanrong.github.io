@@ -48,7 +48,7 @@ loading({
   },
   done() {
     load = false;
-    document.getElementById('loading').style.display = 'none';
+    document.body.removeChild(document.getElementById('loading'));
     document.querySelector('.cursor').className = 'cursor';
     new Vue({
       router,
