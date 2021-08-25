@@ -1,5 +1,5 @@
 .blog-doc {
-  margin: 120px 0 152px;
+  margin: 0 0 152px;
   width: 100%;
 }
 
@@ -65,11 +65,11 @@
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
-  color: #24292e;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
-    sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  font-size: 16px;
-  line-height: 1.5;
+  color: var(--textColor);
+  font-family: 'pingfang', -apple-system, BlinkMacSystemFont, Segoe UI,
+    Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-size: 20px;
+  line-height: 1.6;
   word-wrap: break-word;
 }
 
@@ -151,7 +151,7 @@
 }
 
 .markdown-body strong {
-  font-weight: 600;
+  font-family: 'pingfang Bold';
 }
 
 .markdown-body hr {
@@ -208,6 +208,7 @@
 .markdown-body h6 {
   margin-top: 0;
   margin-bottom: 0;
+  color: var(--mainColor);
 }
 
 .markdown-body h1 {
@@ -644,7 +645,7 @@
 .markdown-body table,
 .markdown-body ul {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 1em;
 }
 
 .markdown-body hr {
@@ -675,10 +676,10 @@
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-  margin-top: 24px;
+  margin-top: 2.5em;
   margin-bottom: 16px;
-  font-weight: 600;
   line-height: 1.25;
+  font-family: 'pingfang Bold';
 }
 
 .markdown-body h1 {
@@ -688,7 +689,6 @@
 .markdown-body h1,
 .markdown-body h2 {
   padding-bottom: 0.3em;
-  border-bottom: 1px solid #eaecef;
 }
 
 .markdown-body h2 {

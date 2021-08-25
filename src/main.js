@@ -42,25 +42,25 @@ Vue.directive('hover', {
 });
 
 let load = true;
-loading({
-  onloading(i) {
-    document.getElementById('loading').innerHTML = i;
+// loading({
+//   onloading(i) {
+//     document.getElementById('loading').innerHTML = i;
+//   },
+//   done() {
+load = false;
+document.body.removeChild(document.getElementById('loading'));
+document.querySelector('.cursor').className = 'cursor';
+new Vue({
+  router,
+  render: (h) => h(App),
+  mounted() {
+    this.$nextTick(() => {
+      document.getElementById('app').style.opacity = '1';
+    });
   },
-  done() {
-    load = false;
-    document.body.removeChild(document.getElementById('loading'));
-    document.querySelector('.cursor').className = 'cursor';
-    new Vue({
-      router,
-      render: (h) => h(App),
-      mounted() {
-        this.$nextTick(() => {
-          document.getElementById('app').style.opacity = '1';
-        });
-      },
-    }).$mount('#app');
-  },
-});
+}).$mount('#app');
+//   },
+// });
 
 if (document.addEventListener) {
   const _titleChange = document.title;
