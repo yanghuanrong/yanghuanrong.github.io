@@ -9,22 +9,17 @@ Vue.config.productionTip = false;
 Vue.use(Blog);
 
 Vue.directive('hover', {
-  // 当被绑定的元素插入到 DOM 中时……
   inserted: function(el, binding) {
     document.addEventListener('mousemove', function(e) {
-      // 兼容性处理
       var event = e || window.event;
       var target = event.target || event.srcElement;
-      // 判断是否匹配目标元素
       if (el.contains(target)) {
         document.querySelector('.cursor').classList.add('hover');
       }
     });
     document.addEventListener('click', function(e) {
-      // 兼容性处理
       var event = e || window.event;
       var target = event.target || event.srcElement;
-      // 判断是否匹配目标元素
       if (el.contains(target)) {
         document.querySelector('.cursor').classList.remove('hover');
         document.querySelector('.cursor').classList.add('click');
@@ -42,25 +37,25 @@ Vue.directive('hover', {
 });
 
 let load = true;
-// loading({
-//   onloading(i) {
-//     document.getElementById('loading').innerHTML = i;
-//   },
-//   done() {
-load = false;
-document.body.removeChild(document.getElementById('loading'));
-document.querySelector('.cursor').className = 'cursor';
-new Vue({
-  router,
-  render: (h) => h(App),
-  mounted() {
-    this.$nextTick(() => {
-      document.getElementById('app').style.opacity = '1';
-    });
+loading({
+  onloading(i) {
+    document.getElementById('loading').innerHTML = i;
   },
-}).$mount('#app');
-//   },
-// });
+  done() {
+    load = false;
+    document.body.removeChild(document.getElementById('loading'));
+    document.querySelector('.cursor').className = 'cursor';
+    new Vue({
+      router,
+      render: (h) => h(App),
+      mounted() {
+        this.$nextTick(() => {
+          document.getElementById('app').style.opacity = '1';
+        });
+      },
+    }).$mount('#app');
+  },
+});
 
 if (document.addEventListener) {
   const _titleChange = document.title;

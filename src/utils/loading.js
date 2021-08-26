@@ -18,6 +18,11 @@ function loading({ onloading, done }) {
   function nums() {
     clearInterval(time);
     time = setInterval(() => {
+      if (node === total || num === total) {
+        done(total);
+        clearInterval(time);
+        time = null;
+      }
       if (num < node) {
         num++;
         onloading(num);
@@ -29,9 +34,6 @@ function loading({ onloading, done }) {
             node = RandomNum(num, num + total - num);
             nums();
           }, 1000 * asyncTime);
-        }
-        if (num === total) {
-          done();
         }
       }
     }, 30);
