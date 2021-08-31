@@ -1,17 +1,24 @@
 <template>
   <div class="home">
-    <div class="container intro">
-      <div class="sectionheader flex flex-column">
-        <h3>
-          用毕生所学快乐的构建应用程序，希望能创造出可以成为他人回忆的事物。
-        </h3>
-        <p>
-          每天，在Wechat,
-          QQ上和朋友们一起探讨和研究技术。总是致力于建造和学习新东西。
-        </p>
+    <div class="banner">
+      <div class="slogan">
+        <div class="sectionheader flex flex-column">
+          <h3>
+            记忆中的声音
+          </h3>
+          <p>
+            剑气如虹向天而挥，金钩舞动向死而生
+          </p>
+        </div>
+      </div>
+      <div id="siri-container"></div>
+      <button class="btn" v-hover>奇思妙想</button>
+      <div class="tips">
+        无意间闯入时光的深处，潮湿的青春岁月，站在你我来时的路上，遥望前尘往事，几多悲喜彷徨，十年前，十年后。<br />
+        如若这一生都在漂泊中度过，时光是否记得我来过。<br />
       </div>
     </div>
-
+    <!-- 
     <section class="container flex flex-column">
       <div class="splitter">
         <span>Professional work</span>
@@ -136,13 +143,41 @@
           </p>
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
 
 <script>
+import SiriWave from 'siriwave';
+let siri;
 export default {
   name: 'Home',
+  mounted() {
+    siri = new SiriWave({
+      container: document.getElementById('siri-container'),
+      height: 200,
+      color: '#C1CFC0',
+      speed: 0.05,
+      style: 'ios9',
+      lerpSpeed: 0.4,
+      curveDefinition: [
+        { color: '255,255,255', supportLine: true },
+        { color: '15, 82, 169' }, // 蓝色
+        { color: '173, 57, 76' }, // 红色
+        { color: '48, 220 , 155' }, // 绿色
+      ],
+    });
+
+    // let i = 0;
+    // setInterval(() => {
+    //   i++;
+    //   sirw.setAmplitude(i);
+    // }, 1000);
+  },
+  destroyed() {
+    siri.dispose();
+    siri = null;
+  },
   methods: {
     to() {
       this.$router.push('about');

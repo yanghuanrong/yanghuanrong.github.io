@@ -4,9 +4,10 @@
       <div class="logo" @click="logoTap($event)" v-hover>
         <transition name="logo" mode="out-in">
           <a v-if="isDetial" key="logo">返回Blog</a>
-          <a v-else key="back">贝贝的HTML</a>
+          <a v-else key="back">Best</a>
         </transition>
       </div>
+
       <div
         class="menutoggle"
         @click="menuTap"
@@ -25,23 +26,20 @@
     </header>
 
     <div class="nav-wrap" v-if="isMenu">
-      <div class="container flex flex-column menu " :class="{ open: menu }">
-        <div class="splitter">
-          <span>Contents</span>
-        </div>
+      <div class="menu" :class="{ open: menu }">
+        <div class="splitter"><span>Contents</span></div>
         <a
           v-for="(item, i) in nav"
           @click="router($event, item, i)"
           :class="{ active: active === i }"
           :key="item.name"
+          v-html="item.name"
           v-hover
         >
-          <span>{{ item.name }}</span>
         </a>
       </div>
     </div>
     <ShapeOverlays v-model="menu" @move="isMenu = menu" />
-    <!-- <div id="maskMove"></div> -->
   </div>
 </template>
 
@@ -60,12 +58,16 @@ export default {
       isDetial: false,
       nav: [
         {
+          path: '/github',
+          name: '<span>🥉</span> 开源项目',
+        },
+        {
           path: '/blog',
-          name: '博客文章',
+          name: '<span>✨</span> 奇思妙想',
         },
         {
           path: '/about',
-          name: '关于',
+          name: '<span>🐱‍👤</span> 关于',
         },
       ],
     };

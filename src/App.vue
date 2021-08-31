@@ -2,9 +2,8 @@
   <div id="app">
     <div id="maskMove">
       <Loading />
-      <div class="text">贝贝的HTML</div>
+      <div class="text">Best</div>
     </div>
-    <Mao />
     <div style="position: relative; z-index: 2">
       <Header />
       <div v-if="$route.name === 'blog'">
@@ -14,7 +13,9 @@
           </div>
         </transition>
       </div>
-      <router-view class="body" v-if="isRouterAlive"></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view class="body" v-if="isRouterAlive"></router-view>
+      </transition>
       <Footer />
     </div>
   </div>

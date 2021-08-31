@@ -27,29 +27,29 @@
 @import 'layout.less';
 @import 'keyframes.less';
 @import 'markdown.less';
+@import 'home.less';
 
 html {
   --path-fill-1: url(#gradient1);
   --path-fill-2: url(#gradient2);
   --path-fill-3: var(--bgColor);
 }
+* {
+  font-family: 'pingfang';
+  cursor: none !important;
+}
 html,
 body {
-  font-family: 'pingfang';
   font-size: 22px;
   min-height: 100vh;
   color: var(--textColor);
+  overflow: hidden;
   background: var(--bgColor);
 }
 body {
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
-html,
-body,
-a {
-  cursor: none !important;
-}
 #app {
   opacity: 0;
   transition: opacity 1s;
@@ -342,6 +342,8 @@ a {
 }
 
 .blog {
+  height: 100vh;
+  overflow-y: scroll !important;
   .type {
     position: fixed;
     left: 80px;
@@ -446,11 +448,11 @@ a {
     justify-content: space-between;
 
     .logo {
-      font-family: '微软雅黑';
       height: 30px;
       overflow: hidden;
 
       a {
+        font-family: 'pingfang Bold';
         font-weight: bold;
         position: relative;
         display: block;
@@ -551,9 +553,19 @@ a {
     bottom: 0;
     height: 100vh;
     justify-content: center;
-
+    padding: 15%;
+    text-align: center;
     &.open {
+      .splitter {
+        animation: nav-split 0.6s 0.8s 1;
+        animation-fill-mode: forwards;
+      }
+
       a {
+        span {
+          font-size: 24px;
+          margin-right: 10px;
+        }
         &:nth-of-type(1) {
           animation: nav-menu 0.6s 1.1s 1;
           animation-fill-mode: forwards;
@@ -563,66 +575,10 @@ a {
           animation: nav-menu 0.6s 1.3s 1;
           animation-fill-mode: forwards;
         }
-      }
-
-      .splitter {
-        animation: nav-split 0.6s 0.8s 1;
-        animation-fill-mode: forwards;
-      }
-    }
-
-    a {
-      position: relative;
-      width: fit-content;
-      color: var(--mainColor);
-      display: flex;
-      font-size: 36px;
-      line-height: 44px;
-
-      opacity: 0;
-
-      & + a {
-        margin-top: 40px;
-      }
-
-      &:hover {
-        span {
-          left: 24px;
-        }
-
-        .arrow {
-          padding-left: 32px;
-          opacity: 1;
-        }
-      }
-
-      &.active {
-        span {
-          animation: nav-menu-click 0.8s 0s 1;
+        &:nth-of-type(3) {
+          animation: nav-menu 0.6s 1.5s 1;
           animation-fill-mode: forwards;
         }
-
-        .arrow {
-          animation: nav-menu-click 0.4s 0s 1;
-          animation-fill-mode: forwards;
-        }
-      }
-
-      span {
-        position: relative;
-        transition: left 0.14s ease-in-out;
-        left: 0;
-      }
-
-      .arrow {
-        display: flex;
-        position: relative;
-        padding-left: 16px;
-        -webkit-transform: scale(0.8);
-        transform: scale(0.8);
-        transition: all 0.14s ease-in-out;
-        transition-property: transform, padding-left, opacity;
-        opacity: 0.32;
       }
     }
 
@@ -631,12 +587,13 @@ a {
       position: relative;
       opacity: 0;
 
-      &::before {
+      &::after {
         content: ' ';
         margin-right: 12px;
         display: flex;
         width: 24px;
         height: 2px;
+        margin-top: 10px;
         background-color: var(--lineColor);
       }
 
@@ -649,6 +606,19 @@ a {
         letter-spacing: 1.6px;
       }
     }
+
+    a {
+      width: fit-content;
+      color: var(--mainColor);
+      display: flex;
+      font-size: 36px;
+      line-height: 44px;
+      opacity: 0;
+
+      & + a {
+        margin-top: 40px;
+      }
+    }
   }
 }
 
@@ -657,9 +627,15 @@ a {
   display: flex;
   font-size: 12px;
   justify-content: space-between;
+  align-items: flex-end;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   .status {
-    font-size: 16px;
+    font-size: 12px;
+    writing-mode: vertical-lr;
   }
   .socialicons {
     a {
@@ -720,4 +696,17 @@ a {
       top: 48px;
     }
   }
+}
+
+.intro {
+  margin: 80px 0 152px;
+}
+
+.container {
+  max-width: 1200px;
+  padding-right: 32px;
+  padding-left: 32px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
 }
