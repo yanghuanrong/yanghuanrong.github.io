@@ -61,7 +61,7 @@ export default {
         },
         {
           path: '/blog',
-          name: '<span>✨</span> 奇思妙想',
+          name: '<span>✨</span> 博客文章',
         },
         {
           path: '/about',
