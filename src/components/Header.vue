@@ -58,7 +58,7 @@ export default {
       isDetial: false,
       nav: [
         {
-          path: '/github',
+          path: '/project',
           name: '<span>🥉</span> 开源项目',
         },
         {

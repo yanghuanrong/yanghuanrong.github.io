@@ -14,7 +14,7 @@
         </transition>
       </div>
       <transition name="fade" mode="out-in">
-        <router-view class="body" v-if="isRouterAlive"></router-view>
+        <router-view v-if="isRouterAlive"></router-view>
       </transition>
       <Footer />
     </div>

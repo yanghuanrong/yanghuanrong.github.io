@@ -21,9 +21,9 @@ const routes = [
     component: Index,
   },
   {
-    path: '/github',
-    name: 'github',
-    component: () => import('../views/Github.vue'),
+    path: '/project',
+    name: 'project',
+    component: () => import('../views/Project.vue'),
   },
   {
     path: '/blog',

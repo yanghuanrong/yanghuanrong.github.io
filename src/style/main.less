@@ -2,6 +2,8 @@
 [data-color-mode='light'] {
   --textColor: #6b7aa1;
   --mainColor: #11324d;
+  --n2Color: #c1cfc0;
+  --n3Color: #e7e0c9;
   --bgColor: #fff;
   --cursor: #c3c8de;
   --lineColor: #e6e6e6;
@@ -28,6 +30,7 @@
 @import 'keyframes.less';
 @import 'markdown.less';
 @import 'home.less';
+@import 'project.less';
 
 html {
   --path-fill-1: url(#gradient1);
@@ -190,48 +193,48 @@ body {
   }
 }
 
-.project {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  padding: 80px;
-  overflow: hidden;
-  transform: scale(1);
-  transition: transform 0.18s ease;
-  border-radius: 8px;
-  color: #fff;
-  margin-top: 32px;
+// .project {
+//   position: relative;
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 80px;
+//   overflow: hidden;
+//   transform: scale(1);
+//   transition: transform 0.18s ease;
+//   border-radius: 8px;
+//   color: #fff;
+//   margin-top: 32px;
 
-  &:nth-of-type(1) {
-    margin-top: 0;
-  }
+//   &:nth-of-type(1) {
+//     margin-top: 0;
+//   }
 
-  &.module1 {
-    background-color: #e7e0c9;
-  }
+//   &.module1 {
+//     background-color: #e7e0c9;
+//   }
 
-  &.module2 {
-    background-color: #c1cfc0;
-  }
-  &.module3 {
-    background-color: #6b7aa1;
-  }
+//   &.module2 {
+//     background-color: #c1cfc0;
+//   }
+//   &.module3 {
+//     background-color: #6b7aa1;
+//   }
 
-  &:hover {
-    transform: scale(1.02);
-  }
+//   &:hover {
+//     transform: scale(1.02);
+//   }
 
-  .info {
-    h4 {
-      font-size: 44px;
-    }
+//   .info {
+//     h4 {
+//       font-size: 44px;
+//     }
 
-    p {
-      margin-top: 20px;
-      opacity: 0.8;
-    }
-  }
-}
+//     p {
+//       margin-top: 20px;
+//       opacity: 0.8;
+//     }
+//   }
+// }
 
 .opensource {
   margin-top: 124px;
@@ -335,10 +338,10 @@ body {
 }
 
 .body {
-  padding-top: 175px;
-  padding-bottom: 157px;
-  min-height: 100%;
-  box-sizing: border-box;
+  // padding-top: 175px;
+  // padding-bottom: 157px;
+  // min-height: 100%;
+  // box-sizing: border-box;
 }
 
 .blog {

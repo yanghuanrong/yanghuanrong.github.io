@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home-view">
     <div class="banner">
       <div class="slogan">
         <div class="sectionheader flex flex-column">
@@ -161,7 +161,7 @@ export default {
       style: 'ios9',
       lerpSpeed: 0.4,
       curveDefinition: [
-        { color: '255,255,255', supportLine: true },
+        { color: '0,0,0', supportLine: true },
         { color: '15, 82, 169' }, // 蓝色
         { color: '173, 57, 76' }, // 红色
         { color: '48, 220 , 155' }, // 绿色
