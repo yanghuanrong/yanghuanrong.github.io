@@ -4,20 +4,18 @@
       <Loading />
       <div class="text">Best</div>
     </div>
-    <div style="position: relative; z-index: 2">
-      <Header />
-      <div v-if="$route.name === 'blog'">
+    <Header />
+    <!-- <div v-if="$route.name === 'blog'">
         <transition name="fade">
           <div class="scroll-view" v-if="scrollView">
             <i></i>
           </div>
         </transition>
-      </div>
-      <transition name="fade" mode="out-in">
-        <router-view v-if="isRouterAlive"></router-view>
-      </transition>
-      <Footer />
-    </div>
+      </div> -->
+    <transition name="fade" mode="out-in">
+      <router-view v-if="isRouterAlive"></router-view>
+    </transition>
+    <Footer />
   </div>
 </template>
 

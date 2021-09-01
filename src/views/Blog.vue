@@ -1,30 +1,5 @@
 <template>
   <div class="blog" style="overflow: hidden">
-    <div class="container intro">
-      <div class="sectionheader flex flex-column">
-        <h3>
-          博客文章
-        </h3>
-      </div>
-    </div>
-
-    <div class="container">
-      <ul class="blog-list">
-        <li v-for="item in list" :key="item.id" @click="toDetail(item)" v-hover>
-          <div class="item">
-            <div class="time">
-              {{ item.tag }}
-              <span> | </span>
-              {{ item.lastUpdated }}
-            </div>
-            <div class="title">
-              {{ item.title }}
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-
     <div class="type">
       <ul>
         <li
@@ -38,6 +13,34 @@
           <i>{{ item.value }}</i>
         </li>
       </ul>
+    </div>
+    <div class="list">
+      <div class="page-title">
+        <h3>
+          博客文章
+        </h3>
+      </div>
+      <div>
+        <ul class="blog-list">
+          <li
+            v-for="item in list"
+            :key="item.id"
+            @click="toDetail(item)"
+            v-hover
+          >
+            <div class="item">
+              <div class="time">
+                {{ item.tag }}
+                <span> | </span>
+                {{ item.lastUpdated }}
+              </div>
+              <div class="title">
+                {{ item.title }}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>

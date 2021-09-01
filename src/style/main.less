@@ -31,6 +31,8 @@
 @import 'markdown.less';
 @import 'home.less';
 @import 'project.less';
+@import 'blog.less';
+@import 'about.less';
 
 html {
   --path-fill-1: url(#gradient1);
@@ -337,102 +339,15 @@ body {
   }
 }
 
-.body {
-  // padding-top: 175px;
-  // padding-bottom: 157px;
-  // min-height: 100%;
-  // box-sizing: border-box;
-}
-
-.blog {
-  height: 100vh;
-  overflow-y: scroll !important;
-  .type {
-    position: fixed;
-    left: 80px;
-    top: 265px;
-
-    li {
-      display: flex;
-      justify-content: flex-start;
-      margin-bottom: 30px;
-
-      i {
-        font-style: normal;
-        font-size: 14px;
-        font-weight: normal;
-      }
-
-      &.active {
-        span {
-          border-bottom: 1px solid var(--textColor);
-        }
-      }
-    }
+.page-title {
+  h3 {
+    color: var(--mainColor);
+    font-size: 48px;
+    font-family: 'pingfang Bold';
+    margin-bottom: 10px;
   }
-}
-
-.blog-list {
-  width: 80%;
-
-  li {
-    list-style: none;
-    opacity: 0;
-    transition: 0.6s ease 0.2s;
-    &.show {
-      opacity: 1;
-      transform: translateY(-10%);
-    }
-
-    &:hover {
-      .item {
-        transform: translateX(20px);
-        .title {
-          color: var(--mainColor);
-        }
-        &::after {
-          left: 0;
-          width: 100%;
-        }
-      }
-    }
-  }
-  .item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid var(--lineColor);
-    padding: 60px 0;
-
-    transition: 0.25s ease;
-
-    &::after {
-      content: '';
-      position: absolute;
-      height: 1px;
-      bottom: 0;
-      right: 0;
-      width: 0%;
-      transition: 1s ease-in-out;
-      background-color: var(--mainColor);
-    }
-
-    .time {
-      font-size: 16px;
-      position: relative;
-      margin-bottom: 40px;
-
-      span {
-        margin: 0 10px;
-      }
-    }
-
-    .title {
-      font-size: 24px;
-      margin: 0;
-      position: relative;
-      color: var(--mainColor);
-    }
+  p {
+    font-size: 16px;
   }
 }
 
@@ -634,25 +549,10 @@ body {
   position: fixed;
   bottom: 0;
   left: 0;
-  right: 0;
 
   .status {
     font-size: 12px;
     writing-mode: vertical-lr;
-  }
-  .socialicons {
-    a {
-      margin-right: 30px;
-      transform: scale(1);
-      transition: all 0.18s ease;
-
-      color: var(--textColor);
-
-      &:hover {
-        color: var(--mainColor);
-        transform: scale(1.12);
-      }
-    }
   }
 }
 
