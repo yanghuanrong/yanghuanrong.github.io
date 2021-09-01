@@ -19,7 +19,13 @@
               </div>
             </div>
           </div>
-          <a target="_blank" class="btn" :href="item.link" v-hover></a>
+          <a
+            target="_blank"
+            class="btn"
+            :href="item.link"
+            @click.stop
+            v-hover
+          ></a>
         </li>
       </ul>
     </div>
