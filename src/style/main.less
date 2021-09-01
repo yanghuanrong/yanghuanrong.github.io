@@ -26,7 +26,6 @@
 }
 
 @import 'rest.less';
-@import 'layout.less';
 @import 'keyframes.less';
 @import 'markdown.less';
 @import 'home.less';
@@ -118,26 +117,6 @@ body {
   }
 }
 
-.mao {
-  width: 60px;
-  height: 60px;
-  position: fixed;
-  bottom: -3px;
-  right: 30px;
-  z-index: 10;
-  color: var(--mainColor);
-
-  .eyes {
-    background: #fff;
-    width: 26px;
-    height: 15px;
-    position: absolute;
-    top: 10px;
-    right: 0;
-    z-index: -1;
-  }
-}
-
 #maskMove {
   position: fixed;
   left: 0;
@@ -195,92 +174,6 @@ body {
   }
 }
 
-// .project {
-//   position: relative;
-//   display: flex;
-//   justify-content: space-between;
-//   padding: 80px;
-//   overflow: hidden;
-//   transform: scale(1);
-//   transition: transform 0.18s ease;
-//   border-radius: 8px;
-//   color: #fff;
-//   margin-top: 32px;
-
-//   &:nth-of-type(1) {
-//     margin-top: 0;
-//   }
-
-//   &.module1 {
-//     background-color: #e7e0c9;
-//   }
-
-//   &.module2 {
-//     background-color: #c1cfc0;
-//   }
-//   &.module3 {
-//     background-color: #6b7aa1;
-//   }
-
-//   &:hover {
-//     transform: scale(1.02);
-//   }
-
-//   .info {
-//     h4 {
-//       font-size: 44px;
-//     }
-
-//     p {
-//       margin-top: 20px;
-//       opacity: 0.8;
-//     }
-//   }
-// }
-
-.opensource {
-  margin-top: 124px;
-  margin-bottom: 112px;
-
-  .sectionheader {
-    p {
-      font-size: 26px;
-      line-height: 1.5;
-      margin-top: 24px;
-    }
-  }
-
-  .splitter {
-    margin-top: 72px;
-  }
-
-  h3 {
-    font-size: 56px;
-  }
-
-  .pulse {
-    animation: pulse 0.65s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-
-    60% {
-      transform: scale(1.14);
-    }
-
-    80% {
-      transform: scale(0.94);
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  }
-}
-
 .osproject {
   padding: 48px 0;
   position: relative;
@@ -302,43 +195,6 @@ body {
   }
 }
 
-.talk {
-  @keyframes pulseDot {
-    0% {
-      transform: scale(1);
-      opacity: 0.48;
-    }
-
-    100% {
-      transform: scale(5);
-      opacity: 0;
-    }
-  }
-
-  h4 {
-    position: relative;
-    display: inline;
-
-    &::before,
-    &::after {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      display: flex;
-      position: absolute;
-      bottom: 10px;
-      right: -10px;
-      background-color: #fff;
-    }
-
-    &::after {
-      animation: pulseDot 2.5s cubic-bezier(0.47, -0.2, 0.13, 1.35) infinite;
-      transform-origin: center;
-    }
-  }
-}
-
 .page-title {
   h3 {
     color: var(--mainColor);
@@ -352,102 +208,97 @@ body {
 }
 
 .header {
-  position: fixed;
   left: 0;
   right: 0;
   top: 0;
   z-index: 5;
 
-  .topbar {
-    padding: 40px 80px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    justify-content: space-between;
+  .logo {
+    position: fixed;
+    left: 80px;
+    top: 40px;
+    height: 30px;
+    z-index: 4;
+    overflow: hidden;
 
-    .logo {
-      height: 30px;
-      overflow: hidden;
-
-      a {
-        font-family: 'pingfang Bold';
-        font-weight: bold;
-        position: relative;
-        display: block;
-        color: var(--mainColor);
-      }
+    a {
+      font-family: 'pingfang Bold';
+      font-weight: bold;
+      position: relative;
+      display: block;
+      color: var(--mainColor);
     }
+  }
 
-    .menutoggle {
-      width: 40px;
-      height: 40px;
-      position: fixed;
-      right: 80px;
-      top: 35px;
+  .menutoggle {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    right: 80px;
+    top: 35px;
 
-      z-index: 15;
-      transition: all 0.4s ease;
+    z-index: 15;
+    transition: all 0.4s ease;
 
-      &.open {
-        span {
-          i {
-            background: var(--mainColor);
-          }
-
-          &:nth-of-type(1) {
-            transform: rotate(45deg);
-
-            i {
-              width: 60%;
-              transform: translate(-50%, 5px);
-            }
-          }
-
-          &:nth-of-type(2) {
-            transform: rotate(-45deg);
-
-            i {
-              transform: translate(-50%, -5px);
-            }
-          }
-        }
-      }
-
+    &.open {
       span {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        transition: ease all 0.4s;
-        transform: rotate(-180deg);
-
         i {
-          width: 60%;
-          height: 3px;
-          position: absolute;
-          display: block;
-          background: currentColor;
-          transition: ease all 0.4s 0.1s;
-          left: 50%;
-          transform: translateX(-50%);
+          background: var(--mainColor);
         }
 
         &:nth-of-type(1) {
-          transform: rotate(-180deg);
+          transform: rotate(45deg);
 
           i {
-            width: 30%;
-            top: 35%;
-            transform: translateX(-90%);
+            width: 60%;
+            transform: translate(-50%, 5px);
           }
         }
 
         &:nth-of-type(2) {
+          transform: rotate(-45deg);
+
           i {
-            bottom: 35%;
+            transform: translate(-50%, -5px);
           }
+        }
+      }
+    }
+
+    span {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      transition: ease all 0.4s;
+      transform: rotate(-180deg);
+
+      i {
+        width: 60%;
+        height: 3px;
+        position: absolute;
+        display: block;
+        background: currentColor;
+        transition: ease all 0.4s 0.1s;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &:nth-of-type(1) {
+        transform: rotate(-180deg);
+
+        i {
+          width: 30%;
+          top: 35%;
+          transform: translateX(-90%);
+        }
+      }
+
+      &:nth-of-type(2) {
+        i {
+          bottom: 35%;
         }
       }
     }
@@ -606,7 +457,7 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 800px;
   padding-right: 32px;
   padding-left: 32px;
   margin-right: auto;

@@ -47,7 +47,6 @@
 .fade-leave-active {
   transition: opacity 0.5s;
 }
-
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
@@ -67,4 +66,20 @@
 
 .logo-enter {
   transform: translateY(100%);
+}
+
+.artice-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1.4s 1s;
+}
+.artice-leave-active {
+  transition: all 1s;
+}
+.artice-enter {
+  opacity: 0;
+  transform: translateY(15%);
+}
+.artice-leave-to {
+  opacity: 0;
 }

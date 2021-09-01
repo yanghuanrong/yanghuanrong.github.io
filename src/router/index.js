@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 
 const BlogRoute = Blog.data.map((item) => ({
   path: `/blog/${item.id}`,
+  name: `artice${item.id}`,
   meta: {
     title: item.title,
   },
@@ -29,13 +30,13 @@ const routes = [
     path: '/blog',
     name: 'blog',
     component: () => import('../views/Blog.vue'),
+    children: BlogRoute,
   },
   {
     path: '/about',
     name: 'about',
     component: () => import('../views/About.vue'),
   },
-  ...BlogRoute,
 ];
 
 const router = new VueRouter({

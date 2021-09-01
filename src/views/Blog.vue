@@ -1,46 +1,61 @@
 <template>
-  <div class="blog" style="overflow: hidden">
-    <div class="type">
-      <ul>
-        <li
-          v-for="(item, i) in tag"
-          :key="i"
-          @click="setType(item)"
-          v-hover
-          :class="{ active: type === item.label }"
-        >
-          <span>{{ item.label }}</span>
-          <i>{{ item.value }}</i>
-        </li>
-      </ul>
-    </div>
-    <div class="list">
-      <div class="page-title">
-        <h3>
-          博客文章
-        </h3>
-      </div>
-      <div>
-        <ul class="blog-list">
+  <div class="blog-view">
+    <div class="blog-view__list" :class="{ hide: artice }">
+      <div class="type">
+        <ul>
           <li
-            v-for="item in list"
-            :key="item.id"
-            @click="toDetail(item)"
+            v-for="(item, i) in tag"
+            :key="i"
+            @click="setType(item)"
             v-hover
+            :class="{ active: type === item.label }"
           >
-            <div class="item">
-              <div class="time">
-                {{ item.tag }}
-                <span> | </span>
-                {{ item.lastUpdated }}
-              </div>
-              <div class="title">
-                {{ item.title }}
-              </div>
-            </div>
+            <span>{{ item.label }}</span>
+            <i>{{ item.value }}</i>
           </li>
         </ul>
       </div>
+      <div class="list">
+        <div class="page-title">
+          <h3>
+            博客文章
+          </h3>
+        </div>
+        <div>
+          <ul class="blog-list">
+            <li
+              v-for="item in list"
+              :key="item.id"
+              @click="toDetail(item)"
+              v-hover
+            >
+              <div class="item">
+                <div class="time">
+                  {{ item.tag }}
+                  <span> | </span>
+                  {{ item.lastUpdated }}
+                </div>
+                <div class="title">
+                  {{ item.title }}
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="blog-view__artice">
+      <transition name="artice" mode="out-in">
+        <div class="back" v-show="artice" @click="back" v-hover>
+          <div class="line"></div>
+          <div class="dot"></div>
+          <div class="text">BACK TO BLOG</div>
+        </div>
+      </transition>
+      <transition name="artice" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
   </div>
 </template>
@@ -59,6 +74,7 @@ export default {
   },
   name: 'blog',
   inject: ['reload'],
+
   data() {
     const tagName = Object.keys(tag).map((k) => ({
       label: k,
@@ -71,11 +87,19 @@ export default {
     });
 
     return {
-      open: true,
+      artice: false,
       router: true,
       list: [],
       tag: tagName,
     };
+  },
+  watch: {
+    $route: {
+      handler(to) {
+        this.artice = to.name.includes('artice');
+      },
+      immediate: true,
+    },
   },
   computed: {
     type() {
@@ -112,7 +136,11 @@ export default {
     });
   },
   methods: {
+    back() {
+      this.$router.back();
+    },
     toDetail(item) {
+      this.open = true;
       this.$router.push({ path: '/blog/' + item.id });
     },
     setType(item) {

@@ -1,29 +1,27 @@
 <template>
-  <div class="header" :class="{ fixed: fixed }">
-    <header class="topbar">
-      <div class="logo" @click="logoTap($event)" v-hover>
-        <transition name="logo" mode="out-in">
-          <a v-if="isDetial" key="logo">返回Blog</a>
-          <a v-else key="back">Best</a>
-        </transition>
-      </div>
+  <div class="header">
+    <div class="logo" @click="logoTap($event)" v-hover>
+      <transition name="logo" mode="out-in">
+        <a v-if="isDetial" key="logo">返回Blog</a>
+        <a v-else key="back">Best</a>
+      </transition>
+    </div>
 
-      <div
-        class="menutoggle"
-        @click="menuTap"
-        v-hover="true"
-        ref="close"
-        id="menus1"
-        :class="{ open: menu }"
-      >
-        <span>
-          <i></i>
-        </span>
-        <span>
-          <i></i>
-        </span>
-      </div>
-    </header>
+    <div
+      class="menutoggle"
+      @click="menuTap"
+      v-hover="true"
+      ref="close"
+      id="menus1"
+      :class="{ open: menu }"
+    >
+      <span>
+        <i></i>
+      </span>
+      <span>
+        <i></i>
+      </span>
+    </div>
 
     <div class="nav-wrap" v-if="isMenu">
       <div class="menu" :class="{ open: menu }">
