@@ -2,7 +2,7 @@
   <div id="app">
     <div id="maskMove">
       <Loading />
-      <div class="text">Best</div>
+      <div class="text">贝贝的HTML</div>
     </div>
     <Header />
     <!-- <div v-if="$route.name === 'blog'">
