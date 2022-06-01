@@ -1,16 +1,6 @@
 <template>
-  <footer class="footer">
-    <div class="status">© 2012 - {{ year }}</div>
-  </footer>
+  <div class="mt-10 mb-6 prose m-auto opacity-50 flex">
+    <span class="text-sm">2022 © yanghuanrong</span>
+    <div class="flex-auto" />
+  </div>
 </template>
-
-<script>
-export default {
-  data() {
-    const year = new Date().getFullYear();
-    return {
-      year,
-    };
-  },
-};
-</script>

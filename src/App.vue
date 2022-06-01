@@ -1,76 +1,19 @@
 <template>
-  <div id="app">
-    <div id="maskMove">
-      <Loading />
-      <div class="text">贝贝的HTML</div>
-    </div>
-    <Header />
-    <!-- <div v-if="$route.name === 'blog'">
-        <transition name="fade">
-          <div class="scroll-view" v-if="scrollView">
-            <i></i>
-          </div>
-        </transition>
-      </div> -->
-    <transition name="fade" mode="out-in">
-      <router-view v-if="isRouterAlive"></router-view>
-    </transition>
+  <NavBar />
+  <main class="px-7 py-10">
+    <router-view />
     <Footer />
-  </div>
+  </main>
 </template>
 
-<script>
-import Header from '@/components/Header.vue';
-import Footer from '@/components/Footer.vue';
-import Loading from '@/components/Loading.vue';
-export default {
-  components: {
-    Header,
-    Footer,
-    Loading,
-  },
-  provide() {
-    return {
-      reload: this.reload,
-    };
-  },
-  data() {
-    return {
-      isRouterAlive: true,
-      scrollView: false,
-    };
-  },
-  watch: {
-    $route: {
-      handler(to, from) {
-        this.$nextTick(() => {
-          if (this.hasScrollbar()) {
-            this.scrollView = true;
-          }
-        });
-      },
-      immediate: true,
-    },
-  },
-  mounted() {
-    window.addEventListener('scroll', this.isScrollShow, false);
-  },
-  methods: {
-    hasScrollbar() {
-      return (
-        document.body.scrollHeight >
-        (window.innerHeight || document.documentElement.clientHeight)
-      );
-    },
-    isScrollShow() {
-      this.scrollView = window.pageYOffset >= 80 ? false : true;
-    },
-    reload() {
-      this.isRouterAlive = false;
-      this.$nextTick(() => {
-        this.isRouterAlive = true;
-      });
-    },
-  },
-};
+<script setup>
+useHead({
+  meta: [
+    { property: 'og:title', content: 'yanghuanrong' },
+    { property: 'og:image', content: 'https://antfu.me/avatar.png' },
+    { name: 'description', content: 'yanghuanrong\'s Portfolio' },
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:creator', content: '@antfu7' },
+  ],
+})
 </script>
