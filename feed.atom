@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://bsie.gitee.io/</id>
+    <title>yanghuanrong</title>
+    <updated>2022-06-01T09:56:10.527Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>yanghuanrong</name>
+        <email>bsie@qq.com</email>
+        <uri>https://bsie.gitee.io</uri>
+    </author>
+    <link rel="alternate" href="https://bsie.gitee.io/"/>
+    <link rel="self" href="https://bsie.gitee.io/feed.atom"/>
+    <subtitle>yanghuanrong' Blog</subtitle>
+    <logo>https://bsie.gitee.io/avatar.png</logo>
+    <icon>https://bsie.gitee.io/logo.png</icon>
+    <rights>CC BY-NC-SA 4.0 2021 © yanghuanrong</rights>
+</feed>

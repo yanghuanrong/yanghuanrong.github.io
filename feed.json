@@ -1,0 +1,13 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "yanghuanrong",
+    "home_page_url": "https://bsie.gitee.io/",
+    "feed_url": "https://bsie.gitee.io/feed.json",
+    "description": "yanghuanrong' Blog",
+    "icon": "https://bsie.gitee.io/avatar.png",
+    "author": {
+        "name": "yanghuanrong",
+        "url": "https://bsie.gitee.io"
+    },
+    "items": []
+}
