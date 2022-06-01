@@ -4,7 +4,7 @@
     "build": "npm run static && cross-env NODE_ENV=production vite-ssg build && esno ./scripts/rss.ts",
     "dev": "vite --port 3333 --open",
     "preview": "vite preview",
-    "static": "esno scripts/copy-sponsors",
+    "static": "esno ./scripts/copy-sponsors.ts",
     "push": "deploy.sh"
   },
   "dependencies": {
