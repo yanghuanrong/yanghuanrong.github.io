@@ -13,9 +13,9 @@ const route = useRoute()
       <router-link to="/posts" class="!border-none !font-400" :class="route.path === '/posts' ? '' : inactiveStyle">
         Blog
       </router-link>
-      <router-link to="/leetCode" class="!border-none !font-400" :class="route.path === '/leetCode' ? '' : inactiveStyle">
+      <!-- <router-link to="/leetCode" class="!border-none !font-400" :class="route.path === '/leetCode' ? '' : inactiveStyle">
         LeetCode
-      </router-link>
+      </router-link> -->
     </div>
   </div>
 </template>
