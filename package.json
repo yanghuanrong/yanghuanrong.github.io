@@ -52,7 +52,7 @@
     "unplugin-auto-import": "^0.7.0",
     "unplugin-icons": "^0.14.1",
     "unplugin-vue-components": "^0.19.1",
-    "vite": "^2.9.13",
+    "vite": "^2.9.16",
     "vite-plugin-inspect": "^0.4.3",
     "vite-plugin-md": "^0.12.4",
     "vite-plugin-pages": "^0.22.0",
