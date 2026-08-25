@@ -256,6 +256,69 @@ pre .astro-code {
   line-height: 1.65;
 }
 
+.tech-pile-scene {
+  position: relative;
+  width: 100%;
+  height: min(420px, 52vh);
+  margin: 48px 0 0;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  background: linear-gradient(to top, color-mix(in oklab, var(--fg) 4%, transparent), transparent 42%);
+}
+
+body:has(.tech-pile-scene) .site-footer {
+  height: 0;
+}
+
+.tech-pile-scene.is-dragging,
+.tech-pile-scene.is-dragging .tech-pile-icon {
+  cursor: grabbing;
+  touch-action: none;
+}
+
+.tech-pile-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 8px;
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 18px color-mix(in oklab, var(--fg) 12%, transparent);
+  cursor: inherit;
+  appearance: none;
+  will-change: transform;
+  touch-action: pan-y;
+}
+
+.tech-pile-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.tech-pile-scene.is-static {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 12px 12px;
+  cursor: default;
+}
+
+.tech-pile-scene.is-static .tech-pile-icon {
+  position: relative;
+  transform: none !important;
+}
+
 .site-footer {
   height: 96px;
 }

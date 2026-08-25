@@ -63,6 +63,35 @@ export const photos = [
   { src: '/photos/city.jpg', caption: '城里' },
 ]
 
+export const techIcons = [
+  { name: 'HTML5', src: '/icons/tech/html5.svg' },
+  { name: 'CSS3', src: '/icons/tech/css3.svg' },
+  { name: 'JavaScript', src: '/icons/tech/javascript.svg' },
+  { name: 'TypeScript', src: '/icons/tech/typescript.svg' },
+  { name: 'React', src: '/icons/tech/react.svg' },
+  { name: 'Vue', src: '/icons/tech/vue.svg' },
+  { name: 'jQuery', src: '/icons/tech/jquery.svg' },
+  { name: 'Webpack', src: '/icons/tech/webpack.svg' },
+  { name: 'Vite', src: '/icons/tech/vite.svg' },
+  { name: 'Ant Design', src: '/icons/tech/ant-design.svg' },
+  { name: 'Element', src: '/icons/tech/element.svg' },
+  { name: 'Node.js', src: '/icons/tech/nodejs.svg' },
+  { name: 'Express', src: '/icons/tech/express.svg' },
+  { name: 'MongoDB', src: '/icons/tech/mongodb.svg' },
+  { name: 'Next.js', src: '/icons/tech/nextjs.svg' },
+  { name: 'Git', src: '/icons/tech/git.svg' },
+  { name: 'GitHub', src: '/icons/tech/github.svg' },
+  { name: 'GitHub Actions', src: '/icons/tech/github-actions.svg' },
+  { name: 'Gitee', src: '/icons/tech/gitee.svg' },
+  { name: 'Markdown', src: '/icons/tech/markdown.svg' },
+  { name: 'ECharts', src: '/icons/tech/echarts.svg' },
+  { name: 'Chrome', src: '/icons/tech/chrome.svg' },
+  { name: 'Photoshop', src: '/icons/tech/photoshop.svg' },
+  { name: 'Sass', src: '/icons/tech/sass.svg' },
+  { name: 'npm', src: '/icons/tech/npm.svg' },
+  { name: 'Astro', src: '/icons/tech/astro.svg' },
+] as const
+
 export function formatDate(date: Date) {
   return date.toLocaleDateString('en-GB', {
     day: 'numeric',
