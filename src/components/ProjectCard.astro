@@ -1,29 +1,41 @@
 ---
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
 import type { Project } from '../consts'
+import relaxUiCover from '../assets/projects/relax-ui-cover.jpg'
+import relaxPlusCover from '../assets/projects/relax-plus-cover.jpg'
+
+const covers: Record<string, ImageMetadata> = {
+  'relax-ui': relaxUiCover,
+  'relax-plus': relaxPlusCover,
+}
 
 interface Props {
   project: Project
 }
 
 const { project } = Astro.props
+const Tag = project.href ? 'a' : 'div'
+const linkProps = project.href ? { href: project.href } : {}
+const coverImage = project.coverImage ? covers[project.coverImage] : undefined
 ---
 
-{
-  project.href ? (
-    <a class="project-card" href={project.href}>
+<Tag class="project-card" {...linkProps}>
+  {
+    coverImage ? (
+      <Image
+        class="project-cover project-cover--image"
+        src={coverImage}
+        alt=""
+        widths={[640, 960, 1280]}
+        sizes="(max-width: 640px) 100vw, 640px"
+      />
+    ) : (
       <span class="project-cover" style={`--cover: ${project.cover}`}>
         {project.initial}
       </span>
-      <strong>{project.name}</strong>
-      <span class="desc">{project.desc}</span>
-    </a>
-  ) : (
-    <div class="project-card">
-      <span class="project-cover" style={`--cover: ${project.cover}`}>
-        {project.initial}
-      </span>
-      <strong>{project.name}</strong>
-      <span class="desc">{project.desc}</span>
-    </div>
-  )
-}
+    )
+  }
+  <strong>{project.name}</strong>
+  <span class="desc">{project.desc}</span>
+</Tag>

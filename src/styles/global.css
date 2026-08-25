@@ -231,6 +231,16 @@ pre .astro-code {
   font-size: 28px;
   font-weight: 600;
   letter-spacing: 0.04em;
+  overflow: hidden;
+}
+
+.project-cover--image {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  color: transparent;
+  font-size: 0;
+  background: #fff;
 }
 
 .project-card strong {

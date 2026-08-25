@@ -6,7 +6,6 @@ export const AUTHOR_NAME = '杨焕荣'
 export const AUTHOR_ALIAS = '南北'
 export const AUTHOR_JOB = '前端'
 export const GITHUB_URL = 'https://github.com/yanghuanrong'
-export const AVATAR_URL = 'https://github.com/yanghuanrong.png'
 export const EMAIL = 'bsie@qq.com'
 
 export const socials = [
@@ -23,6 +22,7 @@ export type Project = {
   initial: string
   cover: string
   href?: string
+  coverImage?: 'relax-ui' | 'relax-plus'
 }
 
 export const projects: Project[] = [
@@ -34,17 +34,19 @@ export const projects: Project[] = [
   },
   {
     name: 'Relax Plus',
-    href: 'https://github.com/yanghuanrong/RelaxPlus',
+    href: 'https://yanghuanrong.github.io/RelaxPlus/',
     desc: 'Vue 3 组件库。setup 语法还没发布就开始做，按钮到日历二十多个组件，文档和 CI 自己搭。过了百星。',
     initial: 'P',
-    cover: '#141c18',
+    cover: '#f7f8fa',
+    coverImage: 'relax-plus',
   },
   {
     name: 'Relax UI',
     href: 'https://github.com/yanghuanrong/RelaxUI',
     desc: '更早那套 Vue 2 组件库。同一套审美，先在业务里打过一遍。',
     initial: 'R',
-    cover: '#17181c',
+    cover: '#f7f8fa',
+    coverImage: 'relax-ui',
   },
   {
     name: 'Hydrogen JS SDK',
