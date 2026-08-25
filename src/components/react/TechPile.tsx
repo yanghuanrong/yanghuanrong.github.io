@@ -53,8 +53,13 @@ export default function TechPile({ icons }: Props) {
     const world = engine.world
 
     const makeWalls = (w: number, h: number) => [
-      // Floor / side faces sit exactly on the canvas edges
+      // Floor / ceiling / sides sit on the canvas edges so throws stay visible
       Bodies.rectangle(w / 2, h + WALL / 2, w + WALL * 4, WALL, { isStatic: true }),
+      Bodies.rectangle(w / 2, -WALL / 2, w + WALL * 4, WALL, {
+        isStatic: true,
+        restitution: 0.42,
+        friction: 0.05,
+      }),
       Bodies.rectangle(-WALL / 2, h / 2, WALL, h * 4, { isStatic: true }),
       Bodies.rectangle(w + WALL / 2, h / 2, WALL, h * 4, { isStatic: true }),
     ]
@@ -64,7 +69,8 @@ export default function TechPile({ icons }: Props) {
 
     const bodies = icons.map((_, index) => {
       const x = ICON_SIZE + Math.random() * Math.max(width - ICON_SIZE * 2, 40)
-      const y = -30 - index * 34 - Math.random() * 90
+      // Start inside the canvas (below the ceiling) so the rain-in still works
+      const y = ICON_SIZE / 2 + 12 + (index % 6) * 18 + Math.random() * 36
       return Bodies.rectangle(x, y, ICON_SIZE, ICON_SIZE, {
         chamfer: { radius: 10 },
         restitution: 0.26,
@@ -150,7 +156,38 @@ export default function TechPile({ icons }: Props) {
       Body.setAngularVelocity(body, body.angularVelocity + body.velocity.x * 0.0025)
     })
 
+    const keepInView = () => {
+      const pad = ICON_SIZE / 2
+      for (const body of bodies) {
+        let { x, y } = body.position
+        let { x: vx, y: vy } = body.velocity
+        let moved = false
+        if (y < pad) {
+          y = pad
+          if (vy < 0) vy = -vy * 0.45
+          moved = true
+        } else if (y > height - pad) {
+          y = height - pad
+          if (vy > 0) vy = 0
+          moved = true
+        }
+        if (x < pad) {
+          x = pad
+          if (vx < 0) vx = -vx * 0.45
+          moved = true
+        } else if (x > width - pad) {
+          x = width - pad
+          if (vx > 0) vx = -vx * 0.45
+          moved = true
+        }
+        if (!moved) continue
+        Body.setPosition(body, { x, y })
+        Body.setVelocity(body, { x: vx, y: vy })
+      }
+    }
+
     const sync = () => {
+      keepInView()
       for (let i = 0; i < bodies.length; i += 1) {
         const body = bodies[i]
         const el = nodes[i]
@@ -174,7 +211,7 @@ export default function TechPile({ icons }: Props) {
       World.add(world, walls)
       for (const body of bodies) {
         const x = Math.min(Math.max(body.position.x, ICON_SIZE / 2), width - ICON_SIZE / 2)
-        const y = Math.min(body.position.y, height - ICON_SIZE / 2)
+        const y = Math.min(Math.max(body.position.y, ICON_SIZE / 2), height - ICON_SIZE / 2)
         Body.setPosition(body, { x, y })
       }
     }
