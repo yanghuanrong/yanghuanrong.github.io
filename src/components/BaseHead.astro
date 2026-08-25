@@ -1,0 +1,38 @@
+---
+import { AUTHOR_NAME, SITE_DESCRIPTION, SITE_TITLE } from '../consts'
+
+interface Props {
+  title?: string
+  description?: string
+  type?: 'website' | 'article'
+}
+
+const { title = SITE_TITLE, description = SITE_DESCRIPTION, type = 'website' } = Astro.props
+const canonical = new URL(Astro.url.pathname, Astro.site)
+---
+
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<title>{title === SITE_TITLE ? `${title}` : `${title} · ${SITE_TITLE}`}</title>
+<meta name="description" content={description} />
+<meta name="author" content={AUTHOR_NAME} />
+<link rel="canonical" href={canonical} />
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL('rss.xml', Astro.site)} />
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<script is:inline>
+  ;(function () {
+    const stored = localStorage.getItem('theme')
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const theme = stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light'
+    document.documentElement.dataset.theme = theme
+  })()
+</script>

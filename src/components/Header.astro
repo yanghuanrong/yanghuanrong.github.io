@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets'
+import ThemeToggle from './react/ThemeToggle.tsx'
+import { AVATAR_URL, SITE_TITLE } from '../consts'
+
+const pathname = Astro.url.pathname
+
+const links = [
+  { href: '/blog/', label: '文章' },
+  { href: '/projects/', label: '项目' },
+]
+
+const isCurrent = (href: string) => pathname === href || pathname.startsWith(href)
+---
+
+<header class="site-header wrap">
+  <a href="/" aria-label={SITE_TITLE}>
+    <Image
+      class="avatar"
+      src={AVATAR_URL}
+      alt={SITE_TITLE}
+      width={56}
+      height={56}
+      densities={[1, 2]}
+    />
+  </a>
+  <nav class="site-nav" aria-label="主导航">
+    {
+      links.map((link) => (
+        <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>
+          {link.label}
+        </a>
+      ))
+    }
+    <ThemeToggle client:load />
+  </nav>
+</header>

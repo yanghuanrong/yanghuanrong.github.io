@@ -1,8 +1,5 @@
-# 确保脚本抛出遇到的错误
-set -e
+#!/bin/bash
+set -euo pipefail
 
-git add .
-git commit -am 'deploy'
-git push -u origin master
-
-cd -
+npm run build
+echo "产物在 dist/。GitHub Pages 仍由 master 的 Actions 发布；确认后再把 astro 合入。"

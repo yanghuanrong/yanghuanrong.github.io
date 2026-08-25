@@ -1,20 +1,9 @@
 {
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
-    "baseUrl": ".",
-    "module": "ESNext",
-    "target": "es2016",
-    "lib": ["DOM", "ESNext"],
-    "strict": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": ["vite/client", "vite-plugin-pages/client"],
-    "paths": {
-      "~/*": ["src/*"]
-    }
-  },
-  "exclude": ["dist", "node_modules"]
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
 }

@@ -1,0 +1,18 @@
+---
+import ProjectCard from '../components/ProjectCard.astro'
+import { projects } from '../consts'
+import Base from '../layouts/Base.astro'
+---
+
+<Base title="项目" description="南北做过的东西：零代码引擎、Relax 组件库、Hydrogen JS SDK。">
+  <h1 class="page-title">项目</h1>
+  <ul class="project-list">
+    {
+      projects.map((item) => (
+        <li>
+          <ProjectCard project={item} />
+        </li>
+      ))
+    }
+  </ul>
+</Base>

@@ -1,0 +1,67 @@
+---
+import {
+  AUTHOR_ALIAS,
+  AUTHOR_JOB,
+  AUTHOR_NAME,
+  EMAIL,
+  GITHUB_URL,
+  SITE_DESCRIPTION,
+  SITE_URL,
+} from '../consts'
+
+interface Props {
+  type?: 'person' | 'article'
+  title?: string
+  description?: string
+  datePublished?: Date
+}
+
+const {
+  type = 'person',
+  title,
+  description,
+  datePublished,
+} = Astro.props
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: AUTHOR_NAME,
+  alternateName: AUTHOR_ALIAS,
+  url: SITE_URL,
+  jobTitle: AUTHOR_JOB,
+  email: EMAIL,
+  description: SITE_DESCRIPTION,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: '广州',
+    addressCountry: 'CN',
+  },
+  sameAs: [GITHUB_URL, 'https://sovo.tuchong.com/', 'https://www.zcool.com.cn/u/17555157'],
+}
+
+const data =
+  type === 'article'
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: title,
+        description,
+        datePublished: datePublished?.toISOString(),
+        author: {
+          '@type': 'Person',
+          name: AUTHOR_NAME,
+          alternateName: AUTHOR_ALIAS,
+          url: SITE_URL,
+        },
+        publisher: {
+          '@type': 'Person',
+          name: AUTHOR_NAME,
+        },
+        mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).href,
+        inLanguage: 'zh-CN',
+      }
+    : person
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

@@ -1,11 +1,9 @@
 node_modules
-.DS_Store
 dist
+.astro
+.DS_Store
 *.local
 .presite
-dist-ssr
 .vite-ssg-temp
-components.d.ts
-auto-imports.d.ts
 temp
 sponsors.*

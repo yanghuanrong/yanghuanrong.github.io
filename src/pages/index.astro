@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content'
+import JsonLd from '../components/JsonLd.astro'
+import ProjectCard from '../components/ProjectCard.astro'
+import PhotoStack from '../components/react/PhotoStack.tsx'
+import { formatDate, projects, SITE_DESCRIPTION, socials } from '../consts'
+import Base from '../layouts/Base.astro'
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+)
+---
+
+<Base title="南北" description={SITE_DESCRIPTION}>
+  <JsonLd slot="head" />
+  <section class="hero">
+    <h1>南北</h1>
+    <p>广州。九年前端。Vue、React，以及把 Node 服务自己搭起来。</p>
+    <p>
+      现在做的事情，是把 ERP、OA、流程这类系统，收成普通人也能搭的界面：表单、审批、报表、UI 引擎。像素对不齐这件事，我过不去。
+    </p>
+    <p>
+      从 0 做过完整的零代码产品：领域建模、DSL、React 多页构建、错误监控。也为 Bmob 写过跨端 SDK，Query 那一层是我搓的，现在还在跑。
+    </p>
+    <p>
+      开源这边动过手。给两颗分别 1.3 万和 2.3 万星的项目提过被合入的 PR；
+      <a href="https://github.com/yanghuanrong/RelaxUI">RelaxUI</a>
+      和
+      <a href="https://github.com/yanghuanrong/RelaxPlus">RelaxPlus</a>
+      自己过了百星。Vue 3 的 setup 还没发布，Relax Plus 已经在用新特性做组件。
+    </p>
+    <p>
+      拍照、游泳、看书。
+      <PhotoStack client:load />
+    </p>
+    <ul class="socials">
+      {
+        socials.map((item) => (
+          <li>
+            <a href={item.href}>{item.name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <h2 class="section-title">项目</h2>
+  <ul class="project-list">
+    {
+      projects.map((item) => (
+        <li>
+          <ProjectCard project={item} />
+        </li>
+      ))
+    }
+  </ul>
+
+  <h2 class="section-title">文章</h2>
+  <ul class="post-list">
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.id}/`}>
+            <span class="post-title">{post.data.title}</span>
+            <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <a class="see-all" href="/blog/">查看全部 →</a>
+</Base>

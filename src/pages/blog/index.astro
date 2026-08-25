@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content'
+import { formatDate } from '../../consts'
+import Base from '../../layouts/Base.astro'
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+)
+---
+
+<Base title="文章" description="南北写过的笔记。构建、计算、以及那些被验证过的前端判断。">
+  <h1 class="page-title">文章</h1>
+  <ul class="post-list">
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.id}/`}>
+            <span class="post-title">{post.data.title}</span>
+            <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

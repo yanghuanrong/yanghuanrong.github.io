@@ -1,0 +1,32 @@
+---
+import { ClientRouter } from 'astro:transitions'
+import '@fontsource-variable/inter'
+import BaseHead from '../components/BaseHead.astro'
+import Footer from '../components/Footer.astro'
+import Header from '../components/Header.astro'
+import '../styles/global.css'
+
+interface Props {
+  title?: string
+  description?: string
+  type?: 'website' | 'article'
+}
+
+const { title, description, type = 'website' } = Astro.props
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title={title} description={description} type={type} />
+    <slot name="head" />
+    <ClientRouter />
+  </head>
+  <body>
+    <Header />
+    <main class="wrap">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

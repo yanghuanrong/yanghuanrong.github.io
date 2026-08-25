@@ -1,0 +1,29 @@
+---
+import type { Project } from '../consts'
+
+interface Props {
+  project: Project
+}
+
+const { project } = Astro.props
+---
+
+{
+  project.href ? (
+    <a class="project-card" href={project.href}>
+      <span class="project-cover" style={`--cover: ${project.cover}`}>
+        {project.initial}
+      </span>
+      <strong>{project.name}</strong>
+      <span class="desc">{project.desc}</span>
+    </a>
+  ) : (
+    <div class="project-card">
+      <span class="project-cover" style={`--cover: ${project.cover}`}>
+        {project.initial}
+      </span>
+      <strong>{project.name}</strong>
+      <span class="desc">{project.desc}</span>
+    </div>
+  )
+}
