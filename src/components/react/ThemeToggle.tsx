@@ -27,6 +27,7 @@ export default function ThemeToggle() {
       className="theme-toggle"
       onClick={toggle}
       aria-label={theme === 'dark' ? '切换为浅色' : '切换为深色'}
+      title={theme === 'dark' ? '浅色' : '深色'}
     >
       {theme === 'dark' ? '昼' : '夜'}
     </button>

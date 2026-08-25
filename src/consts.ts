@@ -23,15 +23,17 @@ export type Project = {
   initial: string
   cover: string
   href?: string
-  coverImage?: 'relax-ui' | 'relax-plus'
+  coverImage?: 'relax-ui' | 'relax-plus' | 'eprotek'
 }
 
 export const projects: Project[] = [
   {
-    name: '零代码平台',
-    desc: '面向普通人。领域建模之后，表单、流程、报表、UI 四套引擎用拖拉拽拼起来。DSL、React 多页构建、错误监控是我写的。',
-    initial: 'N',
-    cover: '#14151a',
+    name: 'Eprotek',
+    href: 'https://www.eprotekcorp.com/',
+    desc: '电涌保护品牌官网。产品、方案与认证内容结构化呈现，英文站面向全球客户。',
+    initial: 'E',
+    cover: '#0b1f3a',
+    coverImage: 'eprotek',
   },
   {
     name: 'Relax Plus',
@@ -55,6 +57,35 @@ export const projects: Project[] = [
     desc: '给微信小程序、快应用、抖音、H5 接 Bmob 云服务。环境、构建和 Query 核心是我写的，到现在还在跑。',
     initial: 'H',
     cover: '#1c1718',
+  },
+]
+
+export type Contribution = {
+  repo: string
+  note: string
+  href: string
+}
+
+export const contributions: Contribution[] = [
+  {
+    repo: 'dream-num/Luckysheet',
+    note: '开源的在线电子表格，类 Excel 的协同编辑与公式能力。',
+    href: 'https://github.com/dream-num/Luckysheet',
+  },
+  {
+    repo: 'ascoders/weekly',
+    note: '前端精读周刊，持续输出框架、工程与设计相关阅读。',
+    href: 'https://github.com/ascoders/weekly',
+  },
+  {
+    repo: 'Anduin2017/HowToCook',
+    note: '程序员做饭指南，用结构化文档写清家常菜做法。',
+    href: 'https://github.com/Anduin2017/HowToCook',
+  },
+  {
+    repo: 'ant-design/x',
+    note: 'Ant Design 的 AI 应用组件库，覆盖对话与生成式界面。',
+    href: 'https://github.com/ant-design/x',
   },
 ]
 

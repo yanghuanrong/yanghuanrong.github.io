@@ -25,14 +25,62 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
       densities={[1, 2]}
     />
   </a>
-  <nav class="site-nav" aria-label="主导航">
-    {
-      links.map((link) => (
-        <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>
-          {link.label}
-        </a>
-      ))
-    }
-    <ThemeToggle client:load />
-  </nav>
 </header>
+
+<nav class="site-dock" aria-label="主导航">
+  <div class="site-dock-nav">
+    <div class="site-dock-group">
+      {
+        links.map((link) => (
+          <a
+            class="site-dock-link"
+            href={link.href}
+            aria-current={isCurrent(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+    <div class="site-dock-group site-dock-group--aside">
+      <ThemeToggle client:load />
+    </div>
+  </div>
+</nav>
+
+<script>
+  let dockPinCleanup: (() => void) | undefined
+
+  function pinDock() {
+    dockPinCleanup?.()
+
+    const dock = document.querySelector('.site-dock')
+    if (!(dock instanceof HTMLElement)) return
+
+    const sync = () => {
+      const anchor = document.querySelector('.tech-pile-brand')
+      if (!(anchor instanceof HTMLElement)) {
+        dock.style.transform = 'translate(-50%, 0)'
+        return
+      }
+
+      const dockHeight = dock.offsetHeight
+      const bottomGap = Number.parseFloat(getComputedStyle(dock).bottom) || 20
+      const restLift = 200
+      const fixedTop = window.innerHeight - bottomGap - dockHeight
+      const shift = Math.min(0, anchor.getBoundingClientRect().top - restLift - fixedTop)
+      dock.style.transform = `translate(-50%, ${shift}px)`
+    }
+
+    sync()
+    window.addEventListener('scroll', sync, { passive: true })
+    window.addEventListener('resize', sync)
+    dockPinCleanup = () => {
+      window.removeEventListener('scroll', sync)
+      window.removeEventListener('resize', sync)
+    }
+  }
+
+  pinDock()
+  document.addEventListener('astro:page-load', pinDock)
+</script>

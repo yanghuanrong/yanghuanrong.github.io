@@ -4,6 +4,10 @@ import { photos } from '../../consts'
 
 const PEEK_COUNT = 3
 
+const initialOrder = photos.map((_, index) => index)
+/** Modal top card is last in `order`; peek shows the same last N photos (bottom → top). */
+const peekPhotos = photos.slice(-PEEK_COUNT)
+
 const restRotations = photos.map((_, index) => {
   const pattern = [-7.5, 6.5, -3, 5, -5.5, 3.5, -2, 7, -4]
   return pattern[index % pattern.length] ?? 0
@@ -19,7 +23,7 @@ type Mode = 'idle' | 'entering' | 'open' | 'leaving'
 
 export default function PhotoStack() {
   const [mode, setMode] = useState<Mode>('idle')
-  const [order, setOrder] = useState(photos.map((_, index) => index))
+  const [order, setOrder] = useState(initialOrder)
   const [mounted, setMounted] = useState(false)
   const [drag, setDrag] = useState({ x: 0, y: 0 })
   const [phase, setPhase] = useState<'idle' | 'drag' | 'snap' | 'fly' | 'incoming' | 'settle'>('idle')
@@ -84,6 +88,7 @@ export default function PhotoStack() {
   const openModal = () => {
     if (modeRef.current !== 'idle') return
     window.clearTimeout(leaveTimer.current)
+    setOrder(initialOrder)
     setOrigin(measureOrigin())
     setDrag({ x: 0, y: 0 })
     dragRef.current = { x: 0, y: 0 }
@@ -206,7 +211,7 @@ export default function PhotoStack() {
         aria-label="查看照片"
         onClick={openModal}
       >
-        {photos.slice(0, PEEK_COUNT).map((photo, index) => (
+        {peekPhotos.map((photo, index) => (
           <span
             key={photo.src}
             className={`polaroid polaroid-peek is-${photoOrientation(photo)}`}
