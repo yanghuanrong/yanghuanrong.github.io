@@ -8,12 +8,14 @@ export type TechIconItem = {
 
 type Props = {
   icons: readonly TechIconItem[]
+  brand?: string
+  slogan?: string
 }
 
 const ICON_SIZE = 44
 const WALL = 80
 
-export default function TechPile({ icons }: Props) {
+export default function TechPile({ icons, brand = '南北', slogan }: Props) {
   const sceneRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -98,6 +100,8 @@ export default function TechPile({ icons }: Props) {
 
     // Touch handlers also call preventDefault; only keep that while dragging an icon.
     let dragging = false
+    // Leaving the canvas should drop the icon without an extra throw impulse.
+    let softRelease = false
     const mutePreventDefault = (event: Event, allow: boolean) => {
       if (allow) return
       const original = event.preventDefault.bind(event)
@@ -142,13 +146,16 @@ export default function TechPile({ icons }: Props) {
 
     Events.on(mouseConstraint, 'startdrag', () => {
       dragging = true
+      softRelease = false
       scene.classList.add('is-dragging')
     })
     Events.on(mouseConstraint, 'enddrag', (event) => {
       dragging = false
       scene.classList.remove('is-dragging')
       const body = (event as { body?: Matter.Body }).body
-      if (!body) return
+      const skipThrow = softRelease
+      softRelease = false
+      if (!body || skipThrow) return
       Body.setVelocity(body, {
         x: body.velocity.x * 1.4,
         y: Math.min(body.velocity.y * 1.25, 20),
@@ -156,9 +163,25 @@ export default function TechPile({ icons }: Props) {
       Body.setAngularVelocity(body, body.angularVelocity + body.velocity.x * 0.0025)
     })
 
+    const releaseDrag = (soft: boolean) => {
+      if (mouse.button !== 0 && !dragging && !mouseConstraint.body) return
+      if (soft) softRelease = true
+      mouse.button = -1
+    }
+    const onSceneLeave = () => releaseDrag(true)
+    const onGlobalUp = () => releaseDrag(false)
+    scene.addEventListener('mouseleave', onSceneLeave)
+    scene.addEventListener('pointerleave', onSceneLeave)
+    window.addEventListener('mouseup', onGlobalUp)
+    window.addEventListener('touchend', onGlobalUp)
+    window.addEventListener('blur', onSceneLeave)
+
     const keepInView = () => {
       const pad = ICON_SIZE / 2
+      const held = mouseConstraint.body
       for (const body of bodies) {
+        // Don't fight the active drag constraint — that causes top-wall twitching.
+        if (body === held) continue
         let { x, y } = body.position
         let { x: vx, y: vy } = body.velocity
         let moved = false
@@ -226,6 +249,11 @@ export default function TechPile({ icons }: Props) {
       mouse.element.removeEventListener('touchstart', onTouchStart)
       mouse.element.removeEventListener('touchmove', onTouchMove)
       mouse.element.removeEventListener('touchend', onTouchEnd)
+      scene.removeEventListener('mouseleave', onSceneLeave)
+      scene.removeEventListener('pointerleave', onSceneLeave)
+      window.removeEventListener('mouseup', onGlobalUp)
+      window.removeEventListener('touchend', onGlobalUp)
+      window.removeEventListener('blur', onSceneLeave)
       Composite.clear(world, false)
       Engine.clear(engine)
       Mouse.clearSourceEvents(mouse)
@@ -234,5 +262,12 @@ export default function TechPile({ icons }: Props) {
     }
   }, [icons])
 
-  return <div ref={sceneRef} className="tech-pile-scene" aria-label="技术栈" />
+  return (
+    <div ref={sceneRef} className="tech-pile-scene" aria-label="技术栈">
+      <div className="tech-pile-mark">
+        <p className="tech-pile-brand">{brand}</p>
+        {slogan ? <p className="tech-pile-slogan">{slogan}</p> : null}
+      </div>
+    </div>
+  )
 }

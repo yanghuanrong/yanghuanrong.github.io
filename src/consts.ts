@@ -1,6 +1,7 @@
 export const SITE_TITLE = '南北'
 export const SITE_DESCRIPTION =
   '南北（杨焕荣）。广州，九年前端。做零代码引擎、跨端 SDK 和开源组件库。像素级还原是默认标准。'
+export const SITE_SLOGAN = '像素对齐，是默认标准。'
 export const SITE_URL = 'https://yanghuanrong.github.io'
 export const AUTHOR_NAME = '杨焕荣'
 export const AUTHOR_ALIAS = '南北'
@@ -58,10 +59,18 @@ export const projects: Project[] = [
 ]
 
 export const photos = [
-  { src: '/photos/road.jpg', caption: '路上' },
-  { src: '/photos/water.jpg', caption: '水里' },
-  { src: '/photos/city.jpg', caption: '城里' },
-]
+  { src: '/photos/17844430.webp', caption: '', width: 1080, height: 720 },
+  { src: '/photos/17843828.webp', caption: '', width: 800, height: 1200 },
+  { src: '/photos/17842351.webp', caption: '', width: 1080, height: 720 },
+  { src: '/photos/17841802.webp', caption: '', width: 1080, height: 720 },
+  { src: '/photos/17841685.webp', caption: '', width: 1080, height: 720 },
+  { src: '/photos/17846369.webp', caption: '', width: 1080, height: 720 },
+  { src: '/photos/17846368.webp', caption: '', width: 1080, height: 720 },
+  { src: '/photos/17846375.webp', caption: '', width: 1080, height: 720 },
+  { src: '/photos/17849817.webp', caption: '', width: 1080, height: 720 },
+] as const
+
+export type PhotoItem = (typeof photos)[number]
 
 export const techIcons = [
   { name: 'HTML5', src: '/icons/tech/html5.svg' },

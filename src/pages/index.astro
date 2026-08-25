@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 import JsonLd from '../components/JsonLd.astro'
 import ProjectCard from '../components/ProjectCard.astro'
 import PhotoStack from '../components/react/PhotoStack.tsx'
-import { formatDate, projects, SITE_DESCRIPTION, socials, techIcons } from '../consts'
+import { formatDate, projects, SITE_DESCRIPTION, SITE_SLOGAN, SITE_TITLE, socials, techIcons } from '../consts'
 import TechPile from '../components/react/TechPile.tsx'
 import Base from '../layouts/Base.astro'
 
@@ -71,5 +71,5 @@ const posts = (await getCollection('blog')).sort(
   </ul>
   <a class="see-all" href="/blog/">查看全部 →</a>
 
-  <TechPile slot="after" client:visible icons={techIcons} />
+  <TechPile slot="after" client:visible icons={techIcons} brand={SITE_TITLE} slogan={SITE_SLOGAN} />
 </Base>

@@ -2,9 +2,18 @@ import { useEffect, useRef, useState, type CSSProperties, type PointerEvent, typ
 import { createPortal } from 'react-dom'
 import { photos } from '../../consts'
 
-const restRotations = [-8, 7, -3]
-const THROW_DISTANCE = 96
+const PEEK_COUNT = 3
+
+const restRotations = photos.map((_, index) => {
+  const pattern = [-7.5, 6.5, -3, 5, -5.5, 3.5, -2, 7, -4]
+  return pattern[index % pattern.length] ?? 0
+})
+
+const photoOrientation = (photo: (typeof photos)[number]) =>
+  photo.height > photo.width ? 'portrait' : 'landscape'
+
 const LEAVE_MS = 420
+const THROW_DISTANCE = 96
 
 type Mode = 'idle' | 'entering' | 'open' | 'leaving'
 
@@ -197,10 +206,10 @@ export default function PhotoStack() {
         aria-label="查看照片"
         onClick={openModal}
       >
-        {photos.map((photo, index) => (
+        {photos.slice(0, PEEK_COUNT).map((photo, index) => (
           <span
             key={photo.src}
-            className="polaroid polaroid-peek"
+            className={`polaroid polaroid-peek is-${photoOrientation(photo)}`}
             style={{ '--i': index, zIndex: index + 1 } as CSSProperties}
           >
             <img src={photo.src} alt="" />
@@ -221,12 +230,10 @@ export default function PhotoStack() {
               '--oy': `${origin.y}px`,
               '--os': String(origin.s),
             } as CSSProperties}
-            onClick={closeModal}
           >
             <div className="photo-modal-backdrop" />
             <div
               className="photo-modal-stack"
-              onClick={(event) => event.stopPropagation()}
               onTransitionEnd={onStackTransitionEnd}
             >
               {order.map((photoIndex, stackIndex) => {
@@ -250,19 +257,20 @@ export default function PhotoStack() {
                   <button
                     type="button"
                     key={photo.src}
-                    className={`polaroid polaroid-modal${cardPhase ? ` is-${cardPhase}` : ''}`}
+                    className={`polaroid polaroid-modal is-${photoOrientation(photo)}${cardPhase ? ` is-${cardPhase}` : ''}`}
                     style={{
                       transform,
                       zIndex: stackIndex + 1,
                       pointerEvents: isTop && mode === 'open' && phase === 'idle' ? 'auto' : 'none',
+                      ['--ar' as string]: `${photo.width} / ${photo.height}`,
                     }}
                     onPointerDown={isTop ? onPointerDown : undefined}
                     onPointerMove={isTop ? onPointerMove : undefined}
                     onPointerUp={isTop ? finishDrag : undefined}
                     onPointerCancel={isTop ? finishDrag : undefined}
                   >
-                    <img src={photo.src} alt={photo.caption} draggable={false} />
-                    <span>{photo.caption}</span>
+                    <img src={photo.src} alt={photo.caption || ''} draggable={false} />
+                    {photo.caption ? <span>{photo.caption}</span> : null}
                   </button>
                 )
               })}
