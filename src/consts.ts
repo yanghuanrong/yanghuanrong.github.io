@@ -12,8 +12,6 @@ export const EMAIL = 'bsie@qq.com'
 export const socials = [
   { name: 'GitHub', href: GITHUB_URL },
   { name: 'Email', href: `mailto:${EMAIL}` },
-  { name: '图虫', href: 'https://sovo.tuchong.com/' },
-  { name: '站酷', href: 'https://www.zcool.com.cn/u/17555157' },
   { name: 'RSS', href: '/rss.xml' },
 ]
 
@@ -23,7 +21,7 @@ export type Project = {
   initial: string
   cover: string
   href?: string
-  coverImage?: 'relax-ui' | 'relax-plus' | 'eprotek'
+  coverImage?: 'relax-ui' | 'relax-plus' | 'eprotek' | 'hydrogen'
 }
 
 export const projects: Project[] = [
@@ -32,7 +30,7 @@ export const projects: Project[] = [
     href: 'https://www.eprotekcorp.com/',
     desc: '电涌保护品牌官网。产品、方案与认证内容结构化呈现，英文站面向全球客户。',
     initial: 'E',
-    cover: '#0b1f3a',
+    cover: '#e8e8e6',
     coverImage: 'eprotek',
   },
   {
@@ -56,7 +54,8 @@ export const projects: Project[] = [
     href: 'https://github.com/bmob/hydrogen-js-sdk',
     desc: '给微信小程序、快应用、抖音、H5 接 Bmob 云服务。环境、构建和 Query 核心是我写的，到现在还在跑。',
     initial: 'H',
-    cover: '#1c1718',
+    cover: '#e8e8e6',
+    coverImage: 'hydrogen',
   },
 ]
 
@@ -116,6 +115,7 @@ export const techIcons = [
   { name: 'Ant Design', src: '/icons/tech/ant-design.svg' },
   { name: 'Element', src: '/icons/tech/element.svg' },
   { name: 'Node.js', src: '/icons/tech/nodejs.svg' },
+  { name: 'Electron', src: '/icons/tech/electron.svg' },
   { name: 'Express', src: '/icons/tech/express.svg' },
   { name: 'MongoDB', src: '/icons/tech/mongodb.svg' },
   { name: 'Next.js', src: '/icons/tech/nextjs.svg' },
@@ -130,6 +130,7 @@ export const techIcons = [
   { name: 'Sass', src: '/icons/tech/sass.svg' },
   { name: 'npm', src: '/icons/tech/npm.svg' },
   { name: 'Astro', src: '/icons/tech/astro.svg' },
+  { name: 'Cursor', src: '/icons/tech/cursor.svg' },
 ] as const
 
 export function formatDate(date: Date) {

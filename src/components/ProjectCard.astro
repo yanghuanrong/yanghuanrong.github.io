@@ -3,11 +3,13 @@ import { Image } from 'astro:assets'
 import type { ImageMetadata } from 'astro'
 import type { Project } from '../consts'
 import eprotekCover from '../assets/projects/eprotek-cover.jpg'
+import hydrogenCover from '../assets/projects/hydrogen-cover.jpg'
 import relaxUiCover from '../assets/projects/relax-ui-cover.jpg'
 import relaxPlusCover from '../assets/projects/relax-plus-cover.jpg'
 
 const covers: Record<string, ImageMetadata> = {
   eprotek: eprotekCover,
+  hydrogen: hydrogenCover,
   'relax-ui': relaxUiCover,
   'relax-plus': relaxPlusCover,
 }
@@ -18,17 +20,10 @@ interface Props {
 
 const { project } = Astro.props
 const isExternal = Boolean(project.href?.startsWith('http'))
-const Tag = project.href ? 'a' : 'div'
-const linkProps = project.href
-  ? {
-      href: project.href,
-      ...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}),
-    }
-  : {}
 const coverImage = project.coverImage ? covers[project.coverImage] : undefined
 ---
 
-<Tag class="project-card" {...linkProps}>
+<article class="project-card">
   {
     coverImage ? (
       <Image
@@ -44,29 +39,39 @@ const coverImage = project.coverImage ? covers[project.coverImage] : undefined
       </span>
     )
   }
-  <strong class="project-name">
-    {project.name}
-    {
-      isExternal ? (
-        <svg
-          class="project-ext"
-          width="12"
-          height="12"
-          viewBox="0 0 12 12"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path
-            d="M3.5 2.5h6v6M9.5 2.5 2.5 9.5"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.4"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      ) : null
-    }
-  </strong>
+  {
+    project.href ? (
+      <a
+        class="project-name"
+        href={project.href}
+        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      >
+        {project.name}
+        {
+          isExternal ? (
+            <svg
+              class="project-ext"
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M3.5 2.5h6v6M9.5 2.5 2.5 9.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          ) : null
+        }
+      </a>
+    ) : (
+      <strong class="project-name">{project.name}</strong>
+    )
+  }
   <span class="desc">{project.desc}</span>
-</Tag>
+</article>

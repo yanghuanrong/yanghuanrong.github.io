@@ -14,10 +14,10 @@ const posts = (await getCollection('blog')).sort(
     {
       posts.map((post) => (
         <li>
-          <a href={`/blog/${post.id}/`}>
-            <span class="post-title">{post.data.title}</span>
-            <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+          <a class="post-title" href={`/blog/${post.id}/`}>
+            {post.data.title}
           </a>
+          <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
         </li>
       ))
     }

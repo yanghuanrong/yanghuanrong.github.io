@@ -41,3 +41,16 @@ export function HopPhrase({ text }: { text: string }) {
     </span>
   )
 }
+
+export function WavePhrase({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  return (
+    <span
+      ref={ref}
+      className="hero-wave-trigger"
+      onPointerDown={(event) => replayTap(event, ref.current)}
+    >
+      <span className="hero-wave">{children}</span>
+    </span>
+  )
+}

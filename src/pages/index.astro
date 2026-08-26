@@ -3,10 +3,10 @@ import { getCollection } from 'astro:content'
 import JsonLd from '../components/JsonLd.astro'
 import ProjectCard from '../components/ProjectCard.astro'
 import PhotoStack from '../components/react/PhotoStack.tsx'
-import { HopPhrase, RolePhrase } from '../components/react/HeroAccent.tsx'
-import { formatDate, projects, SITE_DESCRIPTION, SITE_SLOGAN, SITE_TITLE, socials, techIcons } from '../consts'
-import TechPile from '../components/react/TechPile.tsx'
+import { HopPhrase, RolePhrase, WavePhrase } from '../components/react/HeroAccent.tsx'
+import { formatDate, projects, SITE_DESCRIPTION, socials, techIcons } from '../consts'
 import ContribList from '../components/ContribList.astro'
+import TechPile from '../components/react/TechPile.tsx'
 import Base from '../layouts/Base.astro'
 
 const posts = (await getCollection('blog')).sort(
@@ -39,7 +39,7 @@ const posts = (await getCollection('blog')).sort(
       自己过了百星。Vue 3 的 setup 还没发布，Relax Plus 已经在用新特性做组件。
     </p>
     <p>
-      拍照、游泳、看书。
+      拍照、<WavePhrase client:visible>游泳</WavePhrase>、看书。
       <PhotoStack client:load />
     </p>
     <ul class="socials">
@@ -72,15 +72,15 @@ const posts = (await getCollection('blog')).sort(
     {
       posts.map((post) => (
         <li>
-          <a href={`/blog/${post.id}/`}>
-            <span class="post-title">{post.data.title}</span>
-            <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+          <a class="post-title" href={`/blog/${post.id}/`}>
+            {post.data.title}
           </a>
+          <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
         </li>
       ))
     }
   </ul>
   <a class="see-all" href="/blog/">查看全部 →</a>
 
-  <TechPile slot="after" client:visible icons={techIcons} brand={SITE_TITLE} slogan={SITE_SLOGAN} />
+  <TechPile client:visible icons={techIcons} />
 </Base>

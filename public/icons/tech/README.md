@@ -18,6 +18,7 @@
 | `ant-design.svg` | Ant Design |
 | `element.svg` | Element |
 | `nodejs.svg` | Node.js |
+| `electron.svg` | Electron |
 | `express.svg` | Express |
 | `mongodb.svg` | MongoDB |
 | `nextjs.svg` | Next.js |
@@ -32,5 +33,6 @@
 | `sass.svg` | Sass |
 | `npm.svg` | npm |
 | `astro.svg` | Astro（当前站点） |
+| `cursor.svg` | Cursor |
 
-未收录（Simple Icons 无对应或 slug 不可用）：Vant、VuePress、UniApp、Taro、Midway、Weex、Element Plus。
+未收录（Simple Icons 无对应或 slug 不可用）：Vant、VuePress、UniApp、Taro、Midway、Weex、Element Plus、Codex。

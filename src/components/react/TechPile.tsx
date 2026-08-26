@@ -8,14 +8,12 @@ export type TechIconItem = {
 
 type Props = {
   icons: readonly TechIconItem[]
-  brand?: string
-  slogan?: string
 }
 
 const ICON_SIZE = 44
 const WALL = 80
 
-export default function TechPile({ icons, brand = '南北', slogan }: Props) {
+export default function TechPile({ icons }: Props) {
   const sceneRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -28,6 +26,7 @@ export default function TechPile({ icons, brand = '南北', slogan }: Props) {
       el.className = 'tech-pile-icon'
       el.setAttribute('aria-label', icon.name)
       el.title = icon.name
+      el.style.visibility = 'hidden'
       const img = document.createElement('img')
       img.src = icon.src
       img.alt = ''
@@ -69,20 +68,40 @@ export default function TechPile({ icons, brand = '南北', slogan }: Props) {
     let walls = makeWalls(width, height)
     World.add(world, walls)
 
+    const gap = 8
+    const cols = Math.max(Math.floor((width - 24) / (ICON_SIZE + gap)), 1)
     const bodies = icons.map((_, index) => {
-      const x = ICON_SIZE + Math.random() * Math.max(width - ICON_SIZE * 2, 40)
-      // Start inside the canvas (below the ceiling) so the rain-in still works
-      const y = ICON_SIZE / 2 + 12 + (index % 6) * 18 + Math.random() * 36
+      const row = Math.floor(index / cols)
+      const col = index % cols
+      const countInRow = Math.min(cols, icons.length - row * cols)
+      const rowWidth = countInRow * ICON_SIZE + (countInRow - 1) * gap
+      const rowOriginX = (width - rowWidth) / 2 + ICON_SIZE / 2
+      const x = rowOriginX + col * (ICON_SIZE + gap) + (Math.random() - 0.5) * 8
+      const y =
+        height -
+        ICON_SIZE / 2 -
+        6 -
+        row * (ICON_SIZE * 0.9) -
+        Math.random() * 6
       return Bodies.rectangle(x, y, ICON_SIZE, ICON_SIZE, {
         chamfer: { radius: 10 },
         restitution: 0.26,
         friction: 0.42,
         frictionAir: 0.018,
         density: 0.0024,
-        angle: (Math.random() - 0.5) * 0.6,
+        angle: (Math.random() - 0.5) * 0.45,
       })
     })
     World.add(world, bodies)
+
+    // Settle offline so icons are already piled when the scene mounts.
+    for (let i = 0; i < 140; i += 1) {
+      Engine.update(engine, 1000 / 60)
+    }
+    for (const body of bodies) {
+      Body.setVelocity(body, { x: 0, y: 0 })
+      Body.setAngularVelocity(body, 0)
+    }
 
     const mouse = Mouse.create(scene)
     // Matter binds `wheel` with preventDefault — that blocks page scroll over the pile.
@@ -215,6 +234,7 @@ export default function TechPile({ icons, brand = '南北', slogan }: Props) {
         const body = bodies[i]
         const el = nodes[i]
         if (!body || !el) continue
+        el.style.visibility = ''
         el.style.transform = `translate3d(${body.position.x - ICON_SIZE / 2}px, ${body.position.y - ICON_SIZE / 2}px, 0) rotate(${body.angle}rad)`
       }
     }
@@ -262,12 +282,5 @@ export default function TechPile({ icons, brand = '南北', slogan }: Props) {
     }
   }, [icons])
 
-  return (
-    <div ref={sceneRef} className="tech-pile-scene" aria-label="技术栈">
-      <div className="tech-pile-mark">
-        <p className="tech-pile-brand">{brand}</p>
-        {slogan ? <p className="tech-pile-slogan">{slogan}</p> : null}
-      </div>
-    </div>
-  )
+  return <div ref={sceneRef} className="tech-pile-scene" aria-label="技术栈" />
 }
