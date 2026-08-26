@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content'
 import JsonLd from '../components/JsonLd.astro'
 import ProjectCard from '../components/ProjectCard.astro'
 import PhotoStack from '../components/react/PhotoStack.tsx'
-import { HopPhrase, RolePhrase, WavePhrase } from '../components/react/HeroAccent.tsx'
+import { DrivePhrase, HopPhrase, RolePhrase, ShutterPhrase, WavePhrase } from '../components/react/HeroAccent.tsx'
 import { formatDate, projects, SITE_DESCRIPTION, socials, techIcons } from '../consts'
 import ContribList from '../components/ContribList.astro'
 import TechPile from '../components/react/TechPile.tsx'
@@ -14,32 +14,28 @@ const posts = (await getCollection('blog')).sort(
 )
 ---
 
-<Base title="南北" description={SITE_DESCRIPTION}>
+<Base title="杨焕荣" description={SITE_DESCRIPTION}>
   <JsonLd slot="head" />
   <section class="hero">
-    <h1>南北</h1>
+    <h1>杨焕荣</h1>
     <p>
-      广州。九年
-      <RolePhrase client:visible>前端</RolePhrase>
-      。Vue、React，以及把 Node 服务自己搭起来。
+      我是一名
+      <RolePhrase client:visible>设计工程师</RolePhrase>
+      ，做过视觉、App 界面、产品和工程。
     </p>
     <p>
-      现在做的事情，是把 ERP、OA、流程这类系统，收成普通人也能搭的界面：表单、审批、报表、UI 引擎。像素
-      <HopPhrase client:visible text="对不齐" />
-      这件事，我过不去。
+      我热衷于打造令人愉悦的界面，以及那些流畅又充满人性化体验的产品。专注于钻研 UI 组件 API、设计系统模式、排版设计和动画效果。
     </p>
     <p>
-      从 0 做过完整的零代码产品：领域建模、DSL、React 多页构建、错误监控。也为 Bmob 写过跨端 SDK，Query 那一层是我搓的，现在还在跑。
-    </p>
-    <p>
-      开源这边动过手。给两颗分别 1.3 万和 2.3 万星的项目提过被合入的 PR；
-      <a href="https://github.com/yanghuanrong/RelaxUI">RelaxUI</a>
-      和
-      <a href="https://yanghuanrong.github.io/RelaxPlus/">RelaxPlus</a>
-      自己过了百星。Vue 3 的 setup 还没发布，Relax Plus 已经在用新特性做组件。
-    </p>
-    <p>
-      拍照、<WavePhrase client:visible>游泳</WavePhrase>、看书。
+      兴趣广泛，
+      <HopPhrase client:visible text="健身" />
+      、
+      <WavePhrase client:visible>游泳</WavePhrase>
+      、
+      <DrivePhrase client:visible>驾驶</DrivePhrase>
+      ，在做技术之前，还曾学习过
+      <ShutterPhrase client:visible>摄影</ShutterPhrase>
+      。
       <PhotoStack client:load />
     </p>
     <ul class="socials">

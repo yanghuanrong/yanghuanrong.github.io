@@ -368,7 +368,9 @@ main.wrap {
 
 .hero-role-trigger,
 .hero-hop-trigger,
-.hero-wave-trigger {
+.hero-wave-trigger,
+.hero-shutter-trigger,
+.hero-drive-trigger {
   display: inline-flex;
   align-items: baseline;
   white-space: nowrap;
@@ -389,16 +391,16 @@ main.wrap {
 
 .hero-hop-unit {
   display: inline-block;
-  color: var(--fg);
-  font-weight: 600;
+  color: inherit;
+  font-weight: inherit;
   transform-origin: center bottom;
 }
 
 .hero-wave {
   position: relative;
   display: inline-block;
-  color: var(--fg);
-  font-weight: 600;
+  color: inherit;
+  font-weight: inherit;
 }
 
 .hero-wave::after {
@@ -420,6 +422,109 @@ main.wrap {
   -webkit-mask-position: 0 50%;
   mask-position: 0 50%;
   transition: opacity 0.2s ease;
+}
+
+.hero-shutter {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  font-weight: inherit;
+}
+
+.hero-shutter::before,
+.hero-shutter::after {
+  content: '';
+  position: absolute;
+  left: -0.1em;
+  right: -0.1em;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 1;
+}
+
+.hero-shutter::before {
+  top: -0.06em;
+  bottom: 50%;
+  background: color-mix(in oklab, var(--fg) 82%, #000);
+  transform-origin: center top;
+  transform: scaleY(0);
+}
+
+.hero-shutter::after {
+  top: 50%;
+  bottom: -0.06em;
+  background: color-mix(in oklab, var(--fg) 82%, #000);
+  transform-origin: center bottom;
+  transform: scaleY(0);
+}
+
+.hero-shutter-trigger.is-shutter .hero-shutter {
+  animation: hero-shutter-flash 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.hero-shutter-trigger.is-shutter .hero-shutter::before,
+.hero-shutter-trigger.is-shutter .hero-shutter::after {
+  animation: hero-shutter-blade 4.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.hero-drive {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  font-weight: inherit;
+  overflow: visible;
+}
+
+.hero-drive-text {
+  display: inline-block;
+  transform: translateZ(0);
+  transform-origin: 50% 50%;
+  transition: transform 0.18s ease;
+  will-change: transform;
+}
+
+.hero-drive-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--lw, 1em);
+  height: var(--lh, 2px);
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--fg) 55%, transparent),
+    color-mix(in oklab, var(--muted) 45%, transparent) 55%,
+    transparent
+  );
+  clip-path: polygon(0 15%, 100% 45%, 100% 55%, 0 85%);
+  transform: translate(80%, calc(-50% + var(--ly, 0px)));
+}
+
+.hero-drive-trigger.is-drive .hero-drive-text {
+  transform: skewX(-7deg) translateZ(0);
+}
+
+.hero-drive-trigger.is-drive .hero-drive-line {
+  opacity: 1;
+  animation: hero-drive-wind var(--speed, 0.22s) linear infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes hero-drive-wind {
+  0% {
+    opacity: 0;
+    transform: translate(95%, calc(-50% + var(--ly, 0px))) scaleX(0.55);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-160%, calc(-50% + var(--ly, 0px))) scaleX(1.35);
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -518,6 +623,34 @@ main.wrap {
   to {
     -webkit-mask-position: -1.15em 50%;
     mask-position: -1.15em 50%;
+  }
+}
+
+@keyframes hero-shutter-blade {
+  0%,
+  14%,
+  100% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  4%,
+  9% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes hero-shutter-flash {
+  0%,
+  8%,
+  14%,
+  100% {
+    filter: brightness(1);
+  }
+
+  11% {
+    filter: brightness(1.28);
   }
 }
 
@@ -1093,8 +1226,20 @@ a.project-name:hover .project-ext {
   .hero-hop-trigger:hover .hero-hop-unit,
   .hero-hop-trigger.is-tap .hero-hop-unit,
   .hero-wave-trigger:hover .hero-wave::after,
-  .hero-wave-trigger.is-tap .hero-wave::after {
+  .hero-wave-trigger.is-tap .hero-wave::after,
+  .hero-shutter-trigger.is-shutter .hero-shutter,
+  .hero-shutter-trigger.is-shutter .hero-shutter::before,
+  .hero-shutter-trigger.is-shutter .hero-shutter::after,
+  .hero-drive-trigger.is-drive .hero-drive-line {
     animation: none;
+  }
+
+  .hero-drive-text {
+    transition: none;
+  }
+
+  .hero-drive-trigger.is-drive .hero-drive-text {
+    transform: none;
   }
 
   .hero-role-trigger:hover .hero-role,

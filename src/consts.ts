@@ -1,11 +1,11 @@
-export const SITE_TITLE = '南北'
+export const SITE_TITLE = '杨焕荣'
 export const SITE_DESCRIPTION =
-  '南北（杨焕荣）。广州，九年前端。做零代码引擎、跨端 SDK 和开源组件库。像素级还原是默认标准。'
+  '杨焕荣（南北）。长沙，设计工程师。做过视觉、App 界面、产品和工程，专注 UI 组件、设计系统、排版与动画。'
 export const SITE_SLOGAN = '像素对齐，是默认标准。'
 export const SITE_URL = 'https://yanghuanrong.github.io'
 export const AUTHOR_NAME = '杨焕荣'
 export const AUTHOR_ALIAS = '南北'
-export const AUTHOR_JOB = '前端'
+export const AUTHOR_JOB = '设计工程师'
 export const GITHUB_URL = 'https://github.com/yanghuanrong'
 export const EMAIL = 'bsie@qq.com'
 
