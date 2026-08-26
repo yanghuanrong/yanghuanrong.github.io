@@ -42,7 +42,13 @@ const posts = (await getCollection('blog')).sort(
       {
         socials.map((item) => (
           <li>
-            <a href={item.href}>{item.name}</a>
+            <a
+              href={item.href}
+              target={item.href.startsWith('http') ? '_blank' : undefined}
+              rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
+              {item.name}
+            </a>
           </li>
         ))
       }

@@ -4,7 +4,7 @@ import {
   AUTHOR_JOB,
   AUTHOR_NAME,
   EMAIL,
-  GITHUB_URL,
+  SAME_AS,
   SITE_DESCRIPTION,
   SITE_URL,
 } from '../consts'
@@ -32,12 +32,7 @@ const person = {
   jobTitle: AUTHOR_JOB,
   email: EMAIL,
   description: SITE_DESCRIPTION,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: '长沙',
-    addressCountry: 'CN',
-  },
-  sameAs: [GITHUB_URL],
+  sameAs: [...SAME_AS],
 }
 
 const data =

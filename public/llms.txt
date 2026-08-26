@@ -1,26 +1,36 @@
-# 南北
+# 杨焕荣
 
-> 南北（杨焕荣）。广州，九年前端。做零代码引擎、跨端 SDK 和开源组件库。像素级还原是默认标准。
+> 杨焕荣（南北）。设计工程师。做过视觉、App 界面、产品和工程，专注 UI 组件、设计系统、排版与动画。
 
 站点以静态 HTML 发布，正文不依赖 JavaScript。
 
 ## 关于
 
-- [关于南北](https://yanghuanrong.github.io/)：广州前端。Vue / React / Node。从 0 做过零代码产品（领域建模、DSL、表单/流程/报表/UI 引擎），写过 Bmob 跨端 SDK 的 Query 核心。给两颗 1.3 万和 2.3 万星的开源项目提过被合入的 PR；RelaxUI、RelaxPlus 过百星。
+- [关于杨焕荣](https://yanghuanrong.github.io/)：设计工程师。热衷于打造令人愉悦的界面，以及流畅又充满人性化体验的产品。专注 UI 组件 API、设计系统模式、排版设计与动画效果。兴趣包括健身、游泳、驾驶；做过摄影。
+
+## 项目
+
+- [Eprotek](https://www.eprotekcorp.com/)：电涌保护品牌官网。产品、方案与认证内容结构化呈现，英文站面向全球客户。
+- [Relax Plus](https://yanghuanrong.github.io/RelaxPlus/)：Vue 3 组件库，二十多个组件，文档和 CI 自建，过百星。
+- [Relax UI](https://github.com/yanghuanrong/RelaxUI)：Vue 2 组件库。
+- [Hydrogen JS SDK](https://github.com/bmob/hydrogen-js-sdk)：微信小程序 / 快应用 / 抖音 / H5 接入 Bmob；环境、构建与 Query 核心由杨焕荣编写。
+
+## 贡献过
+
+- [dream-num/Luckysheet](https://github.com/dream-num/Luckysheet)：开源在线电子表格
+- [ascoders/weekly](https://github.com/ascoders/weekly)：前端精读周刊
+- [Anduin2017/HowToCook](https://github.com/Anduin2017/HowToCook)：程序员做饭指南
+- [ant-design/x](https://github.com/ant-design/x)：Ant Design AI 应用组件库
 
 ## 文章
 
 - [优化 webpack5 热更新从 9s 下降至 1~2s](https://yanghuanrong.github.io/blog/webpack5-optimize/)：定位 CleanWebpackPlugin 在开发环境清空缓存，使热更新从 7–9 秒降到 1–2 秒
-- [表达式求值并处理精度问题](https://yanghuanrong.github.io/blog/formula/)：用递归下降解析公式字符串，并以精确四则运算避免 0.1+0.2 一类浮点误差
-
-## 项目
-
-- 零代码平台：面向普通人。领域建模 + 拖拉拽，表单、流程、报表、UI 四套引擎。DSL、React 多页构建、错误监控由南北完成
-- [Relax Plus](https://github.com/yanghuanrong/RelaxPlus)：Vue 3 组件库，setup 发布前启动，二十多个组件，过百星
-- [Relax UI](https://github.com/yanghuanrong/RelaxUI)：Vue 2 组件库
-- [Hydrogen JS SDK](https://github.com/bmob/hydrogen-js-sdk)：微信 / 快应用 / 抖音 / H5 接入 Bmob，Query 核心由南北编写
+- [表达式求值并处理精度问题](https://yanghuanrong.github.io/blog/formula/)：用递归下降解析公式字符串，并以精确四则运算避免浮点误差
 
 ## 可选
 
 - RSS：https://yanghuanrong.github.io/rss.xml
 - GitHub：https://github.com/yanghuanrong
+- 掘金：https://juejin.cn/user/2286606292882749
+- 知乎：https://www.zhihu.com/people/yang-huan-rong-91
+- X：https://x.com/mkoibb

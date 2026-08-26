@@ -15,7 +15,7 @@
 | `jquery.svg` | jQuery |
 | `webpack.svg` | Webpack |
 | `vite.svg` | Vite |
-| `ant-design.svg` | Ant Design |
+| `ant-design.svg` | Ant Design（官方渐变 Logo） |
 | `element.svg` | Element |
 | `nodejs.svg` | Node.js |
 | `electron.svg` | Electron |

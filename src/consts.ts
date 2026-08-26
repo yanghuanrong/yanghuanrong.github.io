@@ -1,16 +1,23 @@
 export const SITE_TITLE = '杨焕荣'
 export const SITE_DESCRIPTION =
-  '杨焕荣（南北）。长沙，设计工程师。做过视觉、App 界面、产品和工程，专注 UI 组件、设计系统、排版与动画。'
-export const SITE_SLOGAN = '像素对齐，是默认标准。'
+  '杨焕荣（南北）。设计工程师。做过视觉、App 界面、产品和工程，专注 UI 组件、设计系统、排版与动画。'
 export const SITE_URL = 'https://yanghuanrong.github.io'
 export const AUTHOR_NAME = '杨焕荣'
 export const AUTHOR_ALIAS = '南北'
 export const AUTHOR_JOB = '设计工程师'
 export const GITHUB_URL = 'https://github.com/yanghuanrong'
+export const JUEJIN_URL = 'https://juejin.cn/user/2286606292882749'
+export const ZHIHU_URL = 'https://www.zhihu.com/people/yang-huan-rong-91'
+export const X_URL = 'https://x.com/mkoibb'
 export const EMAIL = 'bsie@qq.com'
+
+export const SAME_AS = [GITHUB_URL, JUEJIN_URL, ZHIHU_URL, X_URL] as const
 
 export const socials = [
   { name: 'GitHub', href: GITHUB_URL },
+  { name: '掘金', href: JUEJIN_URL },
+  { name: '知乎', href: ZHIHU_URL },
+  { name: 'X', href: X_URL },
   { name: 'Email', href: `mailto:${EMAIL}` },
 ]
 
