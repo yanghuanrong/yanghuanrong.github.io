@@ -282,5 +282,22 @@ export default function TechPile({ icons }: Props) {
     }
   }, [icons])
 
-  return <div ref={sceneRef} className="tech-pile-scene" aria-label="技术栈" />
+  return (
+    <div ref={sceneRef} className="tech-pile-scene" aria-label="技术栈">
+      <p className="tech-pile-slogan" aria-hidden="true">
+        <svg
+          viewBox="0 0 152 11"
+          fill="none"
+          stroke="currentColor"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          aria-hidden="true"
+        >
+          <path d="M1.402 3.373c48.824-.432 97.485-1.154 146.262 2.028" strokeWidth="0.55" />
+          <path d="M7.803 9.611c43.202-2.446 86.818-7.357 130.153-8.007" strokeWidth="1.05" />
+        </svg>
+        Be water my friend
+      </p>
+    </div>
+  )
 }

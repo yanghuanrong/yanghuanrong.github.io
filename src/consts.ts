@@ -12,7 +12,6 @@ export const EMAIL = 'bsie@qq.com'
 export const socials = [
   { name: 'GitHub', href: GITHUB_URL },
   { name: 'Email', href: `mailto:${EMAIL}` },
-  { name: 'RSS', href: '/rss.xml' },
 ]
 
 export type Project = {

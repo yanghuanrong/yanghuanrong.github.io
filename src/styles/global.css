@@ -871,6 +871,37 @@ a.project-name:hover .project-ext {
   user-select: none;
 }
 
+.tech-pile-slogan {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: max-content;
+  max-width: calc(100% - 48px);
+  margin: 0;
+  pointer-events: none;
+  font-family: 'Grape Nuts', cursive;
+  font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  text-align: center;
+  color: color-mix(in oklab, var(--fg) 42%, transparent);
+  translate: -50% calc(-50% - 28px);
+  rotate: -8deg;
+}
+
+.tech-pile-slogan svg {
+  position: absolute;
+  left: -0.2rem;
+  right: -0.2rem;
+  bottom: -0.7rem;
+  width: auto;
+  height: auto;
+  rotate: 3deg;
+  opacity: 0.55;
+}
+
 .tech-pile-scene.is-dragging {
   cursor: grabbing;
   touch-action: none;
