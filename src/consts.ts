@@ -10,6 +10,7 @@ export const JUEJIN_URL = 'https://juejin.cn/user/2286606292882749'
 export const ZHIHU_URL = 'https://www.zhihu.com/people/yang-huan-rong-91'
 export const X_URL = 'https://x.com/mkoibb'
 export const EMAIL = 'bsie@qq.com'
+export const GA_MEASUREMENT_ID = 'G-1Q6ZSZMR70'
 
 export const SAME_AS = [GITHUB_URL, JUEJIN_URL, ZHIHU_URL, X_URL] as const
 

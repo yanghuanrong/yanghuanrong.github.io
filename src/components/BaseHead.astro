@@ -1,5 +1,5 @@
 ---
-import { AUTHOR_NAME, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts'
+import { AUTHOR_NAME, GA_MEASUREMENT_ID, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts'
 
 interface Props {
   title?: string
@@ -12,6 +12,22 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION, type = 'website', im
 const canonical = new URL(Astro.url.pathname, Astro.site)
 const ogImage = new URL(image ?? '/og.png', SITE_URL).href
 ---
+
+<!-- Google tag (gtag.js) -->
+<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} is:inline></script>
+<script is:inline set:html={`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
+  document.addEventListener('astro:page-load', function () {
+    gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: location.href,
+      page_path: location.pathname + location.search + location.hash
+    });
+  });
+`} />
 
 <meta charset="utf-8" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
