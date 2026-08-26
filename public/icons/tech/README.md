@@ -28,9 +28,10 @@
 | `gitee.svg` | Gitee |
 | `markdown.svg` | Markdown |
 | `echarts.svg` | Apache ECharts |
-| `chrome.svg` | Chrome（插件） |
+| `chrome.svg` | Chrome（插件；官方多色 Logo） |
 | `photoshop.svg` | Photoshop |
 | `sass.svg` | Sass |
+| `tailwindcss.svg` | Tailwind CSS |
 | `npm.svg` | npm |
 | `astro.svg` | Astro（当前站点） |
 | `cursor.svg` | Cursor |

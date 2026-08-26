@@ -127,6 +127,7 @@ export const techIcons = [
   { name: 'Chrome', src: '/icons/tech/chrome.svg' },
   { name: 'Photoshop', src: '/icons/tech/photoshop.svg' },
   { name: 'Sass', src: '/icons/tech/sass.svg' },
+  { name: 'Tailwind CSS', src: '/icons/tech/tailwindcss.svg' },
   { name: 'npm', src: '/icons/tech/npm.svg' },
   { name: 'Astro', src: '/icons/tech/astro.svg' },
   { name: 'Cursor', src: '/icons/tech/cursor.svg' },
