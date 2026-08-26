@@ -22,4 +22,5 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
+Sitemap: https://yanghuanrong.github.io/sitemap.xml
 Sitemap: https://yanghuanrong.github.io/sitemap-index.xml
