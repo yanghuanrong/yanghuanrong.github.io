@@ -17,7 +17,7 @@ interface Props {
 const { title, description, pubDate, updatedDate, slug, headings } = Astro.props
 ---
 
-<Base title={title} description={description} type="article">
+<Base title={title} description={description} type="article" animate={false}>
   <JsonLd slot="head" type="article" title={title} description={description} datePublished={pubDate} />
   <div class="post-layout">
     <PostToc title={title} headings={headings} />

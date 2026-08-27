@@ -13,7 +13,7 @@
 - [Eprotek](https://www.eprotekcorp.com/)：电涌保护品牌官网。产品、方案与认证内容结构化呈现，英文站面向全球客户。
 - [Relax Plus](https://yanghuanrong.github.io/RelaxPlus/)：Vue 3 组件库，二十多个组件，文档和 CI 自建，过百星。
 - [Relax UI](https://github.com/yanghuanrong/RelaxUI)：Vue 2 组件库。
-- [Hydrogen JS SDK](https://github.com/bmob/hydrogen-js-sdk)：微信小程序 / 快应用 / 抖音 / H5 接入 Bmob；环境、构建与 Query 核心由杨焕荣编写。
+- [Hydrogen JS SDK](https://github.com/bmob/hydrogen-js-sdk)：Bmob 新版 ES6 SDK，面向前端混合开发，支持微信小程序、抖音小程序、H5、快应用、Cocos 游戏、混合 App 等平台。
 
 ## 贡献过
 

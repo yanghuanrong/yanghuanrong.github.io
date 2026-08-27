@@ -11,9 +11,10 @@ interface Props {
   title?: string
   description?: string
   type?: 'website' | 'article'
+  animate?: boolean
 }
 
-const { title, description, type = 'website' } = Astro.props
+const { title, description, type = 'website', animate = true } = Astro.props
 ---
 
 <!doctype html>
@@ -26,7 +27,15 @@ const { title, description, type = 'website' } = Astro.props
   <body>
     <Header />
     <main class="wrap">
-      <slot />
+      {
+        animate ? (
+          <div class="slide-enter-content">
+            <slot />
+          </div>
+        ) : (
+          <slot />
+        )
+      }
     </main>
     <Footer transition:persist />
     <script>

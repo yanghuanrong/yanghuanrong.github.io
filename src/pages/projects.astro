@@ -1,11 +1,10 @@
 ---
-import ContribList from '../components/ContribList.astro'
 import ProjectCard from '../components/ProjectCard.astro'
 import { projects } from '../consts'
 import Base from '../layouts/Base.astro'
 ---
 
-<Base title="项目" description="杨焕荣做过的东西：Eprotek 官网、Relax 组件库、Hydrogen JS SDK，以及合入过的开源贡献。">
+<Base title="项目" description="杨焕荣做过的东西：Eprotek 官网、Relax 组件库、Hydrogen JS SDK。">
   <h1 class="page-title">项目</h1>
   <ul class="project-list">
     {
@@ -16,7 +15,4 @@ import Base from '../layouts/Base.astro'
       ))
     }
   </ul>
-
-  <h2 class="section-title">贡献过</h2>
-  <ContribList />
 </Base>

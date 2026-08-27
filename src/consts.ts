@@ -35,7 +35,7 @@ export const projects: Project[] = [
   {
     name: 'Eprotek',
     href: 'https://www.eprotekcorp.com/',
-    desc: '电涌保护品牌官网。产品、方案与认证内容结构化呈现，英文站面向全球客户。',
+    desc: 'Eprotek 官网，用 Next.js 搭建面向全球客户的英文站。产品、方案、新闻和案例从后台发布，每页可配 SEO，sitemap 随内容自动更新。',
     initial: 'E',
     cover: '#e8e8e6',
     coverImage: 'eprotek',
@@ -43,7 +43,7 @@ export const projects: Project[] = [
   {
     name: 'Relax Plus',
     href: 'https://yanghuanrong.github.io/RelaxPlus/',
-    desc: 'Vue 3 组件库。setup 语法还没发布就开始做，按钮到日历二十多个组件，文档和 CI 自己搭。过了百星。',
+    desc: 'Relax Plus，Vue 3 桌面端组件库，涵盖按钮、表单、反馈、导航等二十多个组件。Markdown 文档站点，GitHub Actions 自动部署，npm 发包 relaxplus。',
     initial: 'P',
     cover: '#f7f8fa',
     coverImage: 'relax-plus',
@@ -51,7 +51,7 @@ export const projects: Project[] = [
   {
     name: 'Relax UI',
     href: 'https://github.com/yanghuanrong/RelaxUI',
-    desc: '更早那套 Vue 2 组件库。同一套审美，先在业务里打过一遍。',
+    desc: 'Relax UI，Vue 2 组件库，Relax Plus 的前身，2017 年起迭代。npm 包 vue-relax-ui，带在线组件文档。',
     initial: 'R',
     cover: '#f7f8fa',
     coverImage: 'relax-ui',
@@ -59,7 +59,7 @@ export const projects: Project[] = [
   {
     name: 'Hydrogen JS SDK',
     href: 'https://github.com/bmob/hydrogen-js-sdk',
-    desc: '给微信小程序、快应用、抖音、H5 接 Bmob 云服务。环境、构建和 Query 核心是我写的，到现在还在跑。',
+    desc: 'Bmob 新版 ES6 SDK，新版语法整合，面向前端混合开发场景，支持微信小程序、抖音小程序、H5、快应用、Cocos 游戏、混合 App 等平台。',
     initial: 'H',
     cover: '#e8e8e6',
     coverImage: 'hydrogen',

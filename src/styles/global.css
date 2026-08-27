@@ -1307,6 +1307,43 @@ a.project-name:hover .project-ext {
   text-decoration-color: var(--link-dot);
 }
 
+.prose a.link-github-ext {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  max-width: 100%;
+  text-decoration: none;
+}
+
+.prose a.link-github-ext:hover,
+.prose a.link-github-ext:focus-visible {
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+
+.prose a.link-github-ext .link-github-icon {
+  flex: none;
+  width: 0.85em;
+  height: 0.85em;
+  color: var(--fg);
+  opacity: 0.72;
+}
+
+.prose a.link-github-ext .link-ext {
+  flex: none;
+  width: 0.72em;
+  height: 0.72em;
+  color: color-mix(in oklab, var(--fg) 55%, transparent);
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.prose a.link-github-ext:hover .link-ext,
+.prose a.link-github-ext:focus-visible .link-ext {
+  color: var(--fg);
+  transform: translate(1px, -1px);
+}
+
 .meta {
   color: var(--muted);
   margin: 0 0 36px;
