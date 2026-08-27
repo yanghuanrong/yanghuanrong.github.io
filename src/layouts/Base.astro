@@ -17,17 +17,27 @@ const { title, description, type = 'website' } = Astro.props
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="no-sliding" transition:animate="none">
   <head>
     <BaseHead title={title} description={description} type={type} />
     <slot name="head" />
-    <ClientRouter />
+    <ClientRouter fallback="swap" />
   </head>
   <body>
     <Header />
     <main class="wrap">
       <slot />
     </main>
-    <Footer />
+    <Footer transition:persist />
+    <script>
+      import '../scripts/page-transitions.ts'
+    </script>
   </body>
 </html>
+
+<style is:global>
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+</style>

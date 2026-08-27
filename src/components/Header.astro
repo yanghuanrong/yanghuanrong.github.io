@@ -29,7 +29,7 @@ const isCurrent = (href: string) =>
   href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href)
 ---
 
-<header class="site-header wrap">
+<header class="site-header wrap" transition:persist>
   <a class="avatar-link" href="/" aria-label={SITE_TITLE}>
     <span class="avatar-frame">
       <Image
@@ -48,7 +48,7 @@ const isCurrent = (href: string) =>
   </a>
 </header>
 
-<nav class="site-dock" aria-label="主导航">
+<nav class="site-dock" aria-label="主导航" transition:persist>
   <div class="site-dock-nav">
     <div class="site-dock-group">
       {

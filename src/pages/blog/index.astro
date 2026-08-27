@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 import { formatDate } from '../../consts'
+import PostTitleMorph from '../../components/PostTitleMorph.astro'
 import Base from '../../layouts/Base.astro'
 
 const posts = (await getCollection('blog')).sort(
@@ -14,9 +15,7 @@ const posts = (await getCollection('blog')).sort(
     {
       posts.map((post) => (
         <li>
-          <a class="post-title" href={`/blog/${post.id}/`}>
-            {post.data.title}
-          </a>
+          <PostTitleMorph slug={post.id} title={post.data.title} href={`/blog/${post.id}/`} />
           <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
         </li>
       ))

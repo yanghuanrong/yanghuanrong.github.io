@@ -1,0 +1,25 @@
+---
+interface Props {
+  slug: string
+  title: string
+  href?: string
+}
+
+const { slug, title, href } = Astro.props
+---
+
+{
+  href ? (
+    <a class="post-title" href={href}>
+      <span class="post-title-morph" data-slug={slug}>
+        {title}
+      </span>
+    </a>
+  ) : (
+    <h1 class="post-heading">
+      <span class="post-title-morph" data-slug={slug}>
+        {title}
+      </span>
+    </h1>
+  )
+}

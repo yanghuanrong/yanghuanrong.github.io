@@ -1,5 +1,6 @@
 ---
 import JsonLd from '../components/JsonLd.astro'
+import PostTitleMorph from '../components/PostTitleMorph.astro'
 import { formatDate } from '../consts'
 import Base from './Base.astro'
 
@@ -8,19 +9,22 @@ interface Props {
   description: string
   pubDate: Date
   updatedDate?: Date
+  slug: string
 }
 
-const { title, description, pubDate, updatedDate } = Astro.props
+const { title, description, pubDate, updatedDate, slug } = Astro.props
 ---
 
 <Base title={title} description={description} type="article">
   <JsonLd slot="head" type="article" title={title} description={description} datePublished={pubDate} />
-  <article class="prose">
-    <h1>{title}</h1>
+  <article class="prose post-view slide-enter-content">
+    <PostTitleMorph slug={slug} title={title} />
     <p class="meta">
       <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
       {updatedDate && <span> · Updated {formatDate(updatedDate)}</span>}
     </p>
-    <slot />
+    <div class="prose-body">
+      <slot />
+    </div>
   </article>
 </Base>

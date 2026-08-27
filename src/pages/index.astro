@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
+import PostTitleMorph from '../components/PostTitleMorph.astro'
 import JsonLd from '../components/JsonLd.astro'
 import ProjectCard from '../components/ProjectCard.astro'
 import PhotoStack from '../components/react/PhotoStack.tsx'
@@ -74,9 +75,7 @@ const posts = (await getCollection('blog')).sort(
     {
       posts.map((post) => (
         <li>
-          <a class="post-title" href={`/blog/${post.id}/`}>
-            {post.data.title}
-          </a>
+          <PostTitleMorph slug={post.id} title={post.data.title} href={`/blog/${post.id}/`} />
           <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
         </li>
       ))
