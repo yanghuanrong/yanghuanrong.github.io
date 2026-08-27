@@ -946,7 +946,6 @@ main.wrap:has(.post-layout) {
 .inline-link {
   color: var(--fg);
   text-decoration: underline dotted;
-  text-decoration-thickness: 1px;
   text-underline-offset: 4px;
   text-decoration-color: var(--link-dot);
 }
@@ -968,7 +967,6 @@ main.wrap:has(.post-layout) {
 .socials a {
   color: var(--fg);
   text-decoration: underline dotted;
-  text-decoration-thickness: 1px;
   text-underline-offset: 4px;
   text-decoration-color: var(--link-dot);
 }
@@ -1000,17 +998,26 @@ main.wrap:has(.post-layout) {
   padding: 10px 0;
 }
 
-.post-list a.post-title,
-.contrib-list a {
-  width: fit-content;
+.post-list a.post-title {
+  display: inline;
   max-width: 100%;
   color: var(--fg);
+  text-decoration: none;
 }
 
-.post-list a.post-title:hover,
-.contrib-list a:hover .contrib-repo {
+.post-list a.post-title .post-title-morph {
+  text-decoration: none;
+}
+
+.post-list a.post-title:hover .post-title-morph,
+.post-list a.post-title:focus-visible .post-title-morph {
   text-decoration: underline dotted;
   text-underline-offset: 4px;
+}
+
+.post-list li:has(a.post-title:hover) time,
+.post-list li:has(a.post-title:focus-visible) time {
+  color: color-mix(in oklab, var(--fg) 52%, transparent);
 }
 
 .post-title,
@@ -1050,6 +1057,18 @@ main.wrap:has(.post-layout) {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
   text-align: right;
+  transition: color 0.22s var(--ease-swift);
+}
+
+.contrib-list a {
+  width: fit-content;
+  max-width: 100%;
+  color: var(--fg);
+}
+
+.contrib-list a:hover .contrib-repo {
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
 }
 
 .contrib-note {
@@ -1284,7 +1303,6 @@ a.project-name:hover .project-ext {
 .prose a {
   color: var(--fg);
   text-decoration: underline dotted;
-  text-decoration-thickness: 1px;
   text-underline-offset: 4px;
   text-decoration-color: var(--link-dot);
 }
