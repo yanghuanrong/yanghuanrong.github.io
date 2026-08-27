@@ -1,0 +1,55 @@
+---
+export type TocHeading = {
+  depth: number
+  slug: string
+  text: string
+}
+
+interface Props {
+  title: string
+  headings: TocHeading[]
+}
+
+const { title, headings } = Astro.props
+const items = [{ depth: 1, slug: 'top', text: title }, ...headings]
+---
+
+<aside class="post-toc" aria-label="文章导航">
+  <a class="post-toc-action post-toc-back" href="/blog/">
+    <span class="post-toc-action-mark" aria-hidden="true">←</span>
+    <span class="post-toc-action-label">返回</span>
+  </a>
+
+  <nav class="post-toc-nav" aria-label="目录" data-toc-items={JSON.stringify(items)}>
+    <ol class="post-toc-list"></ol>
+  </nav>
+
+  <button class="post-toc-action post-toc-top" type="button">
+    <svg class="post-toc-action-icon" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path
+        d="M5.5 7.5a2.5 2.5 0 0 1 5 0"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.15"
+        stroke-linecap="round"></path>
+      <path
+        d="M8 12.5V10"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.15"
+        stroke-linecap="round"></path>
+      <path
+        d="M6.25 11 8 9.25 9.75 11"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.15"
+        stroke-linecap="round"
+        stroke-linejoin="round"></path>
+    </svg>
+    <span class="post-toc-action-label">顶部</span>
+  </button>
+</aside>
+
+<script>
+  import '../scripts/post-toc.ts'
+</script>

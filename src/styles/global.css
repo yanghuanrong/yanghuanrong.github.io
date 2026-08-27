@@ -39,6 +39,18 @@
   }
 }
 
+@keyframes slide-exit {
+  from {
+    translate: 0 0;
+    opacity: 1;
+  }
+
+  to {
+    translate: 0 10px;
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html:not(.no-sliding) [slide-enter],
   html:not(.no-sliding) .slide-enter,
@@ -169,6 +181,204 @@ pre .astro-code {
 
 main.wrap {
   padding-bottom: 120px;
+}
+
+main.wrap:has(.post-layout) {
+  width: min(var(--measure), calc(100% - var(--page) * 2));
+}
+
+.post-layout {
+  position: relative;
+}
+
+.post-toc {
+  --post-toc-row: 14px;
+  position: fixed;
+  top: 88px;
+  left: var(--page);
+  z-index: 20;
+  width: 184px;
+  max-width: calc(100vw - var(--page) * 2);
+  max-height: calc(100vh - 112px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 4px;
+  overscroll-behavior: contain;
+}
+
+.post-toc-action {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  column-gap: 8px;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: color-mix(in oklab, var(--fg) 48%, transparent);
+  font: inherit;
+  font-size: 12px;
+  line-height: var(--post-toc-row);
+  cursor: pointer;
+  text-decoration: none;
+  text-align: left;
+  appearance: none;
+  box-sizing: border-box;
+  transition: color 0.15s ease;
+}
+
+.post-toc-back {
+  margin-bottom: 28px;
+}
+
+.post-toc-top {
+  display: none;
+  margin-top: 28px;
+}
+
+.post-toc-top.is-visible,
+.post-toc-top.is-leaving {
+  display: grid;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .post-toc-top.is-visible:not(.is-leaving) {
+    animation: slide-enter 1s both;
+  }
+
+  .post-toc-top.is-leaving {
+    animation: slide-exit 1s both;
+    pointer-events: none;
+  }
+}
+
+.post-toc-action:hover {
+  color: var(--fg);
+}
+
+.post-toc-action-mark,
+.post-toc-action-icon {
+  grid-column: 1;
+  justify-self: center;
+  align-self: center;
+}
+
+.post-toc-action-mark {
+  display: block;
+  width: 18px;
+  text-align: center;
+  line-height: var(--post-toc-row);
+}
+
+.post-toc-action-icon {
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+.post-toc-action-label {
+  grid-column: 2;
+  min-width: 0;
+  padding-right: 12px;
+  box-sizing: border-box;
+  display: block;
+  line-height: var(--post-toc-row);
+}
+
+.post-toc-nav {
+  display: block;
+}
+
+.post-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  grid-auto-rows: var(--post-toc-row);
+  column-gap: 8px;
+  max-width: 100%;
+}
+
+.post-toc-tick {
+  grid-column: 1;
+  align-self: center;
+  width: 8px;
+  height: 1px;
+  background: color-mix(in oklab, var(--fg) 22%, transparent);
+  transition:
+    width 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.2s ease;
+}
+
+.post-toc-tick.is-active-first {
+  width: 18px;
+  background: var(--fg);
+}
+
+.post-toc-tick.is-active-cont {
+  background: color-mix(in oklab, var(--fg) 22%, transparent);
+}
+
+.post-toc-entry {
+  grid-column: 2;
+  align-self: start;
+  margin: 0;
+  min-width: 0;
+  min-height: var(--post-toc-row);
+  padding-right: 12px;
+  box-sizing: border-box;
+}
+
+.post-toc-entry a {
+  display: block;
+  color: color-mix(in oklab, var(--fg) 34%, transparent);
+  font-size: 12px;
+  line-height: var(--post-toc-row);
+  transition: color 0.15s ease;
+}
+
+.post-toc-entry a:hover {
+  color: color-mix(in oklab, var(--fg) 72%, transparent);
+}
+
+.post-toc-text {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  transform: translateX(0);
+  transition:
+    transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1),
+    color 0.15s ease;
+}
+
+.post-toc-entry.is-active a {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.post-toc-entry.is-active .post-toc-text {
+  transform: translateX(12px);
+}
+
+.prose h2,
+.prose h3 {
+  scroll-margin-top: 72px;
+}
+
+@media (max-width: 1040px) {
+  .post-toc {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .post-toc-text,
+  .post-toc-tick {
+    transition: none;
+  }
 }
 
 .site-header {
