@@ -39,6 +39,9 @@ const isCurrent = (href: string) =>
         width={56}
         height={56}
         densities={[1, 2]}
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
       />
       <AvatarEye client:load />
     </span>

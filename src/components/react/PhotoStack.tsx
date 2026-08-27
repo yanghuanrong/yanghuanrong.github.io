@@ -217,7 +217,7 @@ export default function PhotoStack() {
             className={`polaroid polaroid-peek is-${photoOrientation(photo)}`}
             style={{ '--i': index, zIndex: index + 1 } as CSSProperties}
           >
-            <img src={photo.src} alt="" />
+            <img src={photo.src} alt="" loading="lazy" decoding="async" />
           </span>
         ))}
       </button>
@@ -274,7 +274,7 @@ export default function PhotoStack() {
                     onPointerUp={isTop ? finishDrag : undefined}
                     onPointerCancel={isTop ? finishDrag : undefined}
                   >
-                    <img src={photo.src} alt={photo.caption || ''} draggable={false} />
+                    <img src={photo.src} alt={photo.caption || ''} draggable={false} loading="lazy" decoding="async" />
                     {photo.caption ? <span>{photo.caption}</span> : null}
                   </button>
                 )

@@ -32,6 +32,8 @@ const coverImage = project.coverImage ? covers[project.coverImage] : undefined
         alt=""
         widths={[640, 960, 1280]}
         sizes="(max-width: 640px) 100vw, 640px"
+        loading="lazy"
+        decoding="async"
       />
     ) : (
       <span class="project-cover" style={`--cover: ${project.cover}`}>

@@ -15,10 +15,12 @@ const WALL = 80
 
 export default function TechPile({ icons }: Props) {
   const sceneRef = useRef<HTMLDivElement>(null)
+  const layerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const scene = sceneRef.current
-    if (!scene || icons.length === 0) return
+    const layer = layerRef.current
+    if (!scene || !layer || icons.length === 0) return
 
     const nodes = icons.map((icon) => {
       const el = document.createElement('button')
@@ -31,15 +33,23 @@ export default function TechPile({ icons }: Props) {
       img.src = icon.src
       img.alt = ''
       img.draggable = false
+      img.decoding = 'async'
       el.appendChild(img)
-      scene.appendChild(el)
+      layer.appendChild(el)
       return el
     })
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) {
       scene.classList.add('is-static')
-      return () => nodes.forEach((el) => el.remove())
+      nodes.forEach((el) => {
+        el.style.visibility = ''
+        el.style.transform = 'none'
+      })
+      return () => {
+        nodes.forEach((el) => el.remove())
+        scene.classList.remove('is-static')
+      }
     }
 
     const { Engine, World, Bodies, Body, Mouse, MouseConstraint, Events, Runner, Composite } = Matter
@@ -298,6 +308,7 @@ export default function TechPile({ icons }: Props) {
         </svg>
         Be water my friend
       </p>
+      <div ref={layerRef} className="tech-pile-layer" />
     </div>
   )
 }

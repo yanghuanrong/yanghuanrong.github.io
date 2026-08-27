@@ -902,6 +902,18 @@ a.project-name:hover .project-ext {
   opacity: 0.55;
 }
 
+.tech-pile-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.tech-pile-scene.is-static .tech-pile-layer {
+  position: relative;
+  inset: auto;
+  display: contents;
+}
+
 .tech-pile-scene.is-dragging {
   cursor: grabbing;
   touch-action: none;
