@@ -15,10 +15,10 @@ const items = [{ depth: 1, slug: 'top', text: title }, ...headings]
 ---
 
 <aside class="post-toc" aria-label="文章导航">
-  <a class="post-toc-action post-toc-back" href="/blog/">
+  <button class="post-toc-action post-toc-back" type="button">
     <span class="post-toc-action-mark" aria-hidden="true">←</span>
     <span class="post-toc-action-label">返回</span>
-  </a>
+  </button>
 
   <nav class="post-toc-nav" aria-label="目录" data-toc-items={JSON.stringify(items)}>
     <ol class="post-toc-list"></ol>

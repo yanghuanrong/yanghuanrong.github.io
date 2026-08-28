@@ -140,6 +140,17 @@ export function initPostToc() {
   if (!nav) return
 
   const topButton = toc.querySelector<HTMLElement>('.post-toc-top')
+  const backButton = toc.querySelector<HTMLElement>('.post-toc-back')
+
+  const onBackClick = () => {
+    const before = location.href
+    history.back()
+    window.setTimeout(() => {
+      if (location.href === before) location.assign('/')
+    }, 300)
+  }
+
+  backButton?.addEventListener('click', onBackClick)
 
   const prefersReducedMotion = () =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -203,6 +214,7 @@ export function initPostToc() {
     updateTopButtonVisibility()
 
     return () => {
+      backButton?.removeEventListener('click', onBackClick)
       topButton?.removeEventListener('click', onTopClick)
       topButton?.removeEventListener('animationend', onTopAnimationEnd)
       window.removeEventListener('scroll', updateTopButtonVisibility)
@@ -271,6 +283,7 @@ export function initPostToc() {
   return () => {
     resizeObserver.disconnect()
     nav.removeEventListener('click', onNavClick)
+    backButton?.removeEventListener('click', onBackClick)
     topButton?.removeEventListener('click', onTopClick)
     topButton?.removeEventListener('animationend', onTopAnimationEnd)
     window.removeEventListener('scroll', updateActiveOnScroll)
