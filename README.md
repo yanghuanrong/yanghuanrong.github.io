@@ -29,4 +29,4 @@ npm run preview
 - `public/robots.txt` 放行常见 AI 爬虫
 - `public/llms.txt` 给生成式引擎看的站点地图
 - 页面带 Person / BlogPosting JSON-LD
-- `sitemap-index.xml` 与 `rss.xml` 构建时生成
+- `sitemap.xml`（由 `sitemap-0.xml` 复制）与 `rss.xml` 构建时生成
