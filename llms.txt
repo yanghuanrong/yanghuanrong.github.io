@@ -1,0 +1,38 @@
+# 杨焕荣
+
+> 杨焕荣（南北）。设计工程师。做过视觉、App 界面、产品和工程，专注 UI 组件、设计系统、排版与动画。
+
+站点以静态 HTML 发布，正文不依赖 JavaScript。
+
+## 关于
+
+- [关于杨焕荣](https://yanghuanrong.github.io/)：设计工程师。热衷于打造令人愉悦的界面，以及流畅又充满人性化体验的产品。专注 UI 组件 API、设计系统模式、排版设计与动画效果。兴趣包括健身、游泳、驾驶；做过摄影。
+
+## 项目
+
+- [Eprotek](https://www.eprotekcorp.com/)：电涌保护品牌官网。产品、方案与认证内容结构化呈现，英文站面向全球客户。
+- [Relax Plus](https://yanghuanrong.github.io/RelaxPlus/)：Vue 3 组件库，二十多个组件，文档和 CI 自建，过百星。
+- [Relax UI](https://github.com/yanghuanrong/RelaxUI)：Vue 2 组件库。
+- [Hydrogen JS SDK](https://github.com/bmob/hydrogen-js-sdk)：Bmob 新版 ES6 SDK，面向前端混合开发，支持微信小程序、抖音小程序、H5、快应用、Cocos 游戏、混合 App 等平台。
+
+## 贡献过
+
+- [dream-num/Luckysheet](https://github.com/dream-num/Luckysheet)：开源在线电子表格
+- [ascoders/weekly](https://github.com/ascoders/weekly)：前端精读周刊
+- [Anduin2017/HowToCook](https://github.com/Anduin2017/HowToCook)：程序员做饭指南
+- [ant-design/x](https://github.com/ant-design/x)：Ant Design AI 应用组件库
+
+## 文章
+
+- [我是如何用 vibecoding 重构个人网站的](https://yanghuanrong.github.io/blog/vibecoding-personal-site/)：2017 至今 ku/master/astro 三代分支；Astro 静态 SEO/GEO；介绍 AvatarEye、Dock、slide-enter、PhotoStack、TechPile 等动画交互与 agent 时代做站
+- [掘金自动签到](https://yanghuanrong.github.io/blog/chcekin/)：chcekin 每日签到；GET 走 Node，POST 空 body 时 Playwright 回退，Actions 定时 + 钉钉通知
+- [优化 webpack5 热更新从 9s 下降至 1~2s](https://yanghuanrong.github.io/blog/webpack5-optimize/)：定位 CleanWebpackPlugin 在开发环境清空缓存，使热更新从 7–9 秒降到 1–2 秒
+- [表达式求值并处理精度问题](https://yanghuanrong.github.io/blog/formula/)：用递归下降解析公式字符串，并以精确四则运算避免浮点误差
+
+## 可选
+
+- RSS：https://yanghuanrong.github.io/rss.xml
+- GitHub：https://github.com/yanghuanrong
+- 掘金：https://juejin.cn/user/2286606292882749
+- 知乎：https://www.zhihu.com/people/yang-huan-rong-91
+- X：https://x.com/mkoibb
