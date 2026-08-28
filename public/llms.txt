@@ -24,6 +24,8 @@
 
 ## 文章
 
+- [我是如何用 vibecoding 重构个人网站的](https://yanghuanrong.github.io/blog/vibecoding-personal-site/)：2017 至今 ku/master/astro 三代分支；Astro 静态 SEO/GEO；介绍 AvatarEye、Dock、slide-enter、PhotoStack、TechPile 等动画交互与 agent 时代做站
+- [掘金自动签到](https://yanghuanrong.github.io/blog/chcekin/)：chcekin 每日签到；GET 走 Node，POST 空 body 时 Playwright 回退，Actions 定时 + 钉钉通知
 - [优化 webpack5 热更新从 9s 下降至 1~2s](https://yanghuanrong.github.io/blog/webpack5-optimize/)：定位 CleanWebpackPlugin 在开发环境清空缓存，使热更新从 7–9 秒降到 1–2 秒
 - [表达式求值并处理精度问题](https://yanghuanrong.github.io/blog/formula/)：用递归下降解析公式字符串，并以精确四则运算避免浮点误差
 
