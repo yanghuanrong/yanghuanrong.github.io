@@ -1257,11 +1257,11 @@ a.project-name:hover .project-ext {
   border-color: color-mix(in oklab, #fff 8%, transparent);
 }
 
-.tech-pile-icon img {
+.tech-pile-icon-glyph {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  background-repeat: no-repeat;
   pointer-events: none;
 }
 

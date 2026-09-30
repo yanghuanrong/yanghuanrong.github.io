@@ -3,17 +3,23 @@ import Matter from 'matter-js'
 
 export type TechIconItem = {
   name: string
+}
+
+type TechSprite = {
   src: string
+  cols: number
+  rows: number
 }
 
 type Props = {
   icons: readonly TechIconItem[]
+  sprite: TechSprite
 }
 
 const ICON_SIZE = 44
 const WALL = 80
 
-export default function TechPile({ icons }: Props) {
+export default function TechPile({ icons, sprite }: Props) {
   const sceneRef = useRef<HTMLDivElement>(null)
   const layerRef = useRef<HTMLDivElement>(null)
 
@@ -22,19 +28,25 @@ export default function TechPile({ icons }: Props) {
     const layer = layerRef.current
     if (!scene || !layer || icons.length === 0) return
 
-    const nodes = icons.map((icon) => {
+    const nodes = icons.map((icon, index) => {
       const el = document.createElement('button')
       el.type = 'button'
       el.className = 'tech-pile-icon'
       el.setAttribute('aria-label', icon.name)
       el.title = icon.name
       el.style.visibility = 'hidden'
-      const img = document.createElement('img')
-      img.src = icon.src
-      img.alt = ''
-      img.draggable = false
-      img.decoding = 'async'
-      el.appendChild(img)
+      const col = index % sprite.cols
+      const row = Math.floor(index / sprite.cols)
+      const glyph = document.createElement('span')
+      glyph.className = 'tech-pile-icon-glyph'
+      glyph.setAttribute('aria-hidden', 'true')
+      // Percentage bg-position = (area - image) * p%; use i/(n-1), not -i*100%.
+      const posX = sprite.cols <= 1 ? 0 : (col / (sprite.cols - 1)) * 100
+      const posY = sprite.rows <= 1 ? 0 : (row / (sprite.rows - 1)) * 100
+      glyph.style.backgroundImage = `url(${sprite.src})`
+      glyph.style.backgroundSize = `${sprite.cols * 100}% ${sprite.rows * 100}%`
+      glyph.style.backgroundPosition = `${posX}% ${posY}%`
+      el.appendChild(glyph)
       layer.appendChild(el)
       return el
     })
@@ -290,7 +302,7 @@ export default function TechPile({ icons }: Props) {
       nodes.forEach((el) => el.remove())
       scene.classList.remove('is-dragging')
     }
-  }, [icons])
+  }, [icons, sprite])
 
   return (
     <div ref={sceneRef} className="tech-pile-scene" aria-label="技术栈">

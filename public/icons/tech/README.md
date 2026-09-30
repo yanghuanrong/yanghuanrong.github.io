@@ -2,7 +2,8 @@
 
 来源：[Simple Icons](https://simpleicons.org/)，按简历技术栈选取。
 
-路径：`/icons/tech/<name>.svg`
+源文件：`/icons/tech/<name>.svg`  
+线上 TechPile 使用合成图：`/icons/tech-sprite.webp`（`node scripts/generate-tech-sprite.mjs` 生成，顺序需与 `src/consts.ts` 的 `techIcons` 一致）。
 
 | 文件 | 对应技术 |
 |------|----------|
